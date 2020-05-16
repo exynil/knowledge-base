@@ -100,3 +100,10 @@ X :2 -configure
 watch -n1 "date '+%D%n%T'"
 
 ```
+
+Поиск по всем мануалам установленных программ
+
+```
+apropos compress
+
+```
