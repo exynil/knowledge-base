@@ -42,9 +42,9 @@ lsblk
 cfdisk /dev/sdb
 
 ```
-Точка монтирования **/mnt/boot** размер **512МB**, тип раздела **EFI System**, файловая система **vfat**
+Точка монтирования `/mnt/boot` размер `512МB`, тип раздела `EFI System`, файловая система `vfat`
 
-Точка монтирования **/mnt** размер **20GB**, тип раздела **Linux root (x86-64)**, файловая система **ext4**
+Точка монтирования `/mnt` размер `более 20GB`, тип раздела `Linux root (x86-64)`, файловая система `ext4`
 
 7. Форматирование загрузочного раздела
 
@@ -88,7 +88,7 @@ pacstrap /mnt base base-devel linux linux-firmware vim intel-ucode man-db man-pa
 
 ```
 
-13. Генерация файла **fstab**
+13. Генерация файла `fstab`
 
 ```
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -118,7 +118,7 @@ hwclock --systohc
 
 17. Настройка локали
 
-Включить **en_US.UTF-8 UTF-8** и другие необходимые локали
+Раскомментировать `en_US.UTF-8 UTF-8` и другие необходимые локали
 
 ```
 vim /etc/locale.gen
@@ -137,14 +137,14 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
 ```
 
-19. Настройка **/etc/hostname**
+19. Настройка `/etc/hostname`
 
 ```
 echo arch > /etc/hostname
 
 ```
 
-20. Настройка **/etc/hosts**
+20. Настройка `/etc/hosts`
 
 ```
 echo "127.0.0.1 localhost" >> /etc/hosts
@@ -182,13 +182,9 @@ vim /boot/loader/entries/arch.conf
 
 ```
 title Arch Linux
-
 linux /vmlinuz-linux
-
 initrd /intel-ucode.img
-
 initrd /initramfs-linux.img
-
 options root=UUID=f140e1cd-43af-423f-9e53-2f9477e82dd5 rw
 
 ```
@@ -274,28 +270,28 @@ FONT=ter-u16n
 
 ## Создание пользователя
 
-1. Добавление пользователя **max**
+1. Добавление пользователя `max`
 
 ```
 useradd -m max
 
 ```
 
-2. Установка пароля для **max**
+2. Установка пароля для `max`
 
 ```
 passwd max
 
 ```
 
-3. Добавление пользователя **max** в группы
+3. Добавление пользователя `max` в группы
 
 ```
 usermod -aG wheel,audio,video,storage,optical,input max
 
 ```
 
-4. Доступ к sudo все пользователям группы **wheel**
+4. Доступ к sudo все пользователям группы `wheel`
 
 ```
 vim /etc/sudoers
@@ -309,14 +305,14 @@ vim /etc/sudoers
 
 ### xorg-server
 
-1. Установка **xorg-server**
+1. Установка `xorg-server`
 
 ```
 pacman -S xorg-server xorg-xinit
 
 ```
 
-2. Установка **xorg-xinit**
+2. Установка `xorg-xinit`
 
 ```
 pacman -S xorg-xinit
@@ -328,7 +324,7 @@ pacman -S xorg-xinit
 1. Создаем конфигурационный файл для тачпада.
 
 ```
-vim /etc/X11/xorg.conf.d/40-touchpad.conf
+vim /etc/X11/xorg.conf.d/20-touchpad.conf
 
 ```
 
@@ -349,6 +345,25 @@ EndSection
 
 ```
 
+### Клавиатура
+
+1. Создаем конфигурационный файл для клавиатуры
+
+```
+vim /etc/X11/xorg.conf.d/20-keyboard.conf
+
+```
+
+```
+Section "InputClass"
+    Identifier "system-keyboard"
+    MatchIsKeyboard "on"
+    Option "XkbLayout" "us,ru"
+    Option "XkbOptions" "grp:win_space_toggle"
+EndSection
+
+```
+
 ### Установка и настройка драйверов видео
 
 1. Установка драйверов видеокарты
@@ -358,7 +373,7 @@ pacman -S xf86-video-intel xf86-video-nouveau
 
 ```
 
-2. Создание конфигурационного файла
+2. Создание конфигурационного файла для `intel graphics`
 
 ```
 vim /etc/X11/xorg.conf.d/20-intel.conf
@@ -367,10 +382,25 @@ vim /etc/X11/xorg.conf.d/20-intel.conf
 
 ```
 Section "Device"
-        Identifier  "Intel Graphics"
-        Driver      "intel"
-        Option      "DRI" "2"
-        Option      "TearFree" "true"
+    Identifier "Intel"
+    Driver "intel"
+    BusID "PCI:0:2:0"
+    Option "TearFree" "true"
+EndSection
+
+```
+3. Создание конфигурационного файла для `nvidia graphics`
+
+```
+vim /etc/X11/xorg.conf.d/20-nouveau.conf
+
+```
+
+```
+Section "Device"
+	Identifier "Nvidia"
+	Driver "nouveau"
+	BusID "PCI:1:0:0"
 EndSection
 
 ```
