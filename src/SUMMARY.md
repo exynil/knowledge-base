@@ -1,6 +1,5 @@
 # Summary
 
-- [PRIME Render Offload](./prime-render-offload.md)
 - [Команды](./commands.md)
 - [Дополнительные настройки](./additional-settings.md)
 - [Ошибки](./errors.md)
