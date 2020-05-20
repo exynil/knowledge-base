@@ -1,25 +1,33 @@
 # Файлы
 
 Меню загрузки
-> /boot/loader/loader.conf
+
+`/boot/loader/loader.conf`
 
 Файл с инструкцией по монтированию блочных устройств
-> /etc/fstab
+
+`/etc/fstab`
 
 Список словарных слов, используется программами для проверки орфографии
-> /usr/share/dict/cracklib-small
+
+`/usr/share/dict/cracklib-small`
 
 Настройка консоли Linux
-> /etc/vconsole.conf
+
+`/etc/vconsole.conf`
 
 Шрифты консоли Linux
-> /usr/share/kbd/consolefonts
 
-Программы для личного пользования
-> ~/bin
+`/usr/share/kbd/consolefonts`
+
+Программы для личного использования
+
+`~/bin`
 
 Программы доступные всем пользователям системы
-> /usr/local/bin
+
+`/usr/local/bin`
 
 Программы предназначенные для использования системным администратором
-> /usr/local/sbin
+
+`/usr/local/sbin`
