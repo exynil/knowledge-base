@@ -408,7 +408,7 @@ EndSection
 ### Установка драйверов звуковой карты
 
 ```
-pacman -S alsa-lib pulseaudio pulseaudio-alsa alsa-lib alsa-firmware playerctl pamixer
+pacman -S pulseaudio pulseaudio-alsa alsa-lib alsa-firmware playerctl pamixer
 
 ```
 

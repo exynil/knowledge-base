@@ -1,6 +1,7 @@
 # Summary
 
 - [Команды](./commands.md)
+- [Как сделать](./how-to-do.md)
 - [Дополнительные настройки](./additional-settings.md)
 - [Проблемы](./problems.md)
 - [Пакеты](./packages.md)

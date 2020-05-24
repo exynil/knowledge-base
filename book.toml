@@ -1,5 +1,12 @@
 [book]
-authors = []
-language = "en"
+title = "Knowledge base - Arch Linux"
+authors = ["Maxim Kim"]
+language = "ru"
 multilingual = false
 src = "src"
+
+[output.html]
+default-theme = "ayu"
+
+[output.html.playpen]
+copyable = false
