@@ -56,7 +56,7 @@ ytdl-format=bestvideo[height<=?720]+bestaudio/best
 - Добавляем запуск терминала с именем `dropdown` в автозагрузку
 
 ```
-exec --no-startup-id sleep 2 && $TERMINAL -name dropdown
+exec --no-startup-id $TERMINAL -name dropdown
 
 ```
 

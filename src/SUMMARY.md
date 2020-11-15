@@ -4,6 +4,7 @@
 - [Как сделать](./how-to-do.md)
 - [Дополнительные настройки](./additional-settings.md)
 - [Проблемы](./problems.md)
+- [Clonezilla Live USB](./clonezilla-live-usb.md)
 - [Пакеты](./packages.md)
 - [Общий доступ](./shared-access.md)
 - [SSH](./ssh.md)
@@ -13,4 +14,5 @@
 - [Установка Archlinux](./archlinux-installation.md)
 - [Pass](./pass.md)
 - [OpenGPG](./opengpg.md)
+- [AI](./ai.md)
 

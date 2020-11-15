@@ -5,7 +5,7 @@
 1. Соединение с интернетом
 
 ```
-wifi-menu
+iwctl
 
 ```
 2. Проверка интернета
@@ -84,7 +84,7 @@ mount /dev/sdb1 /mnt/boot
 12. Установка пакетов
 
 ```
-pacstrap /mnt base base-devel linux linux-firmware vim intel-ucode man-db man-pages wpa_supplicant inetutils netctl dhcpcd dialog
+pacstrap /mnt base base-devel linux linux-firmware vim intel-ucode man-db man-pages dhcpcd iwd zip unzip
 
 ```
 

@@ -1,11 +1,45 @@
 # Команды
 
+## youtube-dl
+
+1. Просмотр возможных вариантов для скачивания
+
+```
+youtube-dl -F [url]
+
+```
+
+2. Скачивание определенного формата
+
+```
+youtube-dl -f 140 [url]
+
+```
+
+3. Извлечение аудио в формате `mp3`
+
+```
+youtube-dl --output "%(title)s.%(ext)s" --extract-audio --audio-format mp3 [url]
+
+```
+
+## xrandr 
 Вывод провайдеров
 
 ```
 xrandr --listproviders
 
 ```
+
+## ffmpeg
+
+Обрезка видео
+
+```
+ffmpeg -ss 00:00:00 -i input.mp4 -to 00:02:00 -c copy output.mp4
+
+```
+## Остальное
 
 Вывод UUID разделов
 
@@ -19,7 +53,7 @@ blkid
 chown -R $USER
 
 ```
-Удаление каталогаш или файла
+Удаление каталога или файла
 
 ```
 rm file.txt
