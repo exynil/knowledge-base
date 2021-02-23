@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>RSA</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="База знаний.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../SUMMARY.html"><strong aria-hidden="true">1.</strong> Содержание</a></li><li class="chapter-item "><div><strong aria-hidden="true">2.</strong> Линукс</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div><strong aria-hidden="true">2.1.</strong> Как</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Linux/How-to/Install-Archlinux.html"><strong aria-hidden="true">2.1.1.</strong> Установить Archlinux</a></li><li class="chapter-item "><a href="../Linux/How-to/Manage-dotfiles.html"><strong aria-hidden="true">2.1.2.</strong> Управлять настройками программ</a></li><li class="chapter-item "><a href="../Linux/How-to/Synchronize-passwords.html"><strong aria-hidden="true">2.1.3.</strong> Синхронизировать пароли</a></li><li class="chapter-item "><a href="../Linux/How-to/Colorize-man-pages.html"><strong aria-hidden="true">2.1.4.</strong> Сделать мануал цветным</a></li><li class="chapter-item "><a href="../Linux/How-to/Synchronize-files.html"><strong aria-hidden="true">2.1.5.</strong> Синхронизировать файлы</a></li><li class="chapter-item "><a href="../Linux/How-to/Enable-Numlock-automatically.html"><strong aria-hidden="true">2.1.6.</strong> Автовключение Numlock</a></li><li class="chapter-item "><a href="../Linux/How-to/Automount-a-drive.html"><strong aria-hidden="true">2.1.7.</strong> Автомонтирование раздела</a></li><li class="chapter-item "><a href="../Linux/How-to/Backup-via-zip.html"><strong aria-hidden="true">2.1.8.</strong> Бэкап через zip</a></li><li class="chapter-item "><a href="../Linux/How-to/Set-up-keyboard-repeat-delay-and-rate.html"><strong aria-hidden="true">2.1.9.</strong> Изменить задержку и частоту повтора клавиш</a></li><li class="chapter-item "><a href="../Linux/How-to/Generate-SSH-keys-for-git-authorization.html"><strong aria-hidden="true">2.1.10.</strong> Сгенерировать ключи для авторизации по SSH</a></li><li class="chapter-item "><a href="../Linux/How-to/Create-public-folder.html"><strong aria-hidden="true">2.1.11.</strong> Настроить общую папку</a></li><li class="chapter-item "><a href="../Linux/How-to/Set-up-vsftpd.html"><strong aria-hidden="true">2.1.12.</strong> Настроить vsftpd</a></li><li class="chapter-item "><a href="../Linux/How-to/Set-up-keyboard-layout.html"><strong aria-hidden="true">2.1.13.</strong> Настроить раскладку клавиатуры</a></li><li class="chapter-item "><a href="../Linux/How-to/Use-SSH-to-connect-to-a-server.html"><strong aria-hidden="true">2.1.14.</strong> Подключиться по SSH к серверу</a></li><li class="chapter-item "><a href="../Linux/How-to/Watch-YouTube-videos-in-mpv.html"><strong aria-hidden="true">2.1.15.</strong> Смотреть видео с YouTube в mpv</a></li><li class="chapter-item "><a href="../Linux/How-to/Synchronize-time.html"><strong aria-hidden="true">2.1.16.</strong> Синхронизировать время</a></li><li class="chapter-item "><a href="../Linux/How-to/Create-clonezilla-live-usb.html"><strong aria-hidden="true">2.1.17.</strong> Создать Clonezilla Live USB</a></li><li class="chapter-item "><a href="../Linux/How-to/Set-up-hybrid-graphic-card.html"><strong aria-hidden="true">2.1.18.</strong> Натсроить гибридную графику</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">2.2.</strong> Программы</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Linux/Apps/fdisk.html"><strong aria-hidden="true">2.2.1.</strong> fdisk</a></li><li class="chapter-item "><a href="../Linux/Apps/gpg.html"><strong aria-hidden="true">2.2.2.</strong> gpg</a></li><li class="chapter-item "><a href="../Linux/Apps/git.html"><strong aria-hidden="true">2.2.3.</strong> git</a></li><li class="chapter-item "><a href="../Linux/Apps/jq.html"><strong aria-hidden="true">2.2.4.</strong> jq</a></li><li class="chapter-item "><a href="../Linux/Apps/mkfs.html"><strong aria-hidden="true">2.2.5.</strong> mkfs</a></li><li class="chapter-item "><a href="../Linux/Apps/ranger.html"><strong aria-hidden="true">2.2.6.</strong> ranger</a></li><li class="chapter-item "><a href="../Linux/Apps/youtube-dl.html"><strong aria-hidden="true">2.2.7.</strong> youtube-dl</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">2.3.</strong> Разное</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../Linux/Other/Selection.html"><strong aria-hidden="true">2.3.1.</strong> Выборка</a></li><li class="chapter-item "><a href="../Linux/Other/Hot-keys.html"><strong aria-hidden="true">2.3.2.</strong> Горячие клавиши</a></li><li class="chapter-item "><a href="../Linux/Other/Commands.html"><strong aria-hidden="true">2.3.3.</strong> Команды</a></li><li class="chapter-item "><a href="../Linux/Other/Packages.html"><strong aria-hidden="true">2.3.4.</strong> Пакеты</a></li><li class="chapter-item "><a href="../Linux/Other/Troubleshooting.html"><strong aria-hidden="true">2.3.5.</strong> Проблемы</a></li><li class="chapter-item "><a href="../Linux/Other/Files.html"><strong aria-hidden="true">2.3.6.</strong> Файлы</a></li></ol></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Как это работает</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../How-does-it-work/RSA.html" class="active"><strong aria-hidden="true">3.1.</strong> RSA</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#Иллюстрация-работы-rsa-на-примере" id="Иллюстрация-работы-rsa-на-примере">Иллюстрация работы RSA на примере</a></h1>
+<p>Вокруг алгоритмов шифрования с отрытым и закрытым ключом существует множество недопониманий и мистификаций. Здесь я хотел бы предельно коротко и наглядно, с конкретными числами и минимумом формул, показать, как это работает.</p>
+<p>Я не вдаюсь в теорию (не очень понятно, на какой уровень подготовки читателя следует рассчитывать), но я уверен, что прочитав эту короткую иллюстрацию, любому человеку будет проще разобраться в формулах и строгих доказательствах.</p>
+<p>Итак. Допустим, я хочу получить от вас некие данные. Мы с вами не хотим, чтобы эти данные узнал кто-то, кроме нас. И у нас нет никакой уверенности в надёжности канала передачи данных. Приступим.</p>
+<h2><a class="header" href="#Шаг-первый-Подготовка-ключей" id="Шаг-первый-Подготовка-ключей">Шаг первый. Подготовка ключей</a></h2>
+<p>Я должен проделать предварительные действия: сгенерировать публичный и приватный ключ.</p>
+<ul>
+<li>Выбираю два простых числа. Пусть это будет <code>p=3</code> и <code>q=7</code>.</li>
+<li>Вычисляем <em>модуль</em> — произведение наших <code>p</code> и <code>q</code>: <code>n=p×q=3×7=21</code>.</li>
+<li>Вычисляем <em>функцию Эйлера</em>: <code>φ=(p-1)×(q-1)=2×6=12</code>.</li>
+<li>Выбираем число <code>e</code>, отвечающее следующим критериям: 
+<ol>
+<li>оно должно быть простое</li>
+<li>оно должно быть меньше <code>φ</code> — остаются варианты: 3, 5, 7, 11</li>
+<li>оно должно быть взаимно простое с <code>φ</code> - остаются варианты 5, 7, 11. 
+Выберем <code>e=5</code>. Это, так называемая, <em>открытая экспонента</em>.</li>
+</ol>
+</li>
+</ul>
+<p>Теперь пара чисел <code>{e, n}</code> — это мой открытый ключ. Я отправляю его вам, чтобы вы зашифровали своё сообщение. Но для меня это ещё не всё. Я должен получить закрытый ключ.</p>
+<p>Мне нужно вычислить число <code>d</code>, обратное <code>е</code> по модулю <code>φ</code>. То есть остаток от деления по модулю <code>φ</code> произведения <code>d×e</code> должен быть равен 1. Запишем это в обозначениях, принятых во многих языках программирования: <code>(d×е)%φ=1</code>. Или <code>(d×5)%12=1</code>. <code>d</code> может быть равно 5 (<code>(5×5)%12=25%12=1</code>), но чтобы оно не путалось с <code>e</code> в дальнейшем повествовании, давайте возьмём его равным 17. Можете проверить сами, что <code>(17×5)%12</code> действительно равно 1 (<code>17×5-12×7=1</code>). Итак <code>d=17</code>. Пара <code>{d, n}</code> — это секретный ключ, его я оставляю у себя. Его нельзя сообщать никому. Только обладатель секретного ключа может расшифровать то, что было зашифровано открытым ключом.</p>
+<h2><a class="header" href="#Шаг-второй-Шифрование" id="Шаг-второй-Шифрование">Шаг второй. Шифрование</a></h2>
+<p>Теперь пришла ваша очередь шифровать ваше сообщение. Допустим, ваше сообщение это число 19. Обозначим его <code>P=19</code>. Кроме него у вас уже есть мой открытый ключ: <code>{e, n} = {5, 21}</code>. Шифрование выполняется по следующему алгоритму:</p>
+<ul>
+<li>Возводите ваше сообщение в степень <code>e</code> по модулю <code>n</code>. То есть, вычисляете 19 в степени 5 (2476099) и берёте остаток от деления на 21. Получается 10 — это ваши закодированные данные.</li>
+</ul>
+<p>Строго говоря, вам вовсе незачем вычислять огромное число «19 в степени 5». При каждом умножении достаточно вычислять не полное произведение, а только остаток от деления на 21. Но это уже детали реализации вычислений, давайте не будем в них углубляться.</p>
+<p>Полученные данные <code>E=10</code>, вы отправляете мне.</p>
+<p>Здесь надо заметить, что сообщение <code>P=19</code> не должно быть больше <code>n=21</code>. иначе ничего не получится.</p>
+<h2><a class="header" href="#Шаг-третий-Расшифровка" id="Шаг-третий-Расшифровка">Шаг третий. Расшифровка</a></h2>
+<p>Я получил ваши данные (<code>E=10</code>), и у меня имеется закрытый ключ <code>{d, n} = {17, 21}</code>.</p>
+<p>Обратите внимание на то, что открытый ключ не может расшифровать сообщение. А закрытый ключ я никому не говорил. В этом вся прелесть асимметричного шифрования.</p>
+<p>Начинаем расшифровывать:</p>
+<ul>
+<li>Я делаю операцию, очень похожую на вашу, но вместо <code>e</code> использую <code>d</code>. Возвожу <code>E</code> в степень <code>d</code>: получаю 10 в степень 17 (позвольте, я не буду писать единичку с семнадцатью нулями). Вычисляю остаток от деления на 21 и получаю 19 — ваше сообщение.</li>
+</ul>
+<p>Заметьте, никто, кроме меня (даже вы!) не может расшифровать ваше сообщение (<code>E=10</code>), так как ни у кого нет закрытого ключа.</p>
+<h2><a class="header" href="#В-чём-гарантия-надёжности-шифрования" id="В-чём-гарантия-надёжности-шифрования">В чём гарантия надёжности шифрования</a></h2>
+<p>Надёжность шифрования обеспечивается тем, что третьему лицу (старающемуся взломать шифр) очень трудно вычислить закрытый ключ по открытому. Оба ключа вычисляются из одной пары простых чисел (<code>p</code> и <code>q</code>). То есть ключи связаны между собой. Но установить эту связь очень сложно. Основной загвоздкой является декомпозиция модуля <code>n</code> на простые сомножители <code>p</code> и <code>q</code>. Если число является произведением двух очень больших простых чисел, то его очень трудно разложить на множители.</p>
+<p>Постараюсь это показать на примере. Давайте разложим на множители число 360:</p>
+<ul>
+<li>сразу ясно. что оно делится на два (получили 2)</li>
+<li>оставшееся 180 тоже, очевидно чётное (ещё 2)</li>
+<li>90 — тоже чётное (ещё двойка)</li>
+<li>45 не делится на 2, но следующая же попытка оказывается успешной — оно делится на три (получили 3)</li>
+<li>15 тоже делится на 3</li>
+<li>5 — простое.</li>
+</ul>
+<p>Мы на каждом шагу, практически без перебора, получали всё новые и новые множители, легко получив полное разложение 360=2×2×2×3×3×5</p>
+<p>Давайте теперь возьмём число 361. Тут нам придётся помучиться.</p>
+<ul>
+<li>оно не чётное</li>
+<li>три — нет, не делится</li>
+<li>пять (допустим, мы поступаем умно и перебираем только простые числа, хотя, на практике, поиск больших простых чисел, сам по себе, является сложной задачей) — не подходит</li>
+<li>семь? — нет.</li>
+<li>…</li>
+<li>и только 19 даст нам ответ: 361=19×19.</li>
+</ul>
+<p>При использовании больших чисел, задача становится очень сложной. Это позволяет надеяться, что у взломщика просто не хватит вычислительных ресурсов, чтобы сломать ваши шифр за обозримое время.</p>
+<h2><a class="header" href="#А-как-это-всё-работает-на-практике" id="А-как-это-всё-работает-на-практике">А как это всё работает на практике?</a></h2>
+<p>Многие читатели спрашивают, как всё это применяется на практике. Давайте рассмотрим чуть более приближенный к жизни пример. Зашифруем и расшифруем слово «КРОТ», предложенное одним из читателей. А заодно, бегло рассмотрим, какие проблемы при этом встречаются и как они решаются.</p>
+<p>Сперва сгенерируем ключи с чуть большими числами. Они не так наглядны, но позволят нам шифровать не только числа от нуля до 20.</p>
+<p>Оттолкнёмся от пары простых чисел <code>{p, q} = {17, 19}</code>. Пусть наш открытый ключ будет <code>{e, n} = {5, 323}</code>, а закрытый <code>{d, n} = {173, 323}</code>.</p>
+<p>Мы готовы к шифрованию. Переведём наше слово в цифровое представление. Мы можем взять просто номера букв в алфавите. У нас получится последовательность чисел: 11, 17, 15, 19.</p>
+<p>Мы можем зашифровать каждое из этих чисел открытым ключом <code>{e, n} = {5, 323}</code> и получить шифровку 197, 272, 2, 304. Эти числа можно передать получателю, обладающему закрытым ключом <code>{d, n} = {173, 323}</code> и он всё расшифрует.</p>
+<h3><a class="header" href="#Немного-о-сложностях" id="Немного-о-сложностях">Немного о сложностях</a></h3>
+<p>На самом деле, изложенный способ шифрования очень слаб и никогда не используется. Причина проста — шифрование по буквам. Одна и та же буква будет шифроваться одним и тем же числом. Если злоумышленник перехватит достаточно большое сообщение, он сможет догадаться о его содержимом. Сперва он обратит внимание на частые коды пробелов и разделит шифровку на слова. Потом он заметит однобуквенные слова и догадается, как кодируются буквы «a», «и», «o», «в», «к»… Путём недолгого перебора, он вычислит дополнительные буквы по коротким словам, типа «но», «не», «по». И по более длинным словам без труда восстановит все оставшиеся буквы.</p>
+<p>Таким образом, злоумышленнику не придётся отгадывать ваши секретные ключи. Он взломает ваше сообщение, не зная их.</p>
+<p>Чтобы этого не происходило, используются специальные дополнительные алгоритмы, суть которых в том, что каждая предыдущая часть сообщения начинает влиять на следующую.</p>
+<p>Упрощённо, это выглядит так. Перед шифрованием, мы применяем к сообщению правило: <code>b := (b + a) % n</code>. Где <code>a</code> — предыдущая часть сообщения, а <code>b</code> — следующая. То есть наше сообщение (11, 17, 15, 19) изменяется. 11 остаётся без изменений. 17 превращается в <code>(11 + 17) % 323 = 28</code>. 15 становится <code>(15 + 28) % 323 = 43</code>. A 19 превращается в 62.</p>
+<p>Последовательность (11, 28, 43, 62) получается «запутанной». Все буквы в ней как бы перемешаны, в том смысле, что на каждый код влияет не одна буква, а все предыдущие.</p>
+<p>Тот, кто получит ваше сообщение, должен будет проделать обратную операцию, со знаком «минус»: <code>b := (b - a) % n</code>. И только тогда он получит коды букв.</p>
+<p>На практике, в исходное сообщение специально добавляются случайные и бессмысленные буквы в начало. Чтобы даже по первому коду было невозможно ничего понять. Получатель просто отбрасывает начало сообщения.</p>
+<p>То есть мы можем добавить случайное число в начало и получить (299, 11, 17, 15, 19). После перемешивания получится: 299, 310, 4, 19, 38. После шифрования уже невозможно будет догадаться где была какая буква.</p>
+<p>В реальной жизни всё ещё немного сложнее. Блоки, на которые бьётся сообщение длиннее одной буквы. Поэтому, сперва применяются алгоритмы выравнивания, потом алгоритмы разбиения на блоки с перепутыванием, и только потом применяется само RSA—шифрование.</p>
+<p>Получатель делает всё в обратном порядке: расшифровывает, «распутывает» блоки и отбрасывает ненужную информацию, добавленную просто для выравнивания (чтобы сообщение можно было разбить на целое число блоков).</p>
+<p>Автор: Алексей Мичурин</p>
+<p>Источник: <a href="http://www.michurin.net/computer-science/rsa.html">http://www.michurin.net/computer-science/rsa.html</a></p>
+<h3><a class="header" href="#xештеги-rsa-gnupg-безопасность-шифрование" id="xештеги-rsa-gnupg-безопасность-шифрование">xештеги: #rsa #gnupg #безопасность #шифрование</a></h3>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../Linux/Other/Files.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../Linux/Other/Files.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+
+        
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

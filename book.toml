@@ -1,6 +1,6 @@
 [book]
-title = "Knowledge base - Arch Linux"
 authors = ["Maxim Kim"]
+description = "База знаний."
 language = "ru"
 multilingual = false
 src = "src"
@@ -10,3 +10,7 @@ default-theme = "ayu"
 
 [output.html.playpen]
 copyable = false
+editable = true
+
+[output.html.fold]
+enable = true
