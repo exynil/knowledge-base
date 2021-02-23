@@ -5,8 +5,9 @@ language = "ru"
 multilingual = false
 src = "src"
 
-[output.html]
-default-theme = "ayu"
+[build]
+build-dir = "docs"
+create-missing = false
 
 [output.html.playpen]
 copyable = false
