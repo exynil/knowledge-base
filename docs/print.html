@@ -165,7 +165,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#Содержание" id="Содержание">Содержание</a></h1>
+                        <h1 id="Содержание"><a class="header" href="#Содержание">Содержание</a></h1>
 <ul>
 <li><a href="SUMMARY.html">Содержание</a></li>
 <li><a href="">Линукс</a>
@@ -221,8 +221,8 @@
 </ul>
 </li>
 </ul>
-<h1><a class="header" href="#Установка--archlinux" id="Установка--archlinux">Установка  ArchLinux</a></h1>
-<h2><a class="header" href="#Установочный-носитель" id="Установочный-носитель">Установочный носитель</a></h2>
+<h1 id="Установка--archlinux"><a class="header" href="#Установка--archlinux">Установка  ArchLinux</a></h1>
+<h2 id="Установочный-носитель"><a class="header" href="#Установочный-носитель">Установочный носитель</a></h2>
 <ol>
 <li>
 <p>Скачать образ <a href="https://archlinux.org/download/">Archlinux</a></p>
@@ -236,14 +236,14 @@
 <ol start="3">
 <li>Записываем образ на флешку</li>
 </ol>
-<pre><code>$ sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdc status=progress oflag=sync
+<pre><code>$ sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdc
 </code></pre>
-<h2><a class="header" href="#Базовая-установка" id="Базовая-установка">Базовая установка</a></h2>
-<h3><a class="header" href="#Подключение-к-сети-по-wi-fi" id="Подключение-к-сети-по-wi-fi">Подключение к сети по wi-fi</a></h3>
+<h2 id="Базовая-установка"><a class="header" href="#Базовая-установка">Базовая установка</a></h2>
+<h3 id="Подключение-к-сети-по-wi-fi"><a class="header" href="#Подключение-к-сети-по-wi-fi">Подключение к сети по wi-fi</a></h3>
 <ol>
 <li>Запускаем iwctl</li>
 </ol>
-<pre><code>$ iwctl
+<pre><code>iwctl
 </code></pre>
 <ol start="2">
 <li>Получаем список устройств </li>
@@ -265,7 +265,7 @@
 </ol>
 <pre><code>ping 8.8.8.8
 </code></pre>
-<h3><a class="header" href="#Синхронизация-времени" id="Синхронизация-времени">Синхронизация времени</a></h3>
+<h3 id="Синхронизация-времени"><a class="header" href="#Синхронизация-времени">Синхронизация времени</a></h3>
 <ol>
 <li>Включаем синхронизацию системных часов</li>
 </ol>
@@ -276,7 +276,7 @@
 </ol>
 <pre><code>timedatectl status
 </code></pre>
-<h3><a class="header" href="#Разметка-дисков" id="Разметка-дисков">Разметка дисков</a></h3>
+<h3 id="Разметка-дисков"><a class="header" href="#Разметка-дисков">Разметка дисков</a></h3>
 <ol>
 <li>Проверяем подлюченные диски</li>
 </ol>
@@ -306,7 +306,7 @@
 </ol>
 <pre><code>mkfs.ext4 /dev/sdb3
 </code></pre>
-<h3><a class="header" href="#Установка-основных-пакетов" id="Установка-основных-пакетов">Установка основных пакетов</a></h3>
+<h3 id="Установка-основных-пакетов"><a class="header" href="#Установка-основных-пакетов">Установка основных пакетов</a></h3>
 <ol>
 <li>Монтируем корневой раздел</li>
 </ol>
@@ -317,13 +317,13 @@
 </ol>
 <pre><code>pacstrap /mnt base base-devel linux-lts linux-firmware vim
 </code></pre>
-<h3><a class="header" href="#Генерация-таблицы-файловой-системы" id="Генерация-таблицы-файловой-системы">Генерация таблицы файловой системы</a></h3>
+<h3 id="Генерация-таблицы-файловой-системы"><a class="header" href="#Генерация-таблицы-файловой-системы">Генерация таблицы файловой системы</a></h3>
 <pre><code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </code></pre>
-<h3><a class="header" href="#Переход-к-корневому-каталогу" id="Переход-к-корневому-каталогу">Переход к корневому каталогу</a></h3>
+<h3 id="Переход-к-корневому-каталогу"><a class="header" href="#Переход-к-корневому-каталогу">Переход к корневому каталогу</a></h3>
 <pre><code>arch-chroot /mnt
 </code></pre>
-<h3><a class="header" href="#Настройка-часов" id="Настройка-часов">Настройка часов</a></h3>
+<h3 id="Настройка-часов"><a class="header" href="#Настройка-часов">Настройка часов</a></h3>
 <ol>
 <li>Установка часового пояса</li>
 </ol>
@@ -334,7 +334,7 @@
 </ol>
 <pre><code>hwclock --systohc
 </code></pre>
-<h3><a class="header" href="#Настройка-локали" id="Настройка-локали">Настройка локали</a></h3>
+<h3 id="Настройка-локали"><a class="header" href="#Настройка-локали">Настройка локали</a></h3>
 <ol>
 <li>
 <p>Раскомментировать <code>en_US.UTF-8 UTF-8</code> и другие необходимые локали в файле <code>/etc/locale.gen</code></p>
@@ -350,15 +350,15 @@
 </ol>
 <pre><code>echo &quot;LANG=en_US.UTF-8&quot; &gt; /etc/locale.conf
 </code></pre>
-<h3><a class="header" href="#Настройка-имени-хоста" id="Настройка-имени-хоста">Настройка имени хоста</a></h3>
+<h3 id="Настройка-имени-хоста"><a class="header" href="#Настройка-имени-хоста">Настройка имени хоста</a></h3>
 <pre><code>echo arch &gt; /etc/hostname
 </code></pre>
-<h3><a class="header" href="#Настройка-доменных-имён" id="Настройка-доменных-имён">Настройка доменных имён</a></h3>
+<h3 id="Настройка-доменных-имён"><a class="header" href="#Настройка-доменных-имён">Настройка доменных имён</a></h3>
 <pre><code>echo &quot;127.0.0.1 localhost&quot; &gt;&gt; /etc/hosts
 echo &quot;::1 localhost&quot; &gt;&gt; /etc/hosts
 echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 </code></pre>
-<h3><a class="header" href="#Установка-загрузчика" id="Установка-загрузчика">Установка загрузчика</a></h3>
+<h3 id="Установка-загрузчика"><a class="header" href="#Установка-загрузчика">Установка загрузчика</a></h3>
 <ol>
 <li>Устанавливаем пакеты</li>
 </ol>
@@ -391,10 +391,10 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 </ol>
 <pre><code>grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre>
-<h3><a class="header" href="#Установка-пароля-администратора" id="Установка-пароля-администратора">Установка пароля администратора</a></h3>
+<h3 id="Установка-пароля-администратора"><a class="header" href="#Установка-пароля-администратора">Установка пароля администратора</a></h3>
 <pre><code>passwd
 </code></pre>
-<h3><a class="header" href="#Установка-пакетов-для-подключения-к-сети" id="Установка-пакетов-для-подключения-к-сети">Установка пакетов для подключения к сети</a></h3>
+<h3 id="Установка-пакетов-для-подключения-к-сети"><a class="header" href="#Установка-пакетов-для-подключения-к-сети">Установка пакетов для подключения к сети</a></h3>
 <ol>
 <li>Установка</li>
 </ol>
@@ -405,7 +405,7 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 </ol>
 <pre><code>systemctl enable NetworkManager
 </code></pre>
-<h3><a class="header" href="#Изменение-шрифта-tty" id="Изменение-шрифта-tty">Изменение шрифта tty</a></h3>
+<h3 id="Изменение-шрифта-tty"><a class="header" href="#Изменение-шрифта-tty">Изменение шрифта tty</a></h3>
 <ol>
 <li>
 <p>Копируем необходимый шрифт в папку /usr/share/kbd/consolefonts</p>
@@ -416,7 +416,7 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 </ol>
 <pre><code>FONT=ter-u16n
 </code></pre>
-<h2><a class="header" href="#Создание-пользователя" id="Создание-пользователя">Создание пользователя</a></h2>
+<h2 id="Создание-пользователя"><a class="header" href="#Создание-пользователя">Создание пользователя</a></h2>
 <ol>
 <li>Добавление пользователя <code>max</code></li>
 </ol>
@@ -435,8 +435,8 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <ol start="4">
 <li>Расскоментировать строку <code>#%wheel ALL=(ALL) ALL</code> в <code>/etc/sudoers</code></li>
 </ol>
-<h2><a class="header" href="#Графический-сервер" id="Графический-сервер">Графический сервер</a></h2>
-<h3><a class="header" href="#xorg-server" id="xorg-server">xorg-server</a></h3>
+<h2 id="Графический-сервер"><a class="header" href="#Графический-сервер">Графический сервер</a></h2>
+<h3 id="xorg-server"><a class="header" href="#xorg-server">xorg-server</a></h3>
 <ol>
 <li>Установка <code>xorg-server</code></li>
 </ol>
@@ -512,7 +512,7 @@ Section &quot;InputClass&quot;
     Option &quot;SHMConfig&quot; &quot;on&quot;
 EndSection
 </code></pre>
-<h3><a class="header" href="#bluetooth" id="bluetooth">Bluetooth</a></h3>
+<h3 id="bluetooth"><a class="header" href="#bluetooth">Bluetooth</a></h3>
 <ol>
 <li>
 <p>Необходимые пакеты <code>blueman</code></p>
@@ -521,18 +521,18 @@ EndSection
 <p>Включаем службы</p>
 </li>
 </ol>
-<pre><code>$ systemctl enable bluetooth.service
+<pre><code>systemctl enable bluetooth.service
 </code></pre>
 <ol start="3">
 <li>Добавляем пользователя в группу</li>
 </ol>
-<pre><code># gpasswd -a max lp
+<pre><code>gpasswd -a max lp
 </code></pre>
 <ol start="4">
 <li>Добавляем blueman-applet в автозагрузку</li>
 </ol>
-<h1><a class="header" href="#dotfiles" id="dotfiles">dotfiles</a></h1>
-<h2><a class="header" href="#Подготовка" id="Подготовка">Подготовка</a></h2>
+<h1 id="dotfiles"><a class="header" href="#dotfiles">dotfiles</a></h1>
+<h2 id="Подготовка"><a class="header" href="#Подготовка">Подготовка</a></h2>
 <ol>
 <li>
 <p>Необходимые пакеты: <code>git</code></p>
@@ -554,13 +554,22 @@ EndSection
 <li>В каталоге нашего репозитория создаем папки <code>git</code> и <code>i3</code></li>
 </ol>
 <p>Эти папки должны содержать файлы настроек <code>git</code>  и <code>i3</code>. Распологаем их в тех же папках и по тому же пути по которому они распологаются относительно домашней директории.</p>
+<p><strong>Схема расположения файлов в домашней директории</strong></p>
+<pre><code>~
+├── .config
+│   └── i3
+│       └── config
+│
+└── .gitconfig
+</code></pre>
+<p><strong>Схема расположения файлов в нашем репозитории</strong></p>
 <pre><code>dotfiles
 ├── i3
-│   └── .config
-│       └── i3
-│           └── config
+│   └── .config
+│       └── i3
+│           └── config
 └── git
-    └── .gitconfig
+    └── .gitconfig
 </code></pre>
 <ol start="6">
 <li>Создайте скрипт <code>install</code> в корне репозитория</li>
@@ -585,7 +594,17 @@ done
 </code></pre>
 <p>Этот скрипт создасть симлинки в домашней папке на конфиги в папках нашего репозитория.
 Теперь всё работает как раньше, только настройки всех наших программ лежат в одной папке. Осталось загрузить все настройки в облако.</p>
-<h2><a class="header" href="#Развёртка-на-новой-системе" id="Развёртка-на-новой-системе">Развёртка на новой системе</a></h2>
+<h2 id="Преимущество"><a class="header" href="#Преимущество">Преимущество</a></h2>
+<ul>
+<li>Удобно заливать на Github</li>
+<li>Всё находится в одном месте</li>
+<li>В папке нет лишний файлов</li>
+<li>Удобно ореинтироваться</li>
+<li>Быстрая распаковка на новой системе</li>
+<li>Удобно делиться</li>
+<li>Быстрое переключению между конфигурациями</li>
+</ul>
+<h2 id="Развёртка-на-новой-системе"><a class="header" href="#Развёртка-на-новой-системе">Развёртка на новой системе</a></h2>
 <ol>
 <li>
 <p>Клонируем куда нибудь</p>
@@ -596,11 +615,11 @@ done
 </ol>
 <pre><code>$ ./install
 </code></pre>
-<p><a href="https://github.com/exynil/dotfiles">Пример</a></p>
-<h3><a class="header" href="#хештеги--бэкап-dotfiles" id="хештеги--бэкап-dotfiles">хештеги:  #бэкап #dotfiles</a></h3>
-<h1><a class="header" href="#Синхронизация-паролей" id="Синхронизация-паролей">Синхронизация паролей</a></h1>
-<h2><a class="header" href="#Ключ-gpg" id="Ключ-gpg">Ключ GPG</a></h2>
-<h3><a class="header" href="#Создание" id="Создание">Создание</a></h3>
+<p><a href="https://github.com/exynil/dotfiles">Вот как это выглядит у меня</a></p>
+<h3 id="хештеги--бэкап-dotfiles"><a class="header" href="#хештеги--бэкап-dotfiles">хештеги:  #бэкап #dotfiles</a></h3>
+<h1 id="Синхронизация-паролей"><a class="header" href="#Синхронизация-паролей">Синхронизация паролей</a></h1>
+<h2 id="Ключ-gpg"><a class="header" href="#Ключ-gpg">Ключ GPG</a></h2>
+<h3 id="Создание"><a class="header" href="#Создание">Создание</a></h3>
 <ol>
 <li>Генерация ключа</li>
 </ol>
@@ -611,7 +630,7 @@ done
 </ol>
 <pre><code>$ gpg -k --keyid-format LONG
 </code></pre>
-<h3><a class="header" href="#Бэкап" id="Бэкап">Бэкап</a></h3>
+<h3 id="Бэкап"><a class="header" href="#Бэкап">Бэкап</a></h3>
 <p>Очень важно создать копии ключей и сохранить их на разных носителях безопасном месте.</p>
 <p>Экспорт публичного ключа</p>
 <pre><code>$ gpg --export -a exynil@gmail.com &gt; public.pgp
@@ -622,7 +641,7 @@ done
 <p>Создаем сертификат отзыва</p>
 <pre><code>gpg --gen-revoke -a exynil@gmail.com &gt; revocation_cert.pgp
 </code></pre>
-<h3><a class="header" href="#Удаление-главного-ключа" id="Удаление-главного-ключа">Удаление главного ключа</a></h3>
+<h3 id="Удаление-главного-ключа"><a class="header" href="#Удаление-главного-ключа">Удаление главного ключа</a></h3>
 <ol start="3">
 <li>Экспортируем <code>sub</code> ключ</li>
 </ol>
@@ -646,7 +665,7 @@ done
 <blockquote>
 <p>знак <code>#</code> рядом с <code>sec</code> означает что primary часть секретного ключа отсутствует в нашей связке ключей.</p>
 </blockquote>
-<h2><a class="header" href="#Настройка-pass" id="Настройка-pass">Настройка pass</a></h2>
+<h2 id="Настройка-pass"><a class="header" href="#Настройка-pass">Настройка pass</a></h2>
 <ol>
 <li>Инициалиализируем <code>pass</code></li>
 </ol>
@@ -660,11 +679,11 @@ done
 <li>В файле <code>gpg-id</code> будет храниться идетификатор <code>sub</code> ключа</li>
 </ul>
 </blockquote>
-<h2><a class="header" href="#Настройка-git" id="Настройка-git">Настройка GIT</a></h2>
+<h2 id="Настройка-git"><a class="header" href="#Настройка-git">Настройка GIT</a></h2>
 <pre><code>git config --global user.name &quot;Maxim Kim&quot;
 git config --global user.email &quot;exynil@gmail.com&quot;
 </code></pre>
-<h2><a class="header" href="#Настройка-репозитория" id="Настройка-репозитория">Настройка репозитория</a></h2>
+<h2 id="Настройка-репозитория"><a class="header" href="#Настройка-репозитория">Настройка репозитория</a></h2>
 <ol>
 <li>
 <p>Создаем приватный репозиторий на гитхаб</p>
@@ -683,13 +702,13 @@ git config --global user.email &quot;exynil@gmail.com&quot;
 </code></pre>
 <pre><code>$ git push origin master
 </code></pre>
-<h2><a class="header" href="#Настройка-смартфона" id="Настройка-смартфона">Настройка смартфона</a></h2>
+<h2 id="Настройка-смартфона"><a class="header" href="#Настройка-смартфона">Настройка смартфона</a></h2>
 <ol>
 <li>На смартфон устанавливаем две программы </li>
 </ol>
 <p><a href="https://f-droid.org/ru/packages/dev.msfjarvis.aps/">Password Store</a> - для управления пароля в смартфоне
 <a href="https://f-droid.org/en/packages/org.sufficientlysecure.keychain/">OpenKeychain</a> - для управления ключами</p>
-<h3><a class="header" href="#openkeychain" id="openkeychain">OpenKeychain</a></h3>
+<h3 id="openkeychain"><a class="header" href="#openkeychain">OpenKeychain</a></h3>
 <ol>
 <li>
 <p>Копируем экспортированный <code>sub</code> ключ на телефон</p>
@@ -698,7 +717,7 @@ git config --global user.email &quot;exynil@gmail.com&quot;
 <p>В приложении OpenKeychain импортируем <code>sub</code> ключ</p>
 </li>
 </ol>
-<h3><a class="header" href="#password-store" id="password-store">Password Store</a></h3>
+<h3 id="password-store"><a class="header" href="#password-store">Password Store</a></h3>
 <ol>
 <li>Настраиваем репозиторий в Password Store</li>
 </ol>
@@ -710,8 +729,8 @@ git config --global user.email &quot;exynil@gmail.com&quot;
 <ol start="2">
 <li>Сгенерированный ключ добавляем в <code>github</code></li>
 </ol>
-<h3><a class="header" href="#хештеги--pass-gpg-шифрование--пароль-безопасность" id="хештеги--pass-gpg-шифрование--пароль-безопасность">хештеги:  #pass #gpg #шифрование  #пароль #безопасность</a></h3>
-<h1><a class="header" href="#Цветной-мануал" id="Цветной-мануал">Цветной мануал</a></h1>
+<h3 id="хештеги--pass-gpg-шифрование--пароль-безопасность"><a class="header" href="#хештеги--pass-gpg-шифрование--пароль-безопасность">хештеги:  #pass #gpg #шифрование  #пароль #безопасность</a></h3>
+<h1 id="Цветной-мануал"><a class="header" href="#Цветной-мануал">Цветной мануал</a></h1>
 <ol>
 <li>Добавляем следующие переменные в окружение</li>
 </ol>
@@ -724,9 +743,9 @@ export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 </code></pre>
-<h3><a class="header" href="#хештеги--man" id="хештеги--man">хештеги:  #man</a></h3>
-<h1><a class="header" href="#Синхронизация-файлов" id="Синхронизация-файлов">Синхронизация файлов</a></h1>
-<h2><a class="header" href="#Синхронизация-локальных-каталогов" id="Синхронизация-локальных-каталогов">Синхронизация локальных каталогов</a></h2>
+<h3 id="хештеги--man"><a class="header" href="#хештеги--man">хештеги:  #man</a></h3>
+<h1 id="Синхронизация-файлов"><a class="header" href="#Синхронизация-файлов">Синхронизация файлов</a></h1>
+<h2 id="Синхронизация-локальных-каталогов"><a class="header" href="#Синхронизация-локальных-каталогов">Синхронизация локальных каталогов</a></h2>
 <pre><code>rsync -av --delete [источник] [приемник]
 </code></pre>
 <pre><code>rsync -av --delete ~/Pictures /media/flash-drive/backup
@@ -734,13 +753,13 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 <p><code>-a</code> - архивирование</p>
 <p><code>-v</code> - подробный вывод</p>
 <p><code>-delete</code> - удаление файлов отсутствующий в исходной папке</p>
-<h2><a class="header" href="#Синхронизация-по-сети" id="Синхронизация-по-сети">Синхронизация по сети</a></h2>
+<h2 id="Синхронизация-по-сети"><a class="header" href="#Синхронизация-по-сети">Синхронизация по сети</a></h2>
 <pre><code>rsync -av --delete --rsh=ssh [источник] [удаленный_узел]:[приемник]
 </code></pre>
 <pre><code>rsync -av --delete --rsh=ssh ~/Pictures alex@alex-pc:~/backup
 </code></pre>
-<h3><a class="header" href="#хештеги--файлы-синхронизация-бэкап" id="хештеги--файлы-синхронизация-бэкап">хештеги:  #файлы #синхронизация #бэкап</a></h3>
-<h1><a class="header" href="#Автовключение-numlock" id="Автовключение-numlock">Автовключение Numlock</a></h1>
+<h3 id="хештеги--файлы-синхронизация-бэкап"><a class="header" href="#хештеги--файлы-синхронизация-бэкап">хештеги:  #файлы #синхронизация #бэкап</a></h3>
+<h1 id="Автовключение-numlock"><a class="header" href="#Автовключение-numlock">Автовключение Numlock</a></h1>
 <ol>
 <li>
 <p>Необходимые пакеты: <code>numlockx</code></p>
@@ -751,8 +770,8 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 </ol>
 <pre><code>numlockx on
 </code></pre>
-<h3><a class="header" href="#хештеги--numlock" id="хештеги--numlock">хештеги:  #numlock</a></h3>
-<h1><a class="header" href="#Автомонтирование-раздела" id="Автомонтирование-раздела">Автомонтирование раздела</a></h1>
+<h3 id="хештеги--numlock"><a class="header" href="#хештеги--numlock">хештеги:  #numlock</a></h3>
+<h1 id="Автомонтирование-раздела"><a class="header" href="#Автомонтирование-раздела">Автомонтирование раздела</a></h1>
 <ol>
 <li>Определяем UUID и файловую систему диска</li>
 </ol>
@@ -765,20 +784,20 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 </code></pre>
 <pre><code>UUID=fbde5f72-0f38-4847-adcf-4ccc502edca2 /media/hdd ext4
 </code></pre>
-<h3><a class="header" href="#хештеги--монтирование" id="хештеги--монтирование">хештеги:  #монтирование</a></h3>
-<h1><a class="header" href="#Бэкап-через-zip" id="Бэкап-через-zip">Бэкап через zip</a></h1>
-<h2><a class="header" href="#Создание-архива" id="Создание-архива">Создание архива</a></h2>
+<h3 id="хештеги--монтирование"><a class="header" href="#хештеги--монтирование">хештеги:  #монтирование</a></h3>
+<h1 id="Бэкап-через-zip"><a class="header" href="#Бэкап-через-zip">Бэкап через zip</a></h1>
+<h2 id="Создание-архива"><a class="header" href="#Создание-архива">Создание архива</a></h2>
 <pre><code>$ zip -r0 [имя_архива] -@ &lt; list.txt
 </code></pre>
 <p><code>-r</code> - рекурсивное архивирование</p>
 <p><code>-0</code> - без сжатия</p>
 <p><code>-@</code> - получение списка файлов из стандартного ввода</p>
-<h2><a class="header" href="#Восстановление" id="Восстановление">Восстановление</a></h2>
+<h2 id="Восстановление"><a class="header" href="#Восстановление">Восстановление</a></h2>
 <pre><code>$ unzip [имя_архива] -d /
 </code></pre>
 <p><code>-d</code> - извлечь файлы из архива в указанный каталог</p>
-<h3><a class="header" href="#хештеги--бэкап-безопасность-zip-архивирование-восстановление" id="хештеги--бэкап-безопасность-zip-архивирование-восстановление">хештеги:  #бэкап #безопасность #zip #архивирование #восстановление</a></h3>
-<h1><a class="header" href="#Задержка-и-частота-повтора-клавиш" id="Задержка-и-частота-повтора-клавиш">Задержка и частота повтора клавиш</a></h1>
+<h3 id="хештеги--бэкап-безопасность-zip-архивирование-восстановление"><a class="header" href="#хештеги--бэкап-безопасность-zip-архивирование-восстановление">хештеги:  #бэкап #безопасность #zip #архивирование #восстановление</a></h3>
+<h1 id="Задержка-и-частота-повтора-клавиш"><a class="header" href="#Задержка-и-частота-повтора-клавиш">Задержка и частота повтора клавиш</a></h1>
 <ol>
 <li>Добавляем следующую строку в автозагрузку</li>
 </ol>
@@ -789,9 +808,9 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 </ol>
 <pre><code>$ xset -q
 </code></pre>
-<h3><a class="header" href="#хештеги--клавиатура" id="хештеги--клавиатура">хештеги:  #клавиатура</a></h3>
-<h1><a class="header" href="#Настройка-логина-в-github-через-ssh-key" id="Настройка-логина-в-github-через-ssh-key">Настройка логина в Github через SSH Key</a></h1>
-<h2><a class="header" href="#Настройка" id="Настройка">Настройка</a></h2>
+<h3 id="хештеги--клавиатура"><a class="header" href="#хештеги--клавиатура">хештеги:  #клавиатура</a></h3>
+<h1 id="Настройка-логина-в-github-через-ssh-key"><a class="header" href="#Настройка-логина-в-github-через-ssh-key">Настройка логина в Github через SSH Key</a></h1>
+<h2 id="Настройка"><a class="header" href="#Настройка">Настройка</a></h2>
 <ol>
 <li>Генерируем приватный и публичный ключ</li>
 </ol>
@@ -805,8 +824,8 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 <p><a href="Linux/How-to/../Apps/git.html#%D0%98%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8-https-%D0%BD%D0%B0-ssh">Изменение ссылки https на ssh</a></p>
 </li>
 </ol>
-<h3><a class="header" href="#хештеги--ssh-github-pgp-rsa" id="хештеги--ssh-github-pgp-rsa">хештеги:  #ssh #github #pgp #rsa</a></h3>
-<h1><a class="header" href="#Общая-папка" id="Общая-папка">Общая папка</a></h1>
+<h3 id="хештеги--ssh-github-pgp-rsa"><a class="header" href="#хештеги--ssh-github-pgp-rsa">хештеги:  #ssh #github #pgp #rsa</a></h3>
+<h1 id="Общая-папка"><a class="header" href="#Общая-папка">Общая папка</a></h1>
 <ol>
 <li>Создаем общую папку</li>
 </ol>
@@ -860,8 +879,8 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 </blockquote>
 <pre><code>sudo chmod g+s /usr/local/share/music
 </code></pre>
-<h3><a class="header" href="#хештеги-общий_доступ" id="хештеги-общий_доступ">хештеги: #общий_доступ</a></h3>
-<h1><a class="header" href="#Общий-доступ-через-ftp" id="Общий-доступ-через-ftp">Общий доступ через ftp</a></h1>
+<h3 id="хештеги-общий_доступ"><a class="header" href="#хештеги-общий_доступ">хештеги: #общий_доступ</a></h3>
+<h1 id="Общий-доступ-через-ftp"><a class="header" href="#Общий-доступ-через-ftp">Общий доступ через ftp</a></h1>
 <ol>
 <li>
 <p>Необходимые пакеты: <code>vsftpd</code></p>
@@ -890,9 +909,9 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 <ol start="4">
 <li>Подключаемся на другом устройстве</li>
 </ol>
-<h3><a class="header" href="#хештеги--ftp-vsftpd" id="хештеги--ftp-vsftpd">хештеги:  #ftp #vsftpd</a></h3>
-<h1><a class="header" href="#Переключение-раскладки" id="Переключение-раскладки">Переключение раскладки</a></h1>
-<h2><a class="header" href="#Инструкция" id="Инструкция">Инструкция</a></h2>
+<h3 id="хештеги--ftp-vsftpd"><a class="header" href="#хештеги--ftp-vsftpd">хештеги:  #ftp #vsftpd</a></h3>
+<h1 id="Переключение-раскладки"><a class="header" href="#Переключение-раскладки">Переключение раскладки</a></h1>
+<h2 id="Инструкция"><a class="header" href="#Инструкция">Инструкция</a></h2>
 <ol>
 <li>Создаем конфигурационный файл для клавиатуры</li>
 </ol>
@@ -905,8 +924,8 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
     Option &quot;XkbOptions&quot; &quot;grp:win_space_toggle&quot;
 EndSectio
 </code></pre>
-<h3><a class="header" href="#хештеги--клавиатура-раскладка" id="хештеги--клавиатура-раскладка">хештеги:  #клавиатура #раскладка</a></h3>
-<h1><a class="header" href="#Подключение-по-ssh" id="Подключение-по-ssh">Подключение по SSH</a></h1>
+<h3 id="хештеги--клавиатура-раскладка"><a class="header" href="#хештеги--клавиатура-раскладка">хештеги:  #клавиатура #раскладка</a></h3>
+<h1 id="Подключение-по-ssh"><a class="header" href="#Подключение-по-ssh">Подключение по SSH</a></h1>
 <ol>
 <li>Проверяем ping</li>
 </ol>
@@ -933,14 +952,14 @@ EndSectio
 <p>или</p>
 <pre><code>ssh lora@192.168.0.2
 </code></pre>
-<h2><a class="header" href="#Генерация-ключа" id="Генерация-ключа">Генерация ключа</a></h2>
+<h2 id="Генерация-ключа"><a class="header" href="#Генерация-ключа">Генерация ключа</a></h2>
 <pre><code>$ ssh-keygen
 </code></pre>
-<h2><a class="header" href="#Копирование-публичного-ключа-на-сервер" id="Копирование-публичного-ключа-на-сервер">Копирование публичного ключа на сервер</a></h2>
+<h2 id="Копирование-публичного-ключа-на-сервер"><a class="header" href="#Копирование-публичного-ключа-на-сервер">Копирование публичного ключа на сервер</a></h2>
 <pre><code>$ ssh-copy-id
 </code></pre>
-<h3><a class="header" href="#хештеги--ssh-удаленное_управление" id="хештеги--ssh-удаленное_управление">хештеги:  #ssh #удаленное_управление</a></h3>
-<h1><a class="header" href="#Просмотр-видео-с-youtube-в-mpv" id="Просмотр-видео-с-youtube-в-mpv">Просмотр видео с YouTube в mpv</a></h1>
+<h3 id="хештеги--ssh-удаленное_управление"><a class="header" href="#хештеги--ssh-удаленное_управление">хештеги:  #ssh #удаленное_управление</a></h3>
+<h1 id="Просмотр-видео-с-youtube-в-mpv"><a class="header" href="#Просмотр-видео-с-youtube-в-mpv">Просмотр видео с YouTube в mpv</a></h1>
 <ol>
 <li>
 <p>Необходимые пакеты: <code>mpv</code>, <code>youtube-dl</code>, <code>xdotool</code>, <code>xclip</code></p>
@@ -966,7 +985,7 @@ ytdl-format=bestvideo[height&lt;=?720]+bestaudio/best
 <p><code>window-scale=0.4</code> - размер окна проигрывателя</p>
 <p><code>loop</code> - повторное воспроизведение</p>
 <p><code>ytdl-format=bestvideo[height&lt;=?720]+bestaudio/best</code> - качество видео</p>
-<h2><a class="header" href="#Использование" id="Использование">Использование</a></h2>
+<h2 id="Использование"><a class="header" href="#Использование">Использование</a></h2>
 <ol>
 <li>
 <p>Переходим в браузер</p>
@@ -978,15 +997,15 @@ ytdl-format=bestvideo[height&lt;=?720]+bestaudio/best
 <p>Нажимаем установленные комбинации клавиш</p>
 </li>
 </ol>
-<h3><a class="header" href="#хештеги--youtube-mpv-youtube-dl" id="хештеги--youtube-mpv-youtube-dl">хештеги:  #youtube #mpv #youtube-dl</a></h3>
-<h1><a class="header" href="#Синхронизация-времени-1" id="Синхронизация-времени-1">Синхронизация времени</a></h1>
+<h3 id="хештеги--youtube-mpv-youtube-dl"><a class="header" href="#хештеги--youtube-mpv-youtube-dl">хештеги:  #youtube #mpv #youtube-dl</a></h3>
+<h1 id="Синхронизация-времени-1"><a class="header" href="#Синхронизация-времени-1">Синхронизация времени</a></h1>
 <ol>
 <li>Выполняем команду</li>
 </ol>
 <pre><code>$ timedatectl set-ntp true
 </code></pre>
-<h3><a class="header" href="#хештеги--время-синхронизация" id="хештеги--время-синхронизация">хештеги:  #время #синхронизация</a></h3>
-<h1><a class="header" href="#clonezilla-live-usb" id="clonezilla-live-usb">Clonezilla Live USB</a></h1>
+<h3 id="хештеги--время-синхронизация"><a class="header" href="#хештеги--время-синхронизация">хештеги:  #время #синхронизация</a></h3>
+<h1 id="clonezilla-live-usb"><a class="header" href="#clonezilla-live-usb">Clonezilla Live USB</a></h1>
 <ol>
 <li>
 <p>Необходимые пакеты: <code>unzip</code>, <code>mtools</code></p>
@@ -1032,21 +1051,21 @@ ytdl-format=bestvideo[height&lt;=?720]+bestaudio/best
 <p>запускаем скрипт <code>makeboot.sh</code></p>
 </li>
 </ul>
-<h3><a class="header" href="#хештеги-clonezilla-бэкап-безопасность" id="хештеги-clonezilla-бэкап-безопасность">хештеги: #clonezilla #бэкап #безопасность</a></h3>
-<h1><a class="header" href="#Гибридная-графика" id="Гибридная-графика">Гибридная графика</a></h1>
-<h2><a class="header" href="#Система" id="Система">Система</a></h2>
+<h3 id="хештеги-clonezilla-бэкап-безопасность"><a class="header" href="#хештеги-clonezilla-бэкап-безопасность">хештеги: #clonezilla #бэкап #безопасность</a></h3>
+<h1 id="Гибридная-графика"><a class="header" href="#Гибридная-графика">Гибридная графика</a></h1>
+<h2 id="Система"><a class="header" href="#Система">Система</a></h2>
 <p>LAPTOP: <code>DELL G5 5587</code>
 GPU: <code>NVIDIA GeForce GTX 1060 Mobile </code>
 GPU: <code>Intel UHD Graphics 630</code>
 OS: <code>ArchLinux</code>
 WM: <code>Bspwm</code></p>
-<h2><a class="header" href="#Зачем-это-всё" id="Зачем-это-всё">Зачем это всё</a></h2>
+<h2 id="Зачем-это-всё"><a class="header" href="#Зачем-это-всё">Зачем это всё</a></h2>
 <p>Здесь собраны данные по настройке гибридной графики, успешные варианты настройки xorg, результаты экспериметов и другая полезная информация.</p>
-<h2><a class="header" href="#Свободные-драйвера" id="Свободные-драйвера">Свободные драйвера</a></h2>
+<h2 id="Свободные-драйвера"><a class="header" href="#Свободные-драйвера">Свободные драйвера</a></h2>
 <ol>
 <li>Необходимые пакеты: <code>xf86-video-intel</code> <code>xf86-video-nouveau</code></li>
 </ol>
-<h3><a class="header" href="#Вариант-1" id="Вариант-1">Вариант 1</a></h3>
+<h3 id="Вариант-1"><a class="header" href="#Вариант-1">Вариант 1</a></h3>
 <ol start="2">
 <li>Конфигурационный файл <code>xorg.conf</code></li>
 </ol>
@@ -1063,15 +1082,15 @@ Section &quot;Device&quot;
 	BusID &quot;PCI:1:0:0&quot;
 EndSection
 </code></pre>
-<h3><a class="header" href="#Результат" id="Результат">Результат</a></h3>
+<h3 id="Результат"><a class="header" href="#Результат">Результат</a></h3>
 <p>Тиринг: только на внешнем мониторе
 Встроенный монитор: Работает
 Внешний монитора: Работает</p>
-<h2><a class="header" href="#Несвободные-драйвера" id="Несвободные-драйвера">Несвободные драйвера</a></h2>
+<h2 id="Несвободные-драйвера"><a class="header" href="#Несвободные-драйвера">Несвободные драйвера</a></h2>
 <ol>
 <li>Необходимые пакеты: <code>xf86-video-intel</code> <code>nvidia</code> <code>lib32-nvidia-utils</code> <code>nvidia-utils</code> <code>nvidia-settings</code></li>
 </ol>
-<h3><a class="header" href="#Варинат-1" id="Варинат-1">Варинат 1</a></h3>
+<h3 id="Варинат-1"><a class="header" href="#Варинат-1">Варинат 1</a></h3>
 <ol start="2">
 <li>Конфигурационный файл <code>xorg.conf</code></li>
 </ol>
@@ -1126,12 +1145,12 @@ Section &quot;InputClass&quot;
 	Option &quot;TappingButtonMap&quot; &quot;lrm&quot;
 EndSection
 </code></pre>
-<h3><a class="header" href="#Результат-1" id="Результат-1">Результат</a></h3>
+<h3 id="Результат-1"><a class="header" href="#Результат-1">Результат</a></h3>
 <p>Тиринг: нету
 Встроенный монитор: Работает
 Внешний монитора: Работает
 Nvidia: Не работает</p>
-<h3><a class="header" href="#Варинат-2" id="Варинат-2">Варинат 2</a></h3>
+<h3 id="Варинат-2"><a class="header" href="#Варинат-2">Варинат 2</a></h3>
 <pre><code>Section &quot;ServerLayout&quot;
     Identifier     &quot;Layout0&quot;
     Screen      0  &quot;Screen0&quot;
@@ -1184,13 +1203,13 @@ EndSection
 <p>Добавить в автозагрузку</p>
 <pre><code>nvidia-settings --assign CurrentMetaMode=&quot;nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }&quot;
 </code></pre>
-<h3><a class="header" href="#Результат-2" id="Результат-2">Результат</a></h3>
+<h3 id="Результат-2"><a class="header" href="#Результат-2">Результат</a></h3>
 <p>Тиринг: нету
 Встроенный монитор: Не работает
 Внешний монитора: Работает
 Nvidia: Работает</p>
-<h1><a class="header" href="#fdisk" id="fdisk">fdisk</a></h1>
-<h2><a class="header" href="#Подготовка-1" id="Подготовка-1">Подготовка</a></h2>
+<h1 id="fdisk"><a class="header" href="#fdisk">fdisk</a></h1>
+<h2 id="Подготовка-1"><a class="header" href="#Подготовка-1">Подготовка</a></h2>
 <ol>
 <li>Опеределяем имя носителя</li>
 </ol>
@@ -1201,7 +1220,7 @@ Nvidia: Работает</p>
 </ol>
 <pre><code># fdisk /dev/sdx
 </code></pre>
-<h2><a class="header" href="#Создание-раздела" id="Создание-раздела">Создание раздела</a></h2>
+<h2 id="Создание-раздела"><a class="header" href="#Создание-раздела">Создание раздела</a></h2>
 <ol start="3">
 <li>Создаем новую пустую таблицу разделов gpt</li>
 </ol>
@@ -1232,9 +1251,9 @@ Nvidia: Работает</p>
 </ol>
 <pre><code>Command (m for help): w
 </code></pre>
-<h3><a class="header" href="#хештеги--fdisk-разметка_диска" id="хештеги--fdisk-разметка_диска">хештеги:  #fdisk #разметка_диска</a></h3>
-<h1><a class="header" href="#gpg" id="gpg">gpg</a></h1>
-<h2><a class="header" href="#Основные-операции" id="Основные-операции">Основные операции</a></h2>
+<h3 id="хештеги--fdisk-разметка_диска"><a class="header" href="#хештеги--fdisk-разметка_диска">хештеги:  #fdisk #разметка_диска</a></h3>
+<h1 id="gpg"><a class="header" href="#gpg">gpg</a></h1>
+<h2 id="Основные-операции"><a class="header" href="#Основные-операции">Основные операции</a></h2>
 <ol>
 <li>Просмотр всех публичных ключей</li>
 </ol>
@@ -1245,7 +1264,7 @@ Nvidia: Работает</p>
 </ol>
 <pre><code>$ gpg -K
 </code></pre>
-<h2><a class="header" href="#Генерация-ключа-1" id="Генерация-ключа-1">Генерация ключа</a></h2>
+<h2 id="Генерация-ключа-1"><a class="header" href="#Генерация-ключа-1">Генерация ключа</a></h2>
 <ol>
 <li>Генерация ключа</li>
 </ol>
@@ -1261,7 +1280,7 @@ Nvidia: Работает</p>
 </ol>
 <pre><code>$ gpg -d secret.txt.asc
 </code></pre>
-<h2><a class="header" href="#Создание-sub-ключей" id="Создание-sub-ключей">Создание sub ключей</a></h2>
+<h2 id="Создание-sub-ключей"><a class="header" href="#Создание-sub-ключей">Создание sub ключей</a></h2>
 <ol>
 <li>Переходим в режим редактирования</li>
 </ol>
@@ -1277,7 +1296,7 @@ Nvidia: Работает</p>
 </ol>
 <pre><code>gpg: save
 </code></pre>
-<h2><a class="header" href="#Экспорт-ключей" id="Экспорт-ключей">Экспорт ключей</a></h2>
+<h2 id="Экспорт-ключей"><a class="header" href="#Экспорт-ключей">Экспорт ключей</a></h2>
 <p>Экспорт публичного ключа</p>
 <pre><code>$ gpg --export -a &quot;Maxim Kim&quot; &gt; public.key 
 </code></pre>
@@ -1287,31 +1306,31 @@ Nvidia: Работает</p>
 <blockquote>
 <p>a - сохранение данных в читабельном  ASCII формате</p>
 </blockquote>
-<h2><a class="header" href="#Импорт-ключей" id="Импорт-ключей">Импорт ключей</a></h2>
+<h2 id="Импорт-ключей"><a class="header" href="#Импорт-ключей">Импорт ключей</a></h2>
 <p>Импорт публичного ключа</p>
 <pre><code>$ gpg --import public.key
 </code></pre>
 <p>Иморт приватного ключа</p>
 <pre><code>$ gpg --import private.key
 </code></pre>
-<h2><a class="header" href="#Просмотр-ключей" id="Просмотр-ключей">Просмотр ключей</a></h2>
+<h2 id="Просмотр-ключей"><a class="header" href="#Просмотр-ключей">Просмотр ключей</a></h2>
 <p>Просмотр публичных ключей</p>
 <pre><code>$ gpg -k &quot;Maxim Kim&quot;
 </code></pre>
 <p>Просмотр приватных ключей</p>
 <pre><code>$ gpg -K &quot;Maxim Kim&quot;
 </code></pre>
-<h2><a class="header" href="#Удаление-ключей" id="Удаление-ключей">Удаление ключей</a></h2>
+<h2 id="Удаление-ключей"><a class="header" href="#Удаление-ключей">Удаление ключей</a></h2>
 <p>Удаление публичного ключа</p>
 <pre><code>$ gpg --delete-key &lt;ID&gt;
 </code></pre>
 <p>Удаление приватного ключа</p>
 <pre><code>$ gpg --delete-secret-key &lt;ID&gt;
 </code></pre>
-<h2><a class="header" href="#Просмотр-отпечатка-ключа" id="Просмотр-отпечатка-ключа">Просмотр отпечатка ключа</a></h2>
+<h2 id="Просмотр-отпечатка-ключа"><a class="header" href="#Просмотр-отпечатка-ключа">Просмотр отпечатка ключа</a></h2>
 <pre><code>$ gpg --fingerprint &quot;Maxim Kim&quot;
 </code></pre>
-<h2><a class="header" href="#Симметричное-шифрование" id="Симметричное-шифрование">Симметричное шифрование</a></h2>
+<h2 id="Симметричное-шифрование"><a class="header" href="#Симметричное-шифрование">Симметричное шифрование</a></h2>
 <p>Шифрование</p>
 <pre><code>$ gpg -c secret.txt
 
@@ -1319,7 +1338,7 @@ Nvidia: Работает</p>
 <p>Дешифрование</p>
 <pre><code>$ gpg -d secret.txt.gpg
 </code></pre>
-<h2><a class="header" href="#Симметричное-шифрование-в-связке-с-публичным-ключом" id="Симметричное-шифрование-в-связке-с-публичным-ключом">Симметричное шифрование в связке с публичным ключом</a></h2>
+<h2 id="Симметричное-шифрование-в-связке-с-публичным-ключом"><a class="header" href="#Симметричное-шифрование-в-связке-с-публичным-ключом">Симметричное шифрование в связке с публичным ключом</a></h2>
 <p>Шифрование</p>
 <pre><code>$ gpg -c -e -r &quot;Maxim Kim&quot; secret.txt
 </code></pre>
@@ -1329,16 +1348,16 @@ Nvidia: Работает</p>
 <blockquote>
 <p>Если на другом компьютере, где вы расшифровываете файл, имеется ваш приватный ключ, то при расшифровке будет запрошен пароль приватного ключа. Если приватный ключ отсутствует, то будет запрошен пароль, который использовался при шифровании файла.</p>
 </blockquote>
-<h2><a class="header" href="#Шифрование-публичным-ключом" id="Шифрование-публичным-ключом">Шифрование публичным ключом</a></h2>
+<h2 id="Шифрование-публичным-ключом"><a class="header" href="#Шифрование-публичным-ключом">Шифрование публичным ключом</a></h2>
 <pre><code>$ gpg -e -r &quot;Maxim Kim&quot; secret.txt
 </code></pre>
-<h2><a class="header" href="#Шифрование-публичным-ключом-в-формате-ascii" id="Шифрование-публичным-ключом-в-формате-ascii">Шифрование публичным ключом в формате ASCII</a></h2>
+<h2 id="Шифрование-публичным-ключом-в-формате-ascii"><a class="header" href="#Шифрование-публичным-ключом-в-формате-ascii">Шифрование публичным ключом в формате ASCII</a></h2>
 <pre><code>$ gpg -e -a -r &quot;Maxim Kim&quot; secret.txt
 </code></pre>
-<h2><a class="header" href="#Шифрование-имени-адресата" id="Шифрование-имени-адресата">Шифрование имени адресата</a></h2>
+<h2 id="Шифрование-имени-адресата"><a class="header" href="#Шифрование-имени-адресата">Шифрование имени адресата</a></h2>
 <pre><code>$ gpg -e -a -R &quot;Maxim Kim&quot; secret.txt
 </code></pre>
-<h2><a class="header" href="#Проверка-подписи-файла" id="Проверка-подписи-файла">Проверка подписи файла</a></h2>
+<h2 id="Проверка-подписи-файла"><a class="header" href="#Проверка-подписи-файла">Проверка подписи файла</a></h2>
 <p>Подписывание файла</p>
 <pre><code>$ gpg --clearsign secret.txt
 </code></pre>
@@ -1348,19 +1367,19 @@ Nvidia: Работает</p>
 <p>Извлечение данных из подписанного файла</p>
 <pre><code>$ gpg -d secret.txt.asc &gt; secret.txt
 </code></pre>
-<h2><a class="header" href="#Установка-уровня-доверия-для-ключа" id="Установка-уровня-доверия-для-ключа">Установка уровня доверия для ключа</a></h2>
+<h2 id="Установка-уровня-доверия-для-ключа"><a class="header" href="#Установка-уровня-доверия-для-ключа">Установка уровня доверия для ключа</a></h2>
 <pre><code>$ gpg --edit-key &lt;KEY_ID&gt;
 </code></pre>
 <pre><code>gpg&gt; trust
 </code></pre>
-<h2><a class="header" href="#Защита-папки" id="Защита-папки">Защита папки</a></h2>
+<h2 id="Защита-папки"><a class="header" href="#Защита-папки">Защита папки</a></h2>
 <pre><code>chmod 600 ~/.gnupg/\*
 </code></pre>
 <pre><code>chmod 700 ~/.gnupg
 </code></pre>
-<h3><a class="header" href="#хештеги-защита-безопасность-gpg-pgp" id="хештеги-защита-безопасность-gpg-pgp">хештеги: #защита #безопасность #gpg #pgp</a></h3>
-<h1><a class="header" href="#git" id="git">git</a></h1>
-<h2><a class="header" href="#Изменение-ссылки-https-на-ssh" id="Изменение-ссылки-https-на-ssh">Изменение ссылки https на ssh</a></h2>
+<h3 id="хештеги-защита-безопасность-gpg-pgp"><a class="header" href="#хештеги-защита-безопасность-gpg-pgp">хештеги: #защита #безопасность #gpg #pgp</a></h3>
+<h1 id="git"><a class="header" href="#git">git</a></h1>
+<h2 id="Изменение-ссылки-https-на-ssh"><a class="header" href="#Изменение-ссылки-https-на-ssh">Изменение ссылки https на ssh</a></h2>
 <ol>
 <li>Просмотр текущей ссылки</li>
 </ol>
@@ -1371,17 +1390,17 @@ Nvidia: Работает</p>
 </ol>
 <pre><code>$ git remote set-url origin git@github.com:exynil/example.git
 </code></pre>
-<h3><a class="header" href="#хештеги-git-система_контроля_версий" id="хештеги-git-система_контроля_версий">хештеги: #git #система_контроля_версий</a></h3>
-<h1><a class="header" href="#jq" id="jq">jq</a></h1>
+<h3 id="хештеги-git-система_контроля_версий"><a class="header" href="#хештеги-git-система_контроля_версий">хештеги: #git #система_контроля_версий</a></h3>
+<h1 id="jq"><a class="header" href="#jq">jq</a></h1>
 <p>Запрос строк без ковычек</p>
 <pre><code>jq -r '.[].name' &quot;fruits.json&quot;
 </code></pre>
 <p>Поиск по имени</p>
 <pre><code>jq -r &quot;.[] | select(.name==\&quot;$name\&quot;)&quot; &quot;fruits.json&quot;
 </code></pre>
-<h3><a class="header" href="#хештеги-jq-json" id="хештеги-jq-json">хештеги: #jq #json</a></h3>
-<h1><a class="header" href="#mkfs" id="mkfs">mkfs</a></h1>
-<h2><a class="header" href="#Форматирование" id="Форматирование">Форматирование</a></h2>
+<h3 id="хештеги-jq-json"><a class="header" href="#хештеги-jq-json">хештеги: #jq #json</a></h3>
+<h1 id="mkfs"><a class="header" href="#mkfs">mkfs</a></h1>
+<h2 id="Форматирование"><a class="header" href="#Форматирование">Форматирование</a></h2>
 <ol>
 <li>Опеределяем имя носителя</li>
 </ol>
@@ -1392,8 +1411,8 @@ Nvidia: Работает</p>
 </ol>
 <pre><code># mkfs.vfat /dev/sdx
 </code></pre>
-<h3><a class="header" href="#хештеги-mkfs-фаловая_система" id="хештеги-mkfs-фаловая_система">хештеги: #mkfs #фаловая_система</a></h3>
-<h1><a class="header" href="#ranger" id="ranger">Ranger</a></h1>
+<h3 id="хештеги-mkfs-фаловая_система"><a class="header" href="#хештеги-mkfs-фаловая_система">хештеги: #mkfs #фаловая_система</a></h3>
+<h1 id="ranger"><a class="header" href="#ranger">Ranger</a></h1>
 <ol>
 <li>
 <p>Показать/скрыть скрытые файлы: <code>zh</code>, <code>Backspace</code></p>
@@ -1417,9 +1436,9 @@ Nvidia: Работает</p>
 <li><code>:mark png</code> - выделить файлы с подстрокой <code>png</code> в имени файлы</li>
 <li><code>:unmark</code> - снять выделение</li>
 </ul>
-<h3><a class="header" href="#хештеги-файловый_менеджер-ranger" id="хештеги-файловый_менеджер-ranger">хештеги: #файловый_менеджер #ranger</a></h3>
-<h1><a class="header" href="#youtube-dl" id="youtube-dl">youtube-dl</a></h1>
-<h2><a class="header" href="#Загрузка-видео" id="Загрузка-видео">Загрузка видео</a></h2>
+<h3 id="хештеги-файловый_менеджер-ranger"><a class="header" href="#хештеги-файловый_менеджер-ranger">хештеги: #файловый_менеджер #ranger</a></h3>
+<h1 id="youtube-dl"><a class="header" href="#youtube-dl">youtube-dl</a></h1>
+<h2 id="Загрузка-видео"><a class="header" href="#Загрузка-видео">Загрузка видео</a></h2>
 <ol>
 <li>Смотрим возможные варианты для скачивания</li>
 </ol>
@@ -1430,14 +1449,14 @@ Nvidia: Работает</p>
 </ol>
 <pre><code>youtube-dl -f 140 [url]
 </code></pre>
-<h2><a class="header" href="#Загрузка-плейлиста" id="Загрузка-плейлиста">Загрузка плейлиста</a></h2>
+<h2 id="Загрузка-плейлиста"><a class="header" href="#Загрузка-плейлиста">Загрузка плейлиста</a></h2>
 <pre><code>youtube-dl -i -f mp4 --yes-playlist [url]
 </code></pre>
-<h2><a class="header" href="#Загрузка-аудио-в-формате-mp3" id="Загрузка-аудио-в-формате-mp3">Загрузка аудио в формате mp3</a></h2>
+<h2 id="Загрузка-аудио-в-формате-mp3"><a class="header" href="#Загрузка-аудио-в-формате-mp3">Загрузка аудио в формате mp3</a></h2>
 <pre><code>youtube-dl --output &quot;%(title)s.%(ext)s&quot; --extract-audio --audio-format mp3 [url]
 </code></pre>
-<h3><a class="header" href="#хештеги-youtube-dl--youtube" id="хештеги-youtube-dl--youtube">хештеги: #youtube-dl  #youtube</a></h3>
-<h1><a class="header" href="#Выборки" id="Выборки">Выборки</a></h1>
+<h3 id="хештеги-youtube-dl--youtube"><a class="header" href="#хештеги-youtube-dl--youtube">хештеги: #youtube-dl  #youtube</a></h3>
+<h1 id="Выборки"><a class="header" href="#Выборки">Выборки</a></h1>
 <p>Получение списка подключенных мониторов</p>
 <pre><code>$ xrandr --query | grep &quot; connected&quot; | cut -d &quot; &quot; -f1
 </code></pre>
@@ -1462,7 +1481,7 @@ echo $(curl -s &quot;$url&quot; | grep -oP &quot;$reg\_exp&quot;)
 <p>Поиск текста в файлах</p>
 <pre><code>grep -rnwe 'some text'
 </code></pre>
-<h1><a class="header" href="#Горячие-клавиши" id="Горячие-клавиши">Горячие клавиши</a></h1>
+<h1 id="Горячие-клавиши"><a class="header" href="#Горячие-клавиши">Горячие клавиши</a></h1>
 <pre><code>super
 ├── Return			Терминал 
 ├── Escape			Перезагрузка sxhkd
@@ -1487,16 +1506,12 @@ echo $(curl -s &quot;$url&quot; | grep -oP &quot;$reg\_exp&quot;)
 
 
 </code></pre>
-<h1><a class="header" href="#Команды" id="Команды">Команды</a></h1>
-<h2><a class="header" href="#xrandr" id="xrandr">xrandr</a></h2>
+<h1 id="Команды"><a class="header" href="#Команды">Команды</a></h1>
+<h2 id="xrandr"><a class="header" href="#xrandr">xrandr</a></h2>
 <p>Вывод провайдеров</p>
 <pre><code>$ xrandr --listproviders
 </code></pre>
-<h2><a class="header" href="#ffmpeg" id="ffmpeg">ffmpeg</a></h2>
-<p>Обрезка видео</p>
-<pre><code>$ ffmpeg -ss 00:00:00 -i input.mp4 -to 00:02:00 -c copy output.mp4
-</code></pre>
-<h2><a class="header" href="#Остальное" id="Остальное">Остальное</a></h2>
+<h2 id="Остальное"><a class="header" href="#Остальное">Остальное</a></h2>
 <p>Вывод UUID разделов</p>
 <pre><code># blkid
 </code></pre>
@@ -1560,7 +1575,10 @@ echo $(curl -s &quot;$url&quot; | grep -oP &quot;$reg\_exp&quot;)
 <p>Замена текста в файлах с расширением &quot;.md&quot; во всех подпапках</p>
 <pre><code>$ find . -type f -name &quot;*.md&quot; -exec sed -i'' -e 's/abc/ABC/g' {} +
 </code></pre>
-<h1><a class="header" href="#Пакеты" id="Пакеты">Пакеты</a></h1>
+<p>Конвертация всех <code>png</code> в <code>jpg</code></p>
+<pre><code>$ magick mogrify -format jpg *.png
+</code></pre>
+<h1 id="Пакеты"><a class="header" href="#Пакеты">Пакеты</a></h1>
 <p>awk - для разбора и обработки входного потока по заданным шаблонам</p>
 <p>ogrep - файловый поисковик</p>
 <p>egrep - файловый поисковик с поддержкой расширенной версии регулярных выражений</p>
@@ -1584,9 +1602,9 @@ echo $(curl -s &quot;$url&quot; | grep -oP &quot;$reg\_exp&quot;)
 <p>cat</p>
 <p>less</p>
 <p>sort</p>
-<h1><a class="header" href="#Решение-проблем" id="Решение-проблем">Решение проблем</a></h1>
-<h2><a class="header" href="#jupyter-notebook" id="jupyter-notebook">Jupyter Notebook</a></h2>
-<h3><a class="header" href="#Ошибка-при-чтении-больших-файлов" id="Ошибка-при-чтении-больших-файлов">Ошибка при чтении больших файлов</a></h3>
+<h1 id="Решение-проблем"><a class="header" href="#Решение-проблем">Решение проблем</a></h1>
+<h2 id="jupyter-notebook"><a class="header" href="#jupyter-notebook">Jupyter Notebook</a></h2>
+<h3 id="Ошибка-при-чтении-больших-файлов"><a class="header" href="#Ошибка-при-чтении-больших-файлов">Ошибка при чтении больших файлов</a></h3>
 <p><span style="color:#bf616a">Вывод ошибки</span></p>
 <pre><code>IOPub data rate exceeded.
 The notebook server will temporarily stop sending output
@@ -1599,27 +1617,27 @@ NotebookApp.iopub_data_rate_limit=1000000.0 (bytes/sec)
 NotebookApp.rate_limit_window=3.0 (secs)
 </code></pre>
 <p>Увеличить в настройках максимальный размер выходного потока <code>NotebookApp.iopub_data_rate_limit</code></p>
-<h2><a class="header" href="#polybar" id="polybar">Polybar</a></h2>
-<h3><a class="header" href="#В-polybar-не-работают-модули-wlan-network-speed-down-и-network-speed-ip" id="В-polybar-не-работают-модули-wlan-network-speed-down-и-network-speed-ip">В polybar не работают модули wlan, network-speed-down и network-speed-ip</a></h3>
+<h2 id="polybar"><a class="header" href="#polybar">Polybar</a></h2>
+<h3 id="В-polybar-не-работают-модули-wlan-network-speed-down-и-network-speed-ip"><a class="header" href="#В-polybar-не-работают-модули-wlan-network-speed-down-и-network-speed-ip">В polybar не работают модули wlan, network-speed-down и network-speed-ip</a></h3>
 <p>Установить правильный интерфейс беспроводной сети в настройке модуля</p>
 <pre><code>ip link
 </code></pre>
-<h2><a class="header" href="#flameshot" id="flameshot">Flameshot</a></h2>
-<h3><a class="header" href="#Не-запускается-flameshot-gui" id="Не-запускается-flameshot-gui">Не запускается flameshot gui</a></h3>
+<h2 id="flameshot"><a class="header" href="#flameshot">Flameshot</a></h2>
+<h3 id="Не-запускается-flameshot-gui"><a class="header" href="#Не-запускается-flameshot-gui">Не запускается flameshot gui</a></h3>
 <p>Необходимо запускать X через dbus-launch</p>
 <pre><code>exec dbus-launch i3
 </code></pre>
-<h2><a class="header" href="#pycharm" id="pycharm">PyCharm</a></h2>
-<h3><a class="header" href="#Серое-окно" id="Серое-окно">Серое окно</a></h3>
+<h2 id="pycharm"><a class="header" href="#pycharm">PyCharm</a></h2>
+<h3 id="Серое-окно"><a class="header" href="#Серое-окно">Серое окно</a></h3>
 <p>Экспортировать переменную в окружение</p>
 <pre><code>export _JAVA_AWT_WM_NONREPARENTING=1
 </code></pre>
-<h2><a class="header" href="#Разное" id="Разное">Разное</a></h2>
-<h3><a class="header" href="#Пропадает-звук-после-воспроизведение-аудио" id="Пропадает-звук-после-воспроизведение-аудио">Пропадает звук после воспроизведение аудио</a></h3>
+<h2 id="Разное"><a class="header" href="#Разное">Разное</a></h2>
+<h3 id="Пропадает-звук-после-воспроизведение-аудио"><a class="header" href="#Пропадает-звук-после-воспроизведение-аудио">Пропадает звук после воспроизведение аудио</a></h3>
 <p>Установить пакет pulseaudio-alsa</p>
 <pre><code>pacman -S pulseaudio-alsa
 </code></pre>
-<h3><a class="header" href="#Тиринг" id="Тиринг">Тиринг</a></h3>
+<h3 id="Тиринг"><a class="header" href="#Тиринг">Тиринг</a></h3>
 <p>Включить опцию &quot;TearFree&quot; в /etc/X11/xorg.conf.d/20-intel.conf</p>
 <pre><code>Section &quot;Device&quot;
     Identifier &quot;Intel&quot;
@@ -1627,7 +1645,7 @@ NotebookApp.rate_limit_window=3.0 (secs)
     Option &quot;TearFree&quot; &quot;true&quot;
 EndSection
 </code></pre>
-<h1><a class="header" href="#Файлы" id="Файлы">Файлы</a></h1>
+<h1 id="Файлы"><a class="header" href="#Файлы">Файлы</a></h1>
 <p>Меню загрузки</p>
 <p><code>/boot/loader/loader.conf</code></p>
 <p>Файл с инструкцией по монтированию блочных устройств</p>
@@ -1646,11 +1664,11 @@ EndSection
 <p><code>/usr/local/sbin</code></p>
 <p>Конфигурация GRUB</p>
 <p><code>/etc/default/grub</code></p>
-<h1><a class="header" href="#Иллюстрация-работы-rsa-на-примере" id="Иллюстрация-работы-rsa-на-примере">Иллюстрация работы RSA на примере</a></h1>
+<h1 id="Иллюстрация-работы-rsa-на-примере"><a class="header" href="#Иллюстрация-работы-rsa-на-примере">Иллюстрация работы RSA на примере</a></h1>
 <p>Вокруг алгоритмов шифрования с отрытым и закрытым ключом существует множество недопониманий и мистификаций. Здесь я хотел бы предельно коротко и наглядно, с конкретными числами и минимумом формул, показать, как это работает.</p>
 <p>Я не вдаюсь в теорию (не очень понятно, на какой уровень подготовки читателя следует рассчитывать), но я уверен, что прочитав эту короткую иллюстрацию, любому человеку будет проще разобраться в формулах и строгих доказательствах.</p>
 <p>Итак. Допустим, я хочу получить от вас некие данные. Мы с вами не хотим, чтобы эти данные узнал кто-то, кроме нас. И у нас нет никакой уверенности в надёжности канала передачи данных. Приступим.</p>
-<h2><a class="header" href="#Шаг-первый-Подготовка-ключей" id="Шаг-первый-Подготовка-ключей">Шаг первый. Подготовка ключей</a></h2>
+<h2 id="Шаг-первый-Подготовка-ключей"><a class="header" href="#Шаг-первый-Подготовка-ключей">Шаг первый. Подготовка ключей</a></h2>
 <p>Я должен проделать предварительные действия: сгенерировать публичный и приватный ключ.</p>
 <ul>
 <li>Выбираю два простых числа. Пусть это будет <code>p=3</code> и <code>q=7</code>.</li>
@@ -1667,7 +1685,7 @@ EndSection
 </ul>
 <p>Теперь пара чисел <code>{e, n}</code> — это мой открытый ключ. Я отправляю его вам, чтобы вы зашифровали своё сообщение. Но для меня это ещё не всё. Я должен получить закрытый ключ.</p>
 <p>Мне нужно вычислить число <code>d</code>, обратное <code>е</code> по модулю <code>φ</code>. То есть остаток от деления по модулю <code>φ</code> произведения <code>d×e</code> должен быть равен 1. Запишем это в обозначениях, принятых во многих языках программирования: <code>(d×е)%φ=1</code>. Или <code>(d×5)%12=1</code>. <code>d</code> может быть равно 5 (<code>(5×5)%12=25%12=1</code>), но чтобы оно не путалось с <code>e</code> в дальнейшем повествовании, давайте возьмём его равным 17. Можете проверить сами, что <code>(17×5)%12</code> действительно равно 1 (<code>17×5-12×7=1</code>). Итак <code>d=17</code>. Пара <code>{d, n}</code> — это секретный ключ, его я оставляю у себя. Его нельзя сообщать никому. Только обладатель секретного ключа может расшифровать то, что было зашифровано открытым ключом.</p>
-<h2><a class="header" href="#Шаг-второй-Шифрование" id="Шаг-второй-Шифрование">Шаг второй. Шифрование</a></h2>
+<h2 id="Шаг-второй-Шифрование"><a class="header" href="#Шаг-второй-Шифрование">Шаг второй. Шифрование</a></h2>
 <p>Теперь пришла ваша очередь шифровать ваше сообщение. Допустим, ваше сообщение это число 19. Обозначим его <code>P=19</code>. Кроме него у вас уже есть мой открытый ключ: <code>{e, n} = {5, 21}</code>. Шифрование выполняется по следующему алгоритму:</p>
 <ul>
 <li>Возводите ваше сообщение в степень <code>e</code> по модулю <code>n</code>. То есть, вычисляете 19 в степени 5 (2476099) и берёте остаток от деления на 21. Получается 10 — это ваши закодированные данные.</li>
@@ -1675,7 +1693,7 @@ EndSection
 <p>Строго говоря, вам вовсе незачем вычислять огромное число «19 в степени 5». При каждом умножении достаточно вычислять не полное произведение, а только остаток от деления на 21. Но это уже детали реализации вычислений, давайте не будем в них углубляться.</p>
 <p>Полученные данные <code>E=10</code>, вы отправляете мне.</p>
 <p>Здесь надо заметить, что сообщение <code>P=19</code> не должно быть больше <code>n=21</code>. иначе ничего не получится.</p>
-<h2><a class="header" href="#Шаг-третий-Расшифровка" id="Шаг-третий-Расшифровка">Шаг третий. Расшифровка</a></h2>
+<h2 id="Шаг-третий-Расшифровка"><a class="header" href="#Шаг-третий-Расшифровка">Шаг третий. Расшифровка</a></h2>
 <p>Я получил ваши данные (<code>E=10</code>), и у меня имеется закрытый ключ <code>{d, n} = {17, 21}</code>.</p>
 <p>Обратите внимание на то, что открытый ключ не может расшифровать сообщение. А закрытый ключ я никому не говорил. В этом вся прелесть асимметричного шифрования.</p>
 <p>Начинаем расшифровывать:</p>
@@ -1683,7 +1701,7 @@ EndSection
 <li>Я делаю операцию, очень похожую на вашу, но вместо <code>e</code> использую <code>d</code>. Возвожу <code>E</code> в степень <code>d</code>: получаю 10 в степень 17 (позвольте, я не буду писать единичку с семнадцатью нулями). Вычисляю остаток от деления на 21 и получаю 19 — ваше сообщение.</li>
 </ul>
 <p>Заметьте, никто, кроме меня (даже вы!) не может расшифровать ваше сообщение (<code>E=10</code>), так как ни у кого нет закрытого ключа.</p>
-<h2><a class="header" href="#В-чём-гарантия-надёжности-шифрования" id="В-чём-гарантия-надёжности-шифрования">В чём гарантия надёжности шифрования</a></h2>
+<h2 id="В-чём-гарантия-надёжности-шифрования"><a class="header" href="#В-чём-гарантия-надёжности-шифрования">В чём гарантия надёжности шифрования</a></h2>
 <p>Надёжность шифрования обеспечивается тем, что третьему лицу (старающемуся взломать шифр) очень трудно вычислить закрытый ключ по открытому. Оба ключа вычисляются из одной пары простых чисел (<code>p</code> и <code>q</code>). То есть ключи связаны между собой. Но установить эту связь очень сложно. Основной загвоздкой является декомпозиция модуля <code>n</code> на простые сомножители <code>p</code> и <code>q</code>. Если число является произведением двух очень больших простых чисел, то его очень трудно разложить на множители.</p>
 <p>Постараюсь это показать на примере. Давайте разложим на множители число 360:</p>
 <ul>
@@ -1705,13 +1723,13 @@ EndSection
 <li>и только 19 даст нам ответ: 361=19×19.</li>
 </ul>
 <p>При использовании больших чисел, задача становится очень сложной. Это позволяет надеяться, что у взломщика просто не хватит вычислительных ресурсов, чтобы сломать ваши шифр за обозримое время.</p>
-<h2><a class="header" href="#А-как-это-всё-работает-на-практике" id="А-как-это-всё-работает-на-практике">А как это всё работает на практике?</a></h2>
+<h2 id="А-как-это-всё-работает-на-практике"><a class="header" href="#А-как-это-всё-работает-на-практике">А как это всё работает на практике?</a></h2>
 <p>Многие читатели спрашивают, как всё это применяется на практике. Давайте рассмотрим чуть более приближенный к жизни пример. Зашифруем и расшифруем слово «КРОТ», предложенное одним из читателей. А заодно, бегло рассмотрим, какие проблемы при этом встречаются и как они решаются.</p>
 <p>Сперва сгенерируем ключи с чуть большими числами. Они не так наглядны, но позволят нам шифровать не только числа от нуля до 20.</p>
 <p>Оттолкнёмся от пары простых чисел <code>{p, q} = {17, 19}</code>. Пусть наш открытый ключ будет <code>{e, n} = {5, 323}</code>, а закрытый <code>{d, n} = {173, 323}</code>.</p>
 <p>Мы готовы к шифрованию. Переведём наше слово в цифровое представление. Мы можем взять просто номера букв в алфавите. У нас получится последовательность чисел: 11, 17, 15, 19.</p>
 <p>Мы можем зашифровать каждое из этих чисел открытым ключом <code>{e, n} = {5, 323}</code> и получить шифровку 197, 272, 2, 304. Эти числа можно передать получателю, обладающему закрытым ключом <code>{d, n} = {173, 323}</code> и он всё расшифрует.</p>
-<h3><a class="header" href="#Немного-о-сложностях" id="Немного-о-сложностях">Немного о сложностях</a></h3>
+<h3 id="Немного-о-сложностях"><a class="header" href="#Немного-о-сложностях">Немного о сложностях</a></h3>
 <p>На самом деле, изложенный способ шифрования очень слаб и никогда не используется. Причина проста — шифрование по буквам. Одна и та же буква будет шифроваться одним и тем же числом. Если злоумышленник перехватит достаточно большое сообщение, он сможет догадаться о его содержимом. Сперва он обратит внимание на частые коды пробелов и разделит шифровку на слова. Потом он заметит однобуквенные слова и догадается, как кодируются буквы «a», «и», «o», «в», «к»… Путём недолгого перебора, он вычислит дополнительные буквы по коротким словам, типа «но», «не», «по». И по более длинным словам без труда восстановит все оставшиеся буквы.</p>
 <p>Таким образом, злоумышленнику не придётся отгадывать ваши секретные ключи. Он взломает ваше сообщение, не зная их.</p>
 <p>Чтобы этого не происходило, используются специальные дополнительные алгоритмы, суть которых в том, что каждая предыдущая часть сообщения начинает влиять на следующую.</p>
@@ -1724,7 +1742,7 @@ EndSection
 <p>Получатель делает всё в обратном порядке: расшифровывает, «распутывает» блоки и отбрасывает ненужную информацию, добавленную просто для выравнивания (чтобы сообщение можно было разбить на целое число блоков).</p>
 <p>Автор: Алексей Мичурин</p>
 <p>Источник: <a href="http://www.michurin.net/computer-science/rsa.html">http://www.michurin.net/computer-science/rsa.html</a></p>
-<h3><a class="header" href="#xештеги-rsa-gnupg-безопасность-шифрование" id="xештеги-rsa-gnupg-безопасность-шифрование">xештеги: #rsa #gnupg #безопасность #шифрование</a></h3>
+<h3 id="xештеги-rsa-gnupg-безопасность-шифрование"><a class="header" href="#xештеги-rsa-gnupg-безопасность-шифрование">xештеги: #rsa #gnupg #безопасность #шифрование</a></h3>
 
                     </main>
 

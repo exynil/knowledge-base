@@ -163,16 +163,12 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#Команды" id="Команды">Команды</a></h1>
-<h2><a class="header" href="#xrandr" id="xrandr">xrandr</a></h2>
+                        <h1 id="Команды"><a class="header" href="#Команды">Команды</a></h1>
+<h2 id="xrandr"><a class="header" href="#xrandr">xrandr</a></h2>
 <p>Вывод провайдеров</p>
 <pre><code>$ xrandr --listproviders
 </code></pre>
-<h2><a class="header" href="#ffmpeg" id="ffmpeg">ffmpeg</a></h2>
-<p>Обрезка видео</p>
-<pre><code>$ ffmpeg -ss 00:00:00 -i input.mp4 -to 00:02:00 -c copy output.mp4
-</code></pre>
-<h2><a class="header" href="#Остальное" id="Остальное">Остальное</a></h2>
+<h2 id="Остальное"><a class="header" href="#Остальное">Остальное</a></h2>
 <p>Вывод UUID разделов</p>
 <pre><code># blkid
 </code></pre>
@@ -235,6 +231,9 @@
 </code></pre>
 <p>Замена текста в файлах с расширением &quot;.md&quot; во всех подпапках</p>
 <pre><code>$ find . -type f -name &quot;*.md&quot; -exec sed -i'' -e 's/abc/ABC/g' {} +
+</code></pre>
+<p>Конвертация всех <code>png</code> в <code>jpg</code></p>
+<pre><code>$ magick mogrify -format jpg *.png
 </code></pre>
 
                     </main>

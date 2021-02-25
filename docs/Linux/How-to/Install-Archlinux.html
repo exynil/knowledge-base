@@ -163,8 +163,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#Установка--archlinux" id="Установка--archlinux">Установка  ArchLinux</a></h1>
-<h2><a class="header" href="#Установочный-носитель" id="Установочный-носитель">Установочный носитель</a></h2>
+                        <h1 id="Установка--archlinux"><a class="header" href="#Установка--archlinux">Установка  ArchLinux</a></h1>
+<h2 id="Установочный-носитель"><a class="header" href="#Установочный-носитель">Установочный носитель</a></h2>
 <ol>
 <li>
 <p>Скачать образ <a href="https://archlinux.org/download/">Archlinux</a></p>
@@ -178,14 +178,14 @@
 <ol start="3">
 <li>Записываем образ на флешку</li>
 </ol>
-<pre><code>$ sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdc status=progress oflag=sync
+<pre><code>$ sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdc
 </code></pre>
-<h2><a class="header" href="#Базовая-установка" id="Базовая-установка">Базовая установка</a></h2>
-<h3><a class="header" href="#Подключение-к-сети-по-wi-fi" id="Подключение-к-сети-по-wi-fi">Подключение к сети по wi-fi</a></h3>
+<h2 id="Базовая-установка"><a class="header" href="#Базовая-установка">Базовая установка</a></h2>
+<h3 id="Подключение-к-сети-по-wi-fi"><a class="header" href="#Подключение-к-сети-по-wi-fi">Подключение к сети по wi-fi</a></h3>
 <ol>
 <li>Запускаем iwctl</li>
 </ol>
-<pre><code>$ iwctl
+<pre><code>iwctl
 </code></pre>
 <ol start="2">
 <li>Получаем список устройств </li>
@@ -207,7 +207,7 @@
 </ol>
 <pre><code>ping 8.8.8.8
 </code></pre>
-<h3><a class="header" href="#Синхронизация-времени" id="Синхронизация-времени">Синхронизация времени</a></h3>
+<h3 id="Синхронизация-времени"><a class="header" href="#Синхронизация-времени">Синхронизация времени</a></h3>
 <ol>
 <li>Включаем синхронизацию системных часов</li>
 </ol>
@@ -218,7 +218,7 @@
 </ol>
 <pre><code>timedatectl status
 </code></pre>
-<h3><a class="header" href="#Разметка-дисков" id="Разметка-дисков">Разметка дисков</a></h3>
+<h3 id="Разметка-дисков"><a class="header" href="#Разметка-дисков">Разметка дисков</a></h3>
 <ol>
 <li>Проверяем подлюченные диски</li>
 </ol>
@@ -248,7 +248,7 @@
 </ol>
 <pre><code>mkfs.ext4 /dev/sdb3
 </code></pre>
-<h3><a class="header" href="#Установка-основных-пакетов" id="Установка-основных-пакетов">Установка основных пакетов</a></h3>
+<h3 id="Установка-основных-пакетов"><a class="header" href="#Установка-основных-пакетов">Установка основных пакетов</a></h3>
 <ol>
 <li>Монтируем корневой раздел</li>
 </ol>
@@ -259,13 +259,13 @@
 </ol>
 <pre><code>pacstrap /mnt base base-devel linux-lts linux-firmware vim
 </code></pre>
-<h3><a class="header" href="#Генерация-таблицы-файловой-системы" id="Генерация-таблицы-файловой-системы">Генерация таблицы файловой системы</a></h3>
+<h3 id="Генерация-таблицы-файловой-системы"><a class="header" href="#Генерация-таблицы-файловой-системы">Генерация таблицы файловой системы</a></h3>
 <pre><code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </code></pre>
-<h3><a class="header" href="#Переход-к-корневому-каталогу" id="Переход-к-корневому-каталогу">Переход к корневому каталогу</a></h3>
+<h3 id="Переход-к-корневому-каталогу"><a class="header" href="#Переход-к-корневому-каталогу">Переход к корневому каталогу</a></h3>
 <pre><code>arch-chroot /mnt
 </code></pre>
-<h3><a class="header" href="#Настройка-часов" id="Настройка-часов">Настройка часов</a></h3>
+<h3 id="Настройка-часов"><a class="header" href="#Настройка-часов">Настройка часов</a></h3>
 <ol>
 <li>Установка часового пояса</li>
 </ol>
@@ -276,7 +276,7 @@
 </ol>
 <pre><code>hwclock --systohc
 </code></pre>
-<h3><a class="header" href="#Настройка-локали" id="Настройка-локали">Настройка локали</a></h3>
+<h3 id="Настройка-локали"><a class="header" href="#Настройка-локали">Настройка локали</a></h3>
 <ol>
 <li>
 <p>Раскомментировать <code>en_US.UTF-8 UTF-8</code> и другие необходимые локали в файле <code>/etc/locale.gen</code></p>
@@ -292,15 +292,15 @@
 </ol>
 <pre><code>echo &quot;LANG=en_US.UTF-8&quot; &gt; /etc/locale.conf
 </code></pre>
-<h3><a class="header" href="#Настройка-имени-хоста" id="Настройка-имени-хоста">Настройка имени хоста</a></h3>
+<h3 id="Настройка-имени-хоста"><a class="header" href="#Настройка-имени-хоста">Настройка имени хоста</a></h3>
 <pre><code>echo arch &gt; /etc/hostname
 </code></pre>
-<h3><a class="header" href="#Настройка-доменных-имён" id="Настройка-доменных-имён">Настройка доменных имён</a></h3>
+<h3 id="Настройка-доменных-имён"><a class="header" href="#Настройка-доменных-имён">Настройка доменных имён</a></h3>
 <pre><code>echo &quot;127.0.0.1 localhost&quot; &gt;&gt; /etc/hosts
 echo &quot;::1 localhost&quot; &gt;&gt; /etc/hosts
 echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 </code></pre>
-<h3><a class="header" href="#Установка-загрузчика" id="Установка-загрузчика">Установка загрузчика</a></h3>
+<h3 id="Установка-загрузчика"><a class="header" href="#Установка-загрузчика">Установка загрузчика</a></h3>
 <ol>
 <li>Устанавливаем пакеты</li>
 </ol>
@@ -333,10 +333,10 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 </ol>
 <pre><code>grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre>
-<h3><a class="header" href="#Установка-пароля-администратора" id="Установка-пароля-администратора">Установка пароля администратора</a></h3>
+<h3 id="Установка-пароля-администратора"><a class="header" href="#Установка-пароля-администратора">Установка пароля администратора</a></h3>
 <pre><code>passwd
 </code></pre>
-<h3><a class="header" href="#Установка-пакетов-для-подключения-к-сети" id="Установка-пакетов-для-подключения-к-сети">Установка пакетов для подключения к сети</a></h3>
+<h3 id="Установка-пакетов-для-подключения-к-сети"><a class="header" href="#Установка-пакетов-для-подключения-к-сети">Установка пакетов для подключения к сети</a></h3>
 <ol>
 <li>Установка</li>
 </ol>
@@ -347,7 +347,7 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 </ol>
 <pre><code>systemctl enable NetworkManager
 </code></pre>
-<h3><a class="header" href="#Изменение-шрифта-tty" id="Изменение-шрифта-tty">Изменение шрифта tty</a></h3>
+<h3 id="Изменение-шрифта-tty"><a class="header" href="#Изменение-шрифта-tty">Изменение шрифта tty</a></h3>
 <ol>
 <li>
 <p>Копируем необходимый шрифт в папку /usr/share/kbd/consolefonts</p>
@@ -358,7 +358,7 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 </ol>
 <pre><code>FONT=ter-u16n
 </code></pre>
-<h2><a class="header" href="#Создание-пользователя" id="Создание-пользователя">Создание пользователя</a></h2>
+<h2 id="Создание-пользователя"><a class="header" href="#Создание-пользователя">Создание пользователя</a></h2>
 <ol>
 <li>Добавление пользователя <code>max</code></li>
 </ol>
@@ -377,8 +377,8 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <ol start="4">
 <li>Расскоментировать строку <code>#%wheel ALL=(ALL) ALL</code> в <code>/etc/sudoers</code></li>
 </ol>
-<h2><a class="header" href="#Графический-сервер" id="Графический-сервер">Графический сервер</a></h2>
-<h3><a class="header" href="#xorg-server" id="xorg-server">xorg-server</a></h3>
+<h2 id="Графический-сервер"><a class="header" href="#Графический-сервер">Графический сервер</a></h2>
+<h3 id="xorg-server"><a class="header" href="#xorg-server">xorg-server</a></h3>
 <ol>
 <li>Установка <code>xorg-server</code></li>
 </ol>
@@ -454,7 +454,7 @@ Section &quot;InputClass&quot;
     Option &quot;SHMConfig&quot; &quot;on&quot;
 EndSection
 </code></pre>
-<h3><a class="header" href="#bluetooth" id="bluetooth">Bluetooth</a></h3>
+<h3 id="bluetooth"><a class="header" href="#bluetooth">Bluetooth</a></h3>
 <ol>
 <li>
 <p>Необходимые пакеты <code>blueman</code></p>
@@ -463,12 +463,12 @@ EndSection
 <p>Включаем службы</p>
 </li>
 </ol>
-<pre><code>$ systemctl enable bluetooth.service
+<pre><code>systemctl enable bluetooth.service
 </code></pre>
 <ol start="3">
 <li>Добавляем пользователя в группу</li>
 </ol>
-<pre><code># gpasswd -a max lp
+<pre><code>gpasswd -a max lp
 </code></pre>
 <ol start="4">
 <li>Добавляем blueman-applet в автозагрузку</li>

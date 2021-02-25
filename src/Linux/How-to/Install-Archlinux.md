@@ -11,7 +11,7 @@ $ lsblk
 
 3. Записываем образ на флешку
 ~~~~
-$ sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdc status=progress oflag=sync
+$ sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdc
 ~~~~
 
 ## Базовая установка
@@ -20,7 +20,7 @@ $ sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdc status=progress o
 
 1. Запускаем iwctl
 ~~~~
-$ iwctl
+iwctl
 ~~~~
 
 2. Получаем список устройств 
@@ -313,13 +313,13 @@ EndSection
 2. Включаем службы
 
 ~~~~
-$ systemctl enable bluetooth.service
+systemctl enable bluetooth.service
 ~~~~
 
 3. Добавляем пользователя в группу
  
 ~~~~
-# gpasswd -a max lp
+gpasswd -a max lp
 ~~~~
 
 4. Добавляем blueman-applet в автозагрузку

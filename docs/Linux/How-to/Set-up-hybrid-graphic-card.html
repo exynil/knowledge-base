@@ -163,20 +163,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#Гибридная-графика" id="Гибридная-графика">Гибридная графика</a></h1>
-<h2><a class="header" href="#Система" id="Система">Система</a></h2>
+                        <h1 id="Гибридная-графика"><a class="header" href="#Гибридная-графика">Гибридная графика</a></h1>
+<h2 id="Система"><a class="header" href="#Система">Система</a></h2>
 <p>LAPTOP: <code>DELL G5 5587</code>
 GPU: <code>NVIDIA GeForce GTX 1060 Mobile </code>
 GPU: <code>Intel UHD Graphics 630</code>
 OS: <code>ArchLinux</code>
 WM: <code>Bspwm</code></p>
-<h2><a class="header" href="#Зачем-это-всё" id="Зачем-это-всё">Зачем это всё</a></h2>
+<h2 id="Зачем-это-всё"><a class="header" href="#Зачем-это-всё">Зачем это всё</a></h2>
 <p>Здесь собраны данные по настройке гибридной графики, успешные варианты настройки xorg, результаты экспериметов и другая полезная информация.</p>
-<h2><a class="header" href="#Свободные-драйвера" id="Свободные-драйвера">Свободные драйвера</a></h2>
+<h2 id="Свободные-драйвера"><a class="header" href="#Свободные-драйвера">Свободные драйвера</a></h2>
 <ol>
 <li>Необходимые пакеты: <code>xf86-video-intel</code> <code>xf86-video-nouveau</code></li>
 </ol>
-<h3><a class="header" href="#Вариант-1" id="Вариант-1">Вариант 1</a></h3>
+<h3 id="Вариант-1"><a class="header" href="#Вариант-1">Вариант 1</a></h3>
 <ol start="2">
 <li>Конфигурационный файл <code>xorg.conf</code></li>
 </ol>
@@ -193,15 +193,15 @@ Section &quot;Device&quot;
 	BusID &quot;PCI:1:0:0&quot;
 EndSection
 </code></pre>
-<h3><a class="header" href="#Результат" id="Результат">Результат</a></h3>
+<h3 id="Результат"><a class="header" href="#Результат">Результат</a></h3>
 <p>Тиринг: только на внешнем мониторе
 Встроенный монитор: Работает
 Внешний монитора: Работает</p>
-<h2><a class="header" href="#Несвободные-драйвера" id="Несвободные-драйвера">Несвободные драйвера</a></h2>
+<h2 id="Несвободные-драйвера"><a class="header" href="#Несвободные-драйвера">Несвободные драйвера</a></h2>
 <ol>
 <li>Необходимые пакеты: <code>xf86-video-intel</code> <code>nvidia</code> <code>lib32-nvidia-utils</code> <code>nvidia-utils</code> <code>nvidia-settings</code></li>
 </ol>
-<h3><a class="header" href="#Варинат-1" id="Варинат-1">Варинат 1</a></h3>
+<h3 id="Варинат-1"><a class="header" href="#Варинат-1">Варинат 1</a></h3>
 <ol start="2">
 <li>Конфигурационный файл <code>xorg.conf</code></li>
 </ol>
@@ -256,12 +256,12 @@ Section &quot;InputClass&quot;
 	Option &quot;TappingButtonMap&quot; &quot;lrm&quot;
 EndSection
 </code></pre>
-<h3><a class="header" href="#Результат-1" id="Результат-1">Результат</a></h3>
+<h3 id="Результат-1"><a class="header" href="#Результат-1">Результат</a></h3>
 <p>Тиринг: нету
 Встроенный монитор: Работает
 Внешний монитора: Работает
 Nvidia: Не работает</p>
-<h3><a class="header" href="#Варинат-2" id="Варинат-2">Варинат 2</a></h3>
+<h3 id="Варинат-2"><a class="header" href="#Варинат-2">Варинат 2</a></h3>
 <pre><code>Section &quot;ServerLayout&quot;
     Identifier     &quot;Layout0&quot;
     Screen      0  &quot;Screen0&quot;
@@ -314,7 +314,7 @@ EndSection
 <p>Добавить в автозагрузку</p>
 <pre><code>nvidia-settings --assign CurrentMetaMode=&quot;nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }&quot;
 </code></pre>
-<h3><a class="header" href="#Результат-2" id="Результат-2">Результат</a></h3>
+<h3 id="Результат-2"><a class="header" href="#Результат-2">Результат</a></h3>
 <p>Тиринг: нету
 Встроенный монитор: Не работает
 Внешний монитора: Работает

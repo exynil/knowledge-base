@@ -163,9 +163,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#Решение-проблем" id="Решение-проблем">Решение проблем</a></h1>
-<h2><a class="header" href="#jupyter-notebook" id="jupyter-notebook">Jupyter Notebook</a></h2>
-<h3><a class="header" href="#Ошибка-при-чтении-больших-файлов" id="Ошибка-при-чтении-больших-файлов">Ошибка при чтении больших файлов</a></h3>
+                        <h1 id="Решение-проблем"><a class="header" href="#Решение-проблем">Решение проблем</a></h1>
+<h2 id="jupyter-notebook"><a class="header" href="#jupyter-notebook">Jupyter Notebook</a></h2>
+<h3 id="Ошибка-при-чтении-больших-файлов"><a class="header" href="#Ошибка-при-чтении-больших-файлов">Ошибка при чтении больших файлов</a></h3>
 <p><span style="color:#bf616a">Вывод ошибки</span></p>
 <pre><code>IOPub data rate exceeded.
 The notebook server will temporarily stop sending output
@@ -178,27 +178,27 @@ NotebookApp.iopub_data_rate_limit=1000000.0 (bytes/sec)
 NotebookApp.rate_limit_window=3.0 (secs)
 </code></pre>
 <p>Увеличить в настройках максимальный размер выходного потока <code>NotebookApp.iopub_data_rate_limit</code></p>
-<h2><a class="header" href="#polybar" id="polybar">Polybar</a></h2>
-<h3><a class="header" href="#В-polybar-не-работают-модули-wlan-network-speed-down-и-network-speed-ip" id="В-polybar-не-работают-модули-wlan-network-speed-down-и-network-speed-ip">В polybar не работают модули wlan, network-speed-down и network-speed-ip</a></h3>
+<h2 id="polybar"><a class="header" href="#polybar">Polybar</a></h2>
+<h3 id="В-polybar-не-работают-модули-wlan-network-speed-down-и-network-speed-ip"><a class="header" href="#В-polybar-не-работают-модули-wlan-network-speed-down-и-network-speed-ip">В polybar не работают модули wlan, network-speed-down и network-speed-ip</a></h3>
 <p>Установить правильный интерфейс беспроводной сети в настройке модуля</p>
 <pre><code>ip link
 </code></pre>
-<h2><a class="header" href="#flameshot" id="flameshot">Flameshot</a></h2>
-<h3><a class="header" href="#Не-запускается-flameshot-gui" id="Не-запускается-flameshot-gui">Не запускается flameshot gui</a></h3>
+<h2 id="flameshot"><a class="header" href="#flameshot">Flameshot</a></h2>
+<h3 id="Не-запускается-flameshot-gui"><a class="header" href="#Не-запускается-flameshot-gui">Не запускается flameshot gui</a></h3>
 <p>Необходимо запускать X через dbus-launch</p>
 <pre><code>exec dbus-launch i3
 </code></pre>
-<h2><a class="header" href="#pycharm" id="pycharm">PyCharm</a></h2>
-<h3><a class="header" href="#Серое-окно" id="Серое-окно">Серое окно</a></h3>
+<h2 id="pycharm"><a class="header" href="#pycharm">PyCharm</a></h2>
+<h3 id="Серое-окно"><a class="header" href="#Серое-окно">Серое окно</a></h3>
 <p>Экспортировать переменную в окружение</p>
 <pre><code>export _JAVA_AWT_WM_NONREPARENTING=1
 </code></pre>
-<h2><a class="header" href="#Разное" id="Разное">Разное</a></h2>
-<h3><a class="header" href="#Пропадает-звук-после-воспроизведение-аудио" id="Пропадает-звук-после-воспроизведение-аудио">Пропадает звук после воспроизведение аудио</a></h3>
+<h2 id="Разное"><a class="header" href="#Разное">Разное</a></h2>
+<h3 id="Пропадает-звук-после-воспроизведение-аудио"><a class="header" href="#Пропадает-звук-после-воспроизведение-аудио">Пропадает звук после воспроизведение аудио</a></h3>
 <p>Установить пакет pulseaudio-alsa</p>
 <pre><code>pacman -S pulseaudio-alsa
 </code></pre>
-<h3><a class="header" href="#Тиринг" id="Тиринг">Тиринг</a></h3>
+<h3 id="Тиринг"><a class="header" href="#Тиринг">Тиринг</a></h3>
 <p>Включить опцию &quot;TearFree&quot; в /etc/X11/xorg.conf.d/20-intel.conf</p>
 <pre><code>Section &quot;Device&quot;
     Identifier &quot;Intel&quot;
