@@ -706,8 +706,8 @@ git config --global user.email &quot;exynil@gmail.com&quot;
 <ol>
 <li>На смартфон устанавливаем две программы </li>
 </ol>
-<p><a href="https://f-droid.org/ru/packages/dev.msfjarvis.aps/">Password Store</a> - для управления пароля в смартфоне
-<a href="https://f-droid.org/en/packages/org.sufficientlysecure.keychain/">OpenKeychain</a> - для управления ключами</p>
+<p><a href="https://f-droid.org/ru/packages/dev.msfjarvis.aps/">Password Store</a> - для управления пароля в смартфоне</p>
+<p><a href="https://f-droid.org/en/packages/org.sufficientlysecure.keychain/">OpenKeychain</a> - для управления ключами</p>
 <h3 id="openkeychain"><a class="header" href="#openkeychain">OpenKeychain</a></h3>
 <ol>
 <li>
@@ -1463,12 +1463,12 @@ Nvidia: Работает</p>
 <pre><code>$ xrandr --query | grep &quot; connected&quot;' | awk '{print $1}'
 </code></pre>
 <p>Извлечение слов в ковычках  (regexp)</p>
-<pre><code>echo 'WM_CLASS = &quot;Toolkit&quot;, &quot;firefox&quot; | grep -Po '&quot;\K[^,&quot;]+'
+<pre><code>$ echo 'WM_CLASS = &quot;Toolkit&quot;, &quot;firefox&quot; | grep -Po '&quot;\K[^,&quot;]+'
 </code></pre>
 <p>Извлечение Мак адреса (regexp)</p>
-<pre><code>ip link | grep -oiE &quot;([0-9a-f]{2}:){5}[0-9a-f]{2}&quot;
+<pre><code>$ ip link | grep -oiE &quot;([0-9a-f]{2}:){5}[0-9a-f]{2}&quot;
 </code></pre>
-<p>Извлечение теста из тега в  html</p>
+<p>Извлечение текста из тега в  html</p>
 <pre><code>url=&quot;https://example.com/&quot;
 
 reg_exp=&quot;(?&lt;=&lt;span class=\&quot;class-name\&quot;&gt;)([^&lt;/span&gt;]*)&quot;
@@ -1476,10 +1476,10 @@ reg_exp=&quot;(?&lt;=&lt;span class=\&quot;class-name\&quot;&gt;)([^&lt;/span&gt
 echo $(curl -s &quot;$url&quot; | grep -oP &quot;$reg\_exp&quot;)
 </code></pre>
 <p>Извлечение строк не начинающиеся на символ решетка</p>
-<pre><code>cat file.txt | grep &quot;^[^#]&quot;
+<pre><code>$ grep &quot;^[^#]&quot; file.txt
 </code></pre>
 <p>Поиск текста в файлах</p>
-<pre><code>grep -rnwe 'some text'
+<pre><code>$ grep -rnwe 'some text'
 </code></pre>
 <h1 id="Горячие-клавиши"><a class="header" href="#Горячие-клавиши">Горячие клавиши</a></h1>
 <pre><code>super
@@ -1645,7 +1645,7 @@ NotebookApp.rate_limit_window=3.0 (secs)
     Option &quot;TearFree&quot; &quot;true&quot;
 EndSection
 </code></pre>
-<h1 id="Файлы"><a class="header" href="#Файлы">Файлы</a></h1>
+<p>file.txt# Файлы</p>
 <p>Меню загрузки</p>
 <p><code>/boot/loader/loader.conf</code></p>
 <p>Файл с инструкцией по монтированию блочных устройств</p>

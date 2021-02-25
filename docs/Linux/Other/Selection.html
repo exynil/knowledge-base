@@ -170,12 +170,12 @@
 <pre><code>$ xrandr --query | grep &quot; connected&quot;' | awk '{print $1}'
 </code></pre>
 <p>Извлечение слов в ковычках  (regexp)</p>
-<pre><code>echo 'WM_CLASS = &quot;Toolkit&quot;, &quot;firefox&quot; | grep -Po '&quot;\K[^,&quot;]+'
+<pre><code>$ echo 'WM_CLASS = &quot;Toolkit&quot;, &quot;firefox&quot; | grep -Po '&quot;\K[^,&quot;]+'
 </code></pre>
 <p>Извлечение Мак адреса (regexp)</p>
-<pre><code>ip link | grep -oiE &quot;([0-9a-f]{2}:){5}[0-9a-f]{2}&quot;
+<pre><code>$ ip link | grep -oiE &quot;([0-9a-f]{2}:){5}[0-9a-f]{2}&quot;
 </code></pre>
-<p>Извлечение теста из тега в  html</p>
+<p>Извлечение текста из тега в  html</p>
 <pre><code>url=&quot;https://example.com/&quot;
 
 reg_exp=&quot;(?&lt;=&lt;span class=\&quot;class-name\&quot;&gt;)([^&lt;/span&gt;]*)&quot;
@@ -183,10 +183,10 @@ reg_exp=&quot;(?&lt;=&lt;span class=\&quot;class-name\&quot;&gt;)([^&lt;/span&gt
 echo $(curl -s &quot;$url&quot; | grep -oP &quot;$reg\_exp&quot;)
 </code></pre>
 <p>Извлечение строк не начинающиеся на символ решетка</p>
-<pre><code>cat file.txt | grep &quot;^[^#]&quot;
+<pre><code>$ grep &quot;^[^#]&quot; file.txt
 </code></pre>
 <p>Поиск текста в файлах</p>
-<pre><code>grep -rnwe 'some text'
+<pre><code>$ grep -rnwe 'some text'
 </code></pre>
 
                     </main>

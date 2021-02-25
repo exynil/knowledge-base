@@ -108,6 +108,7 @@ $ git push origin master
 1. На смартфон устанавливаем две программы 
 
 [Password Store](https://f-droid.org/ru/packages/dev.msfjarvis.aps/) - для управления пароля в смартфоне
+
 [OpenKeychain](https://f-droid.org/en/packages/org.sufficientlysecure.keychain/) - для управления ключами
 
 ### OpenKeychain

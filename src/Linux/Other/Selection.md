@@ -12,15 +12,15 @@ $ xrandr --query | grep " connected"' | awk '{print $1}'
 
 Извлечение слов в ковычках  (regexp)
 ~~~~
-echo 'WM_CLASS = "Toolkit", "firefox" | grep -Po '"\K[^,"]+'
+$ echo 'WM_CLASS = "Toolkit", "firefox" | grep -Po '"\K[^,"]+'
 ~~~~
 
 Извлечение Мак адреса (regexp)
 ~~~~
-ip link | grep -oiE "([0-9a-f]{2}:){5}[0-9a-f]{2}"
+$ ip link | grep -oiE "([0-9a-f]{2}:){5}[0-9a-f]{2}"
 ~~~~
 
-Извлечение теста из тега в  html
+Извлечение текста из тега в  html
 ~~~~
 url="https://example.com/"
 
@@ -31,10 +31,10 @@ echo $(curl -s "$url" | grep -oP "$reg\_exp")
 
 Извлечение строк не начинающиеся на символ решетка
 ~~~~
-cat file.txt | grep "^[^#]"
+$ grep "^[^#]" file.txt
 ~~~~
 
 Поиск текста в файлах
 ~~~~
-grep -rnwe 'some text'
+$ grep -rnwe 'some text'
 ~~~~
