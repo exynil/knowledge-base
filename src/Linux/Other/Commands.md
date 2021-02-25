@@ -8,14 +8,6 @@
 $ xrandr --listproviders
 ~~~~
 
-## ffmpeg
-
-Обрезка видео
-
-~~~~
-$ ffmpeg -ss 00:00:00 -i input.mp4 -to 00:02:00 -c copy output.mp4
-~~~~
-
 ## Остальное
 
 Вывод UUID разделов
@@ -136,4 +128,9 @@ $ sed -i 's/maxim/max/g' *.rasi
 Замена текста в файлах с расширением ".md" во всех подпапках  
 ~~~~
 $ find . -type f -name "*.md" -exec sed -i'' -e 's/abc/ABC/g' {} +
+~~~~
+
+Конвертация всех `png` в `jpg`
+~~~~
+$ magick mogrify -format jpg *.png
 ~~~~
