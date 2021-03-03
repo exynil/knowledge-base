@@ -20,7 +20,7 @@
         - [Смотреть видео с YouTube в mpv](Linux/How-to/Watch-YouTube-videos-in-mpv.md)
         - [Синхронизировать время](Linux/How-to/Synchronize-time.md)
         - [Создать Clonezilla Live USB](Linux/How-to/Create-clonezilla-live-usb.md)
-        - [Натсроить гибридную графику](Linux/How-to/Set-up-hybrid-graphic-card.md)
+        - [Настроить гибридную графику](Linux/How-to/Set-up-hybrid-graphic-card.md)
     - [Программы]()
         - [fdisk](Linux/Apps/fdisk.md)
         - [gpg](Linux/Apps/gpg.md)
