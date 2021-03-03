@@ -29,6 +29,7 @@
         - [mkfs](Linux/Apps/mkfs.md)
         - [ranger](Linux/Apps/ranger.md)
         - [youtube-dl](Linux/Apps/youtube-dl.md)
+        - [docker](Linux/Apps/docker.md)
     - [Разное]()
         - [Выборка](Linux/Other/Selection.md)
         - [Горячие клавиши](Linux/Other/Hot-keys.md)
