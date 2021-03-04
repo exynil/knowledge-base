@@ -31,6 +31,7 @@
         - [youtube-dl](Linux/Apps/youtube-dl.md)
         - [docker](Linux/Apps/docker.md)
         - [pacman](Linux/Apps/pacman.md)
+        - [bash](Linux/Apps/bash.md)
     - [Разное]()
         - [Выборка](Linux/Other/Selection.md)
         - [Горячие клавиши](Linux/Other/Hot-keys.md)
