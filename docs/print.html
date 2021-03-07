@@ -1570,6 +1570,9 @@ rc.conf
 <p>Замена одного черного цвета на белый</p>
 <pre><code>$ convert wallpaper.png -fuzz 50% -fill white -opaque black result.png
 </code></pre>
+<p>Поиск наиболее часто встречающегося цвета</p>
+<pre><code>convert &quot;image.png&quot; -format %c +dither -depth 5  histogram:info: | sort -nr | head -1 | grep -Eo '#[A-F0-9]{6}'
+</code></pre>
 <h3 id="хештеги--imagemagick"><a class="header" href="#хештеги--imagemagick">хештеги:  #imagemagick</a></h3>
 <h1 id="Выборка"><a class="header" href="#Выборка">Выборка</a></h1>
 <p>Получение списка подключенных мониторов</p>
