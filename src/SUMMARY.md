@@ -41,5 +41,8 @@
         - [Проблемы](Linux/Other/Troubleshooting.md)
         - [Файлы](Linux/Other/Files.md)
         - [DPMS](Linux/Other/DPMS.md)
+- [Алгоритмы]()
+    - [Бинарный поиск](Algorithms/binary-search.md)
+    - [Сортировка выбором](Algorithms/selection-sort.md)
 - [Как это работает]()
     - [RSA](How-does-it-work/RSA.md)
