@@ -22,6 +22,7 @@
         - [Создать Clonezilla Live USB](Linux/How-to/Create-clonezilla-live-usb.md)
         - [Настроить гибридную графику](Linux/How-to/Set-up-hybrid-graphic-card.md)
     - [Программы]()
+        - [ffmpeg](Linux/Apps/ffmpeg.md)
         - [fdisk](Linux/Apps/fdisk.md)
         - [gpg](Linux/Apps/gpg.md)
         - [git](Linux/Apps/git.md)
