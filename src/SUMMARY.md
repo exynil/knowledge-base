@@ -48,4 +48,8 @@
 - [Как это работает]()
     - [RSA](How-does-it-work/RSA.md)
 - [Работа]()
+    - [PyCharm](Work/PyCharm.md)
+    - [Django](Work/Django.md)
+    - [Django](Work/Jinja.md)
     - [Ошибки](Work/Errors.md)
+    - [Полезные инструменты](Work/Useful-tools.md)

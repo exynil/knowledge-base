@@ -23,3 +23,10 @@ created.  Errno [13]
 ~~~~
 sudo chown -R 10001 *
 ~~~~
+
+## Ошибка с staticfiles
+~~~~
+'staticfiles' is not a registered tag library. Must be one of:
+~~~~
+
+Решение: Заменить `staticfiles` на `static`

@@ -39,5 +39,9 @@ $ docker system prune -a
 $ docker rm $(docker container ls -aq)
 ~~~~
 
+Информация
+~~~~
+$ docker info
+~~~~
 
 ### хештеги:  #docker
