@@ -34,5 +34,10 @@ $ docker system prune
 $ docker system prune -a
 ~~~~
 
+Удалление всех контейнеров
+~~~~
+$ docker rm $(docker container ls -aq)
+~~~~
+
 
 ### хештеги:  #docker

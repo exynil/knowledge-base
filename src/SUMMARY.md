@@ -47,3 +47,5 @@
     - [Сортировка выбором](Algorithms/selection-sort.md)
 - [Как это работает]()
     - [RSA](How-does-it-work/RSA.md)
+- [Работа]()
+    - [Ошибки](Work/Errors.md)
