@@ -50,6 +50,6 @@
 - [Работа]()
     - [PyCharm](Work/PyCharm.md)
     - [Django](Work/Django.md)
-    - [Django](Work/Jinja.md)
+    - [Jinja](Work/Jinja.md)
     - [Ошибки](Work/Errors.md)
     - [Полезные инструменты](Work/Useful-tools.md)
