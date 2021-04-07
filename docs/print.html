@@ -1408,6 +1408,32 @@ Nvidia: Работает</p>
 </code></pre>
 <h3 id="хештеги-защита-безопасность-gpg-pgp"><a class="header" href="#хештеги-защита-безопасность-gpg-pgp">хештеги: #защита #безопасность #gpg #pgp</a></h3>
 <h1 id="git"><a class="header" href="#git">git</a></h1>
+<h2 id="Первоначальная-настройка"><a class="header" href="#Первоначальная-настройка">Первоначальная настройка</a></h2>
+<pre><code>$ git config --global user.name &quot;Maxim Kim&quot;
+$ git config --global user.email exynil@gmail.com
+</code></pre>
+<h2 id="Команды"><a class="header" href="#Команды">Команды</a></h2>
+<p>Список локальных веток</p>
+<pre><code>$ git branch
+</code></pre>
+<p>Список удаленных веток</p>
+<pre><code>$ git branch -r
+</code></pre>
+<p>Список всех веток</p>
+<pre><code>$ git branch -a
+</code></pre>
+<p>Добавить все изменения</p>
+<pre><code>$ git add .
+</code></pre>
+<p>Добавить коммит</p>
+<pre><code>$ git commit -m &quot;added index.html&quot;
+</code></pre>
+<p>Отправка на удаленный репозиторий</p>
+<pre><code>$ git push origin master
+</code></pre>
+<p>Скачать изменения с удаленного репозитория</p>
+<pre><code>$ git pull
+</code></pre>
 <h2 id="Изменение-ссылки-https-на-ssh"><a class="header" href="#Изменение-ссылки-https-на-ssh">Изменение ссылки https на ssh</a></h2>
 <ol>
 <li>Просмотр текущей ссылки</li>
@@ -1500,7 +1526,7 @@ Nvidia: Работает</p>
 <p>Добавление пользователя в группу</p>
 <pre><code># gpasswd -a max docker
 </code></pre>
-<h2 id="Команды"><a class="header" href="#Команды">Команды</a></h2>
+<h2 id="Команды-1"><a class="header" href="#Команды-1">Команды</a></h2>
 <p>Просмотр контейнеров</p>
 <pre><code>$ docker images
 </code></pre>
@@ -1661,7 +1687,7 @@ echo $(curl -s &quot;$url&quot; | grep -oP &quot;$reg\_exp&quot;)
 
 
 </code></pre>
-<h1 id="Команды-1"><a class="header" href="#Команды-1">Команды</a></h1>
+<h1 id="Команды-2"><a class="header" href="#Команды-2">Команды</a></h1>
 <h2 id="xrandr"><a class="header" href="#xrandr">xrandr</a></h2>
 <p>Вывод провайдеров</p>
 <pre><code>$ xrandr --listproviders
