@@ -1245,6 +1245,21 @@ Nvidia: Работает</p>
 <p>Перезагружаемся</p>
 </li>
 </ol>
+<h2 id="Подключение-через-bluetoothctl"><a class="header" href="#Подключение-через-bluetoothctl">Подключение через bluetoothctl</a></h2>
+<pre><code># bluetoothctl
+</code></pre>
+<p>Начасить поиск устройв</p>
+<pre><code>[bluetooth]# scan on
+</code></pre>
+<p>Добавить в список доверенных устройст</p>
+<pre><code>[bluetooth]# trust xx:xx:xx:xx:xx
+</code></pre>
+<p>Сопряжение</p>
+<pre><code>[bluetooth]# pair xx:xx:xx:xx:xx
+</code></pre>
+<p>Подсоединиться</p>
+<pre><code>[bluetooth]# connect xx:xx:xx:xx:xx
+</code></pre>
 <h3 id="хештеги-bluetooth"><a class="header" href="#хештеги-bluetooth">хештеги: #bluetooth</a></h3>
 <h1 id="ffmpeg"><a class="header" href="#ffmpeg">ffmpeg</a></h1>
 <h2 id="Конвертация-видео-в-gif"><a class="header" href="#Конвертация-видео-в-gif">Конвертация видео в gif</a></h2>
