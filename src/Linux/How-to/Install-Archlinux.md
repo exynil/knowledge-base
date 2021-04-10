@@ -306,20 +306,5 @@ Section "InputClass"
 EndSection
 ~~~~
 
-### Bluetooth
 
-1. Необходимые пакеты `blueman`
-
-2. Включаем службы
-
-~~~~
-systemctl enable bluetooth.service
-~~~~
-
-3. Добавляем пользователя в группу
- 
-~~~~
-gpasswd -a max lp
-~~~~
-
-4. Добавляем blueman-applet в автозагрузку
+### хештеги: #archlinux #os 
