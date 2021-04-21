@@ -894,19 +894,53 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 <p>Открываем доступ локальным пользователя: /etc/vsftpd.conf</p>
 </li>
 </ol>
-<pre><code>local_enable=YES
+<pre><code>anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+local_umask=022
+dirmessage_enable=YES
+xferlog_enable=YES
+connect_from_port_20=YES
+ascii_upload_enable=YES
+ascii_download_enable=YES
+ftpd_banner=Welcome to My FTP.
+chroot_local_user=YES
+allow_writeable_chroot=YES
+listen=YES
+pam_service_name=vsftpd
+userlist_deny=NO
+userlist_file=/etc/vsftpd/list_user_ftp
+local_root=/media/hdd/ftp
+pasv_min_port=50000
+pasv_max_port=50088
+seccomp_sandbox=NO
 </code></pre>
 <ol start="3">
-<li>Открываем возможность редактирвоания: /etc/vsftpd.conf</li>
+<li>Создаём группу</li>
 </ol>
-<pre><code>write_enable=YES
-</code></pre>
-<ol start="3">
-<li>Отключаем песочницу: /etc/vsftpd.conf</li>
-</ol>
-<pre><code>seccomp_sandbox=NO
+<pre><code># groupadd ftpgroup
 </code></pre>
 <ol start="4">
+<li>Создаём пользователя</li>
+</ol>
+<pre><code># useradd -G ftpgroup ftpuser
+</code></pre>
+<ol start="5">
+<li>Устанавливаем пароль</li>
+</ol>
+<pre><code># passwd ftpuser
+</code></pre>
+<ol start="6">
+<li>Создаём папку</li>
+</ol>
+<pre><code># mkdir -p /media/hdd/ftp
+</code></pre>
+<ol start="7">
+<li>Изменяем владельца</li>
+</ol>
+<pre><code># chown -R root:ftpgroup /media/hdd/ftp
+</code></pre>
+<ol start="3">
 <li>Запускаем сервис</li>
 </ol>
 <pre><code>$ systemctl start vsftpd.service
@@ -2086,21 +2120,6 @@ admin.site.register(Example)
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         
