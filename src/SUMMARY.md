@@ -36,6 +36,7 @@
         - [bash](Linux/Apps/bash.md)
         - [imagemagick](Linux/Apps/imagemagick.md)
         - [nmap](Linux/Apps/nmap.md)
+        - [sort](Linux/Apps/sort.md)
     - [Разное]()
         - [Выборка](Linux/Other/Selection.md)
         - [Горячие клавиши](Linux/Other/Hot-keys.md)
