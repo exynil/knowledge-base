@@ -50,6 +50,8 @@
 - [Как это работает]()
     - [RSA](How-does-it-work/RSA.md)
 - [Работа]()
+    - [Команды]()
+        - [SQL](Work/Commands/sql.md)
     - [PyCharm](Work/PyCharm.md)
     - [Django](Work/Django.md)
     - [Jinja](Work/Jinja.md)
