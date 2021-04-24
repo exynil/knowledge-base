@@ -22,6 +22,7 @@
         - [Создать Clonezilla Live USB](Linux/How-to/Create-clonezilla-live-usb.md)
         - [Настроить гибридную графику](Linux/How-to/Set-up-hybrid-graphic-card.md)
         - [Настроить bluetooth](Linux/How-to/Set-up-bluetooth.md)
+        - [Создать swap файл](Linux/How-to/Create-swap-file.md)
     - [Программы]()
         - [ffmpeg](Linux/Apps/ffmpeg.md)
         - [fdisk](Linux/Apps/fdisk.md)
