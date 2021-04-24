@@ -218,12 +218,17 @@ seccomp_sandbox=NO
 </ol>
 <pre><code># chown -R root:ftpgroup /media/hdd/ftp
 </code></pre>
-<ol start="3">
+<ol start="8">
+<li>Изменяем доступ к папке</li>
+</ol>
+<pre><code># chmod 770 /media/hdd/ftp
+</code></pre>
+<ol start="9">
 <li>Запускаем сервис</li>
 </ol>
 <pre><code>$ systemctl start vsftpd.service
 </code></pre>
-<ol start="4">
+<ol start="10">
 <li>Подключаемся на другом устройстве</li>
 </ol>
 <h3 id="хештеги--ftp-vsftpd"><a class="header" href="#хештеги--ftp-vsftpd">хештеги:  #ftp #vsftpd</a></h3>
@@ -265,21 +270,6 @@ seccomp_sandbox=NO
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         

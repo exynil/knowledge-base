@@ -52,12 +52,17 @@ seccomp_sandbox=NO
 # chown -R root:ftpgroup /media/hdd/ftp
 ~~~~
 
-3. Запускаем сервис
+8. Изменяем доступ к папке
+~~~~
+# chmod 770 /media/hdd/ftp
+~~~~
+
+9. Запускаем сервис
 ~~~~
 $ systemctl start vsftpd.service
 ~~~~
 
-4. Подключаемся на другом устройстве
+10. Подключаемся на другом устройстве
 
 
 

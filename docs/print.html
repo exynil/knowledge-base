@@ -947,12 +947,17 @@ seccomp_sandbox=NO
 </ol>
 <pre><code># chown -R root:ftpgroup /media/hdd/ftp
 </code></pre>
-<ol start="3">
+<ol start="8">
+<li>Изменяем доступ к папке</li>
+</ol>
+<pre><code># chmod 770 /media/hdd/ftp
+</code></pre>
+<ol start="9">
 <li>Запускаем сервис</li>
 </ol>
 <pre><code>$ systemctl start vsftpd.service
 </code></pre>
-<ol start="4">
+<ol start="10">
 <li>Подключаемся на другом устройстве</li>
 </ol>
 <h3 id="хештеги--ftp-vsftpd"><a class="header" href="#хештеги--ftp-vsftpd">хештеги:  #ftp #vsftpd</a></h3>
@@ -2090,7 +2095,7 @@ print(selectionSort([5, 3, 6, 2, 10]))
 <p>Источник: <a href="http://www.michurin.net/computer-science/rsa.html">http://www.michurin.net/computer-science/rsa.html</a></p>
 <h3 id="xештеги-rsa-gnupg-безопасность-шифрование"><a class="header" href="#xештеги-rsa-gnupg-безопасность-шифрование">xештеги: #rsa #gnupg #безопасность #шифрование</a></h3>
 <h1 id="Полезные-команды-sql"><a class="header" href="#Полезные-команды-sql">Полезные команды SQL</a></h1>
-<p>Вывод колиства строк в каждой таблице</p>
+<p>Вывод количества строк в каждой таблице</p>
 <pre><code>SELECT
       QUOTENAME(SCHEMA_NAME(sOBJ.schema_id)) + '.' + QUOTENAME(sOBJ.name) AS [TableName]
       , SUM(sPTN.Rows) AS [RowCount]
@@ -2177,21 +2182,6 @@ admin.site.register(Example)
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         

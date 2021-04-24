@@ -1,6 +1,6 @@
 # Полезные команды SQL
 
-Вывод колиства строк в каждой таблице
+Вывод количества строк в каждой таблице
 ~~~~
 SELECT
       QUOTENAME(SCHEMA_NAME(sOBJ.schema_id)) + '.' + QUOTENAME(sOBJ.name) AS [TableName]
