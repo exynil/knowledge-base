@@ -7,6 +7,11 @@
 # gpasswd -a max docker
 ~~~~
 
+Запуск службы
+~~~~
+# systemctl start docker
+~~~~
+
 ## Команды
 
 Просмотр контейнеров
