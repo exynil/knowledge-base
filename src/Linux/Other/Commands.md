@@ -134,3 +134,8 @@ $ find . -type f -name "*.md" -exec sed -i'' -e 's/abc/ABC/g' {} +
 ~~~~
 $ magick mogrify -format jpg *.png
 ~~~~
+
+Добавление пустых строк между строками
+~~~~
+$ ls | sed G
+~~~~

@@ -39,6 +39,7 @@
         - [nmap](Linux/Apps/nmap.md)
         - [sort](Linux/Apps/sort.md)
         - [gource](Linux/Apps/gource.md)
+        - [postgresql](Linux/Apps/postgresql.md)
     - [Разное]()
         - [Выборка](Linux/Other/Selection.md)
         - [Горячие клавиши](Linux/Other/Hot-keys.md)
