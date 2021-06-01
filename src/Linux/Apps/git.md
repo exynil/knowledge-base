@@ -7,7 +7,7 @@ $ git config --global user.name "Maxim Kim"
 $ git config --global user.email exynil@gmail.com
 ~~~~
 
- ## Команды
+## Команды
 
 Список локальных веток
 ~~~~
@@ -47,25 +47,41 @@ $ git pull
 
 ## Изменение ссылки https на ssh
 
- 1. Просмотр текущей ссылки
- ~~~~
- git remote -v
- ~~~~
- 
- 2. Изменение ссылки
- ~~~~
- $ git remote set-url origin git@github.com:exynil/example.git
- ~~~~
+1. Просмотр текущей ссылки
+~~~~
+git remote -v
+~~~~
 
- 3. Полный список неотслеживаемых файлов
- ~~~~
+2. Изменение ссылки
+~~~~
+$ git remote set-url origin git@github.com:exynil/example.git
+~~~~
+
+## Доп. команды
+
+Полный список неотслеживаемых файлов
+~~~~
 $ git status -u
- ~~~~
+~~~~
 
- 4. Скачать определенную ветку
- ~~~~
+
+
+## Ветки
+
+Создание ветки
+~~~~
+git branch <branchname>
+~~~~
+
+Переключиться на ветку
+~~~~
+git checkout <branchname>
+~~~~
+
+Скачать определенную ветку
+~~~~
 $ git clone -b <branchname> <remote-repo-url>
- ~~~~
+~~~~
 
 
- ### хештеги: #git #система_контроля_версий
+### хештеги: #git #система_контроля_версий
