@@ -1521,7 +1521,7 @@ Nvidia: Работает</p>
 <pre><code>$ git config --global user.name &quot;Maxim Kim&quot;
 $ git config --global user.email exynil@gmail.com
 </code></pre>
-<h2 id="Команды"><a class="header" href="#Команды">Команды</a></h2>
+<h2 id="Основные-команды"><a class="header" href="#Основные-команды">Основные команды</a></h2>
 <p>Список локальных веток</p>
 <pre><code>$ git branch
 </code></pre>
@@ -1543,6 +1543,25 @@ $ git config --global user.email exynil@gmail.com
 <p>Скачать изменения с удаленного репозитория</p>
 <pre><code>$ git pull
 </code></pre>
+<p>Полный список неотслеживаемых файлов</p>
+<pre><code>$ git status -u
+</code></pre>
+<h2 id="Откладывание-кода"><a class="header" href="#Откладывание-кода">Откладывание кода</a></h2>
+<p>Откладывание кода</p>
+<pre><code>$ git stash
+</code></pre>
+<p>Применение изменений к рабочей копии</p>
+<pre><code>$ git stash
+</code></pre>
+<p>Применение изменений к рабочей копии без удаления из архива</p>
+<pre><code>$ git stash apply
+</code></pre>
+<p>Откладывание кода для не отслеживаемых файлов</p>
+<pre><code>$ git stash -u
+</code></pre>
+<p>Откладывание кода для не отслеживаемых файлов</p>
+<pre><code>$ git stash -u
+</code></pre>
 <h2 id="Изменение-ссылки-https-на-ssh"><a class="header" href="#Изменение-ссылки-https-на-ssh">Изменение ссылки https на ssh</a></h2>
 <ol>
 <li>Просмотр текущей ссылки</li>
@@ -1553,10 +1572,6 @@ $ git config --global user.email exynil@gmail.com
 <li>Изменение ссылки</li>
 </ol>
 <pre><code>$ git remote set-url origin git@github.com:exynil/example.git
-</code></pre>
-<h2 id="Доп-команды"><a class="header" href="#Доп-команды">Доп. команды</a></h2>
-<p>Полный список неотслеживаемых файлов</p>
-<pre><code>$ git status -u
 </code></pre>
 <h2 id="Ветки"><a class="header" href="#Ветки">Ветки</a></h2>
 <p>Создание ветки</p>
@@ -1642,7 +1657,7 @@ $ git config --global user.email exynil@gmail.com
 <p>Запуск службы</p>
 <pre><code># systemctl start docker
 </code></pre>
-<h2 id="Команды-1"><a class="header" href="#Команды-1">Команды</a></h2>
+<h2 id="Команды"><a class="header" href="#Команды">Команды</a></h2>
 <p>Просмотр контейнеров</p>
 <pre><code>$ docker images
 </code></pre>
@@ -1834,7 +1849,7 @@ echo $(curl -s &quot;$url&quot; | grep -oP &quot;$reg\_exp&quot;)
 
 
 </code></pre>
-<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="Команды-2"><a class="header" href="#Команды-2">Команды</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="Команды-1"><a class="header" href="#Команды-1">Команды</a></h1>
 <h2 id="xrandr"><a class="header" href="#xrandr">xrandr</a></h2>
 <p>Вывод провайдеров</p>
 <pre><code>$ xrandr --listproviders
