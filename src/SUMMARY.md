@@ -24,6 +24,7 @@
         - [Настроить bluetooth](Linux/How-to/Set-up-bluetooth.md)
         - [Создать swap файл](Linux/How-to/Create-swap-file.md)
     - [Программы]()
+        - [cronie](Linux/Apps/cronie.md)
         - [ffmpeg](Linux/Apps/ffmpeg.md)
         - [fdisk](Linux/Apps/fdisk.md)
         - [gpg](Linux/Apps/gpg.md)
