@@ -166,22 +166,25 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="youtube-dl"><a class="header" href="#youtube-dl">youtube-dl</a></h1>
+<h2 id="Скачивание-максимального-качества-видео-и-аудио--объединение-в-формат-mp4"><a class="header" href="#Скачивание-максимального-качества-видео-и-аудио--объединение-в-формат-mp4">Скачивание максимального качества видео и аудио + объединение в формат mp4</a></h2>
+<pre><code>$ youtube-dl -f 'bestvideo+bestaudio/bestvideo+bestaudio' --merge-output-format mp4 [url]
+</code></pre>
 <h2 id="Загрузка-видео"><a class="header" href="#Загрузка-видео">Загрузка видео</a></h2>
 <ol>
 <li>Смотрим возможные варианты для скачивания</li>
 </ol>
-<pre><code>youtube-dl -F [url]
+<pre><code>$ youtube-dl -F [url]
 </code></pre>
 <ol start="2">
 <li>Скачиваем выбранный формат</li>
 </ol>
-<pre><code>youtube-dl -f 140 [url]
+<pre><code>$ youtube-dl -f 140 [url]
 </code></pre>
 <h2 id="Загрузка-плейлиста"><a class="header" href="#Загрузка-плейлиста">Загрузка плейлиста</a></h2>
-<pre><code>youtube-dl -i -f mp4 --yes-playlist [url]
+<pre><code>$ youtube-dl -i -f mp4 --yes-playlist [url]
 </code></pre>
 <h2 id="Загрузка-аудио-в-формате-mp3"><a class="header" href="#Загрузка-аудио-в-формате-mp3">Загрузка аудио в формате mp3</a></h2>
-<pre><code>youtube-dl --output &quot;%(title)s.%(ext)s&quot; --extract-audio --audio-format mp3 [url]
+<pre><code>$ youtube-dl --output &quot;%(title)s.%(ext)s&quot; --extract-audio --audio-format mp3 [url]
 </code></pre>
 <h3 id="хештеги-youtube-dl--youtube"><a class="header" href="#хештеги-youtube-dl--youtube">хештеги: #youtube-dl  #youtube</a></h3>
 
@@ -222,21 +225,6 @@
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         
