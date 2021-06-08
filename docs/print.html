@@ -1383,6 +1383,9 @@ firefox --private-window &quot;$URL&quot; &amp;
 <h2 id="Обрезка-видео"><a class="header" href="#Обрезка-видео">Обрезка видео</a></h2>
 <pre><code>$ ffmpeg -ss 00:00:00 -i input.mp4 -to 00:02:00 -c copy output.mp4
 </code></pre>
+<h2 id="Конвертация-в-mp3"><a class="header" href="#Конвертация-в-mp3">Конвертация в mp3</a></h2>
+<pre><code>ffmpeg -i input.wav -codec:a libmp3lame -qscale:a 2 output.mp3
+</code></pre>
 <h3 id="хештеги--ffmpeg"><a class="header" href="#хештеги--ffmpeg">хештеги:  #ffmpeg</a></h3>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="fdisk"><a class="header" href="#fdisk">fdisk</a></h1>
 <h2 id="Подготовка-2"><a class="header" href="#Подготовка-2">Подготовка</a></h2>
