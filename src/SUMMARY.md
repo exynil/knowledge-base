@@ -41,6 +41,7 @@
         - [sort](Linux/Apps/sort.md)
         - [gource](Linux/Apps/gource.md)
         - [postgresql](Linux/Apps/postgresql.md)
+        - [yay](Linux/Apps/yay.md)
     - [Разное]()
         - [Выборка](Linux/Other/Selection.md)
         - [Горячие клавиши](Linux/Other/Hot-keys.md)
