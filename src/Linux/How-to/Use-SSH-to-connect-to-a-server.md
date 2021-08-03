@@ -43,7 +43,7 @@ $ ssh-keygen
 
 ## Копирование публичного ключа на сервер
 ~~~~
-$ ssh-copy-id
+$ ssh-copy-id -i ~/.ssh/mykey user@host
 ~~~~
 
 

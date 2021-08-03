@@ -990,7 +990,7 @@ EndSectio
 <pre><code>$ ssh-keygen
 </code></pre>
 <h2 id="Копирование-публичного-ключа-на-сервер"><a class="header" href="#Копирование-публичного-ключа-на-сервер">Копирование публичного ключа на сервер</a></h2>
-<pre><code>$ ssh-copy-id
+<pre><code>$ ssh-copy-id -i ~/.ssh/mykey user@host
 </code></pre>
 <h3 id="хештеги--ssh-удаленное_управление"><a class="header" href="#хештеги--ssh-удаленное_управление">хештеги:  #ssh #удаленное_управление</a></h3>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="Просмотр-видео-с-youtube-в-mpv"><a class="header" href="#Просмотр-видео-с-youtube-в-mpv">Просмотр видео с YouTube в mpv</a></h1>
@@ -2251,20 +2251,6 @@ admin.site.register(Example)
 
         </div>
 
-                <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
         
         
