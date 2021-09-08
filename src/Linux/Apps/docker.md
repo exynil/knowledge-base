@@ -44,6 +44,11 @@ $ docker system prune -a
 $ docker rm $(docker container ls -aq)
 ~~~~
 
+Удалление всех томов
+~~~~
+$ docker volume rm $(docker volume ls -q)
+~~~~
+
 Информация
 ~~~~
 $ docker info
