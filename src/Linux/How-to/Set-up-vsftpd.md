@@ -65,5 +65,45 @@ $ systemctl start vsftpd.service
 10. Подключаемся на другом устройстве
 
 
+## VSFTPD для анониманым пользователей
+
+1. Конфигурация vsftpd
+~~~~
+anonymous_enable=YES
+local_enable=YES
+write_enable=YES
+local_umask=022
+anon_upload_enable=YES
+anon_mkdir_write_enable=YES
+anon_root=/media/ftp
+no_anon_password=YES
+allow_writeable_chroot=YES
+dirmessage_enable=YES
+xferlog_enable=YES
+connect_from_port_20=YES
+chroot_local_user=YES
+listen=YES
+pam_service_name=vsftpd
+userlist_deny=NO
+pasv_min_port=50000
+pasv_max_port=50088
+seccomp_sandbox=NO
+~~~~
+
+2. Создать папку
+~~~~
+# mkdir /media/ftp
+~~~~
+
+3. Изменить права
+~~~~
+# chmod -R 775 /media/ftp
+~~~~
+
+4. Изменить владельца
+~~~~
+# chown -R nobody:nogroup /media/ftp
+~~~~
+
 
 ### хештеги:  #ftp #vsftpd
