@@ -14,7 +14,10 @@ rsync -av --delete ~/Pictures /media/flash-drive/backup
 
 `-v` - подробный вывод
 
-`-delete` - удаление файлов отсутствующий в исходной папке
+`--delete` - удаление файлов отсутствующий в исходной папке
+
+`--progress` - показывать прогресс
+
 
 ## Синхронизация по сети
 
@@ -22,8 +25,14 @@ rsync -av --delete ~/Pictures /media/flash-drive/backup
 rsync -av --delete --rsh=ssh [источник] [удаленный_узел]:[приемник]
 ~~~~
 
+### Из локального на удаленный сервер
 ~~~~
 rsync -av --delete --rsh=ssh ~/Pictures alex@alex-pc:~/backup
+~~~~
+
+### Из удаленного сервера на локальный
+~~~~
+rsync -av --delete --rsh=ssh itp@dms-dev.keu.kz:/opt/itp ~/backup/itp
 ~~~~
 
 ### хештеги:  #файлы #синхронизация #бэкап
