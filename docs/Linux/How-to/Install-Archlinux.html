@@ -198,37 +198,32 @@
 <ol start="2">
 <li>Запускаем fdisk</li>
 </ol>
-<pre><code>fdisk /dev/sdb
+<pre><code>fdisk /dev/sdx
 </code></pre>
 <table><thead><tr><th>Раздел</th><th>Размер</th><th>Тип раздела</th><th>Файловая система</th></tr></thead><tbody>
-<tr><td>sdb1</td><td>550MB</td><td>EFI System</td><td>vfat</td></tr>
-<tr><td>sdb2</td><td>Больше 20GB</td><td>Linux filesystem</td><td>ext4</td></tr>
+<tr><td>sdx1</td><td>550MB</td><td>EFI System</td><td>vfat</td></tr>
+<tr><td>sdx2</td><td>Больше 20GB</td><td>Linux filesystem</td><td>ext4</td></tr>
 </tbody></table>
 <ol start="2">
 <li>Форматируем загрузочный раздел</li>
 </ol>
-<pre><code>mkfs.fat -F32 /dev/sdb1
+<pre><code>mkfs.fat -F32 /dev/sdx1
 </code></pre>
 <ol start="3">
-<li>Подключаем устройство как подкачку</li>
-</ol>
-<pre><code>swapon /dev/sdb2
-</code></pre>
-<ol start="4">
 <li>Форматируем корневой раздел</li>
 </ol>
-<pre><code>mkfs.ext4 /dev/sdb3
+<pre><code>mkfs.ext4 /dev/sdx2
 </code></pre>
 <h3 id="Установка-основных-пакетов"><a class="header" href="#Установка-основных-пакетов">Установка основных пакетов</a></h3>
 <ol>
 <li>Монтируем корневой раздел</li>
 </ol>
-<pre><code>mount /dev/sdb2 /mnt
+<pre><code>mount /dev/sdx2 /mnt
 </code></pre>
 <ol start="2">
 <li>Устанавливаем пакеты</li>
 </ol>
-<pre><code>pacstrap /mnt base base-devel linux-lts linux-firmware vim
+<pre><code>pacstrap /mnt base base-devel linux linux-firmware vim
 </code></pre>
 <h3 id="Генерация-таблицы-файловой-системы"><a class="header" href="#Генерация-таблицы-файловой-системы">Генерация таблицы файловой системы</a></h3>
 <pre><code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
@@ -285,7 +280,7 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <ol start="3">
 <li>Монтируем загрузочный раздел</li>
 </ol>
-<pre><code>mount /dev/sdb1 /boot/EFI
+<pre><code>mount /dev/sdx1 /boot/EFI
 </code></pre>
 <ol start="4">
 <li>Устанавливаем <code>grub</code></li>

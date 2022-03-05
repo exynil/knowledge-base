@@ -64,39 +64,34 @@ lsblk
 
 2. Запускаем fdisk
 ~~~~
-fdisk /dev/sdb
+fdisk /dev/sdx
 ~~~~
 
 | Раздел | Размер      | Тип раздела      | Файловая система |
 |--------|-------------|------------------|------------------|
-| sdb1   | 550MB       | EFI System       | vfat             |
-| sdb2   | Больше 20GB | Linux filesystem | ext4             |
+| sdx1   | 550MB       | EFI System       | vfat             |
+| sdx2   | Больше 20GB | Linux filesystem | ext4             |
 
 2. Форматируем загрузочный раздел
 ~~~~
-mkfs.fat -F32 /dev/sdb1
+mkfs.fat -F32 /dev/sdx1
 ~~~~
 
-3. Подключаем устройство как подкачку
+3. Форматируем корневой раздел
 ~~~~
-swapon /dev/sdb2
-~~~~
-
-4. Форматируем корневой раздел
-~~~~
-mkfs.ext4 /dev/sdb3
+mkfs.ext4 /dev/sdx2
 ~~~~
 
 ### Установка основных пакетов
 
 1. Монтируем корневой раздел
 ~~~~
-mount /dev/sdb2 /mnt
+mount /dev/sdx2 /mnt
 ~~~~
 
 2. Устанавливаем пакеты
 ~~~~
-pacstrap /mnt base base-devel linux-lts linux-firmware vim
+pacstrap /mnt base base-devel linux linux-firmware vim
 ~~~~
 
 ### Генерация таблицы файловой системы
@@ -164,7 +159,7 @@ mkdir /boot/EFI
 
 3. Монтируем загрузочный раздел
 ~~~~
-mount /dev/sdb1 /boot/EFI
+mount /dev/sdx1 /boot/EFI
 ~~~~
 
 4. Устанавливаем `grub`
