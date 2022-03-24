@@ -11,7 +11,7 @@ $ lsblk
 
 3. Записываем образ на флешку
 ~~~~
-$ sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdc
+$ sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdx
 ~~~~
 
 ## Базовая установка
@@ -55,7 +55,7 @@ timedatectl set-ntp true
 timedatectl status
 ~~~~
 
-### Разметка дисков
+### Разметка диска
 
 1. Проверяем подлюченные диски
 ~~~~
@@ -72,26 +72,67 @@ fdisk /dev/sdx
 | sdx1   | 550MB       | EFI System       | vfat             |
 | sdx2   | Больше 20GB | Linux filesystem | ext4             |
 
-2. Форматируем загрузочный раздел
+3. 
+
+### Зашифраванный корневой раздел
+Выполните данный этап если вам необходимо создать зашифрованный корневой раздел
+
+1. Создаем зашифрованный раздел
 ~~~~
-mkfs.fat -F32 /dev/sdx1
+cryptsetup -yv luksFormat /dev/sdx2
+~~~~
+
+2. Открываем раздел
+~~~~
+cryptsetup open /dev/nvme0n1p2 cryptroot
 ~~~~
 
 3. Форматируем корневой раздел
 ~~~~
+mkfs.ext4 /dev/mapper/cryptroot
+~~~~
+
+4. Монтируем раздел
+~~~~
+mount /dev/mapper/cryptroot /mnt
+~~~~
+
+### Незашифрованный корневой раздел
+Выполните данный этап если вам необходимо создать обычный корневой раздел
+
+1. Форматируем корневой раздел
+~~~~
 mkfs.ext4 /dev/sdx2
 ~~~~
 
-### Установка основных пакетов
-
-1. Монтируем корневой раздел
+2. Монтируем раздел
 ~~~~
 mount /dev/sdx2 /mnt
 ~~~~
 
-2. Устанавливаем пакеты
+### Подготавливаем загрузочный раздел
+
+1. Форматируем загрузочный раздел
 ~~~~
-pacstrap /mnt base base-devel linux linux-firmware vim
+mkfs.fat -F32 /dev/sdx1
+~~~~
+
+2. Создаем папку `boot`
+~~~~
+mkdir /mnt/boot
+~~~~
+
+3. Форматируем загрузочный раздел
+~~~~
+mkfs.fat -F32 /dev/sdx1
+~~~~
+
+
+### Установка основных пакетов
+
+1. Устанавливаем пакеты
+~~~~
+pacstrap /mnt base base-devel linux linux-firmware vim git
 ~~~~
 
 ### Генерация таблицы файловой системы
@@ -164,14 +205,32 @@ mount /dev/sdx1 /boot/EFI
 
 4. Устанавливаем `grub`
 ~~~~
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 ~~~~
 
 5. Некоторые косметические изменения в `/etc/default/grub`
 В `GRUB_TIMEOUT` устанавливаем `0`
 В `GRUB_CMDLINE_LINUX_DEFAULT` удаляем параметр `quiet`
 
-5. Генерируем конфиг `grub`
+6. Генерируем конфиг `grub`
+~~~~
+grub-mkconfig -o /boot/grub/grub.cfg
+~~~~
+
+### Выполните этот этап если был выбран зашифрованный корневой раздел
+
+1. Открыть файл `/etc/default/grub`
+
+2. В `GRUB_CMDLINE_LINUX` добавить
+~~~~
+cryptdevice=UUID=<UUID_раздела_/dev/sdx2>:cryptroot root=/dev/mapper/cryptroot
+~~~~
+
+~~~~
+GRUB_CMDLINE_LINUX="cryptdevice=UUID=8fa9f139-7ba5-b04e-9411-274a69486b67:cryptroot root=/dev/mapper/cryptroot"
+~~~~
+
+3. Генерируем конфиг `grub`
 ~~~~
 grub-mkconfig -o /boot/grub/grub.cfg
 ~~~~
@@ -217,7 +276,7 @@ passwd max
 
 3. Добавление пользователя `max` в группы
 ~~~~
-usermod -aG wheel,audio,video,storage,optical,input max
+usermod -aG wheel,audio,video,storage,optical,input,nobody max
 ~~~~
 
 4. Расскоментировать строку `#%wheel ALL=(ALL) ALL` в `/etc/sudoers`

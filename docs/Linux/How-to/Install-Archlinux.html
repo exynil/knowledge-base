@@ -149,7 +149,7 @@
 <ol start="3">
 <li>Записываем образ на флешку</li>
 </ol>
-<pre><code>$ sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdc
+<pre><code>$ sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdx
 </code></pre>
 <h2 id="Базовая-установка"><a class="header" href="#Базовая-установка">Базовая установка</a></h2>
 <h3 id="Подключение-к-сети-по-wi-fi"><a class="header" href="#Подключение-к-сети-по-wi-fi">Подключение к сети по wi-fi</a></h3>
@@ -189,7 +189,7 @@
 </ol>
 <pre><code>timedatectl status
 </code></pre>
-<h3 id="Разметка-дисков"><a class="header" href="#Разметка-дисков">Разметка дисков</a></h3>
+<h3 id="Разметка-диска"><a class="header" href="#Разметка-диска">Разметка диска</a></h3>
 <ol>
 <li>Проверяем подлюченные диски</li>
 </ol>
@@ -204,26 +204,64 @@
 <tr><td>sdx1</td><td>550MB</td><td>EFI System</td><td>vfat</td></tr>
 <tr><td>sdx2</td><td>Больше 20GB</td><td>Linux filesystem</td><td>ext4</td></tr>
 </tbody></table>
-<ol start="2">
-<li>Форматируем загрузочный раздел</li>
+<ol start="3">
+<li></li>
 </ol>
-<pre><code>mkfs.fat -F32 /dev/sdx1
+<h3 id="Зашифраванный-корневой-раздел"><a class="header" href="#Зашифраванный-корневой-раздел">Зашифраванный корневой раздел</a></h3>
+<p>Выполните данный этап если вам необходимо создать зашифрованный корневой раздел</p>
+<ol>
+<li>Создаем зашифрованный раздел</li>
+</ol>
+<pre><code>cryptsetup -yv luksFormat /dev/sdx2
+</code></pre>
+<ol start="2">
+<li>Открываем раздел</li>
+</ol>
+<pre><code>cryptsetup open /dev/nvme0n1p2 cryptroot
 </code></pre>
 <ol start="3">
 <li>Форматируем корневой раздел</li>
 </ol>
+<pre><code>mkfs.ext4 /dev/mapper/cryptroot
+</code></pre>
+<ol start="4">
+<li>Монтируем раздел</li>
+</ol>
+<pre><code>mount /dev/mapper/cryptroot /mnt
+</code></pre>
+<h3 id="Незашифрованный-корневой-раздел"><a class="header" href="#Незашифрованный-корневой-раздел">Незашифрованный корневой раздел</a></h3>
+<p>Выполните данный этап если вам необходимо создать обычный корневой раздел</p>
+<ol>
+<li>Форматируем корневой раздел</li>
+</ol>
 <pre><code>mkfs.ext4 /dev/sdx2
 </code></pre>
-<h3 id="Установка-основных-пакетов"><a class="header" href="#Установка-основных-пакетов">Установка основных пакетов</a></h3>
-<ol>
-<li>Монтируем корневой раздел</li>
+<ol start="2">
+<li>Монтируем раздел</li>
 </ol>
 <pre><code>mount /dev/sdx2 /mnt
 </code></pre>
+<h3 id="Подготавливаем-загрузочный-раздел"><a class="header" href="#Подготавливаем-загрузочный-раздел">Подготавливаем загрузочный раздел</a></h3>
+<ol>
+<li>Форматируем загрузочный раздел</li>
+</ol>
+<pre><code>mkfs.fat -F32 /dev/sdx1
+</code></pre>
 <ol start="2">
+<li>Создаем папку <code>boot</code></li>
+</ol>
+<pre><code>mkdir /mnt/boot
+</code></pre>
+<ol start="3">
+<li>Форматируем загрузочный раздел</li>
+</ol>
+<pre><code>mkfs.fat -F32 /dev/sdx1
+</code></pre>
+<h3 id="Установка-основных-пакетов"><a class="header" href="#Установка-основных-пакетов">Установка основных пакетов</a></h3>
+<ol>
 <li>Устанавливаем пакеты</li>
 </ol>
-<pre><code>pacstrap /mnt base base-devel linux linux-firmware vim
+<pre><code>pacstrap /mnt base base-devel linux linux-firmware vim git
 </code></pre>
 <h3 id="Генерация-таблицы-файловой-системы"><a class="header" href="#Генерация-таблицы-файловой-системы">Генерация таблицы файловой системы</a></h3>
 <pre><code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
@@ -285,7 +323,7 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <ol start="4">
 <li>Устанавливаем <code>grub</code></li>
 </ol>
-<pre><code>grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+<pre><code>grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 </code></pre>
 <ol start="5">
 <li>
@@ -296,6 +334,24 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <li>
 <p>Генерируем конфиг <code>grub</code></p>
 </li>
+</ol>
+<pre><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+<h3 id="Выполните-этот-этап-если-был-выбран-зашифрованный-корневой-раздел"><a class="header" href="#Выполните-этот-этап-если-был-выбран-зашифрованный-корневой-раздел">Выполните этот этап если был выбран зашифрованный корневой раздел</a></h3>
+<ol>
+<li>
+<p>Открыть файл <code>/etc/default/grub</code></p>
+</li>
+<li>
+<p>В <code>GRUB_CMDLINE_LINUX</code> добавить</p>
+</li>
+</ol>
+<pre><code>cryptdevice=UUID=&lt;UUID_раздела_/dev/sdx2&gt;:cryptroot root=/dev/mapper/cryptroot
+</code></pre>
+<pre><code>GRUB_CMDLINE_LINUX=&quot;cryptdevice=UUID=8fa9f139-7ba5-b04e-9411-274a69486b67:cryptroot root=/dev/mapper/cryptroot&quot;
+</code></pre>
+<ol start="3">
+<li>Генерируем конфиг <code>grub</code></li>
 </ol>
 <pre><code>grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre>
@@ -338,7 +394,7 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <ol start="3">
 <li>Добавление пользователя <code>max</code> в группы</li>
 </ol>
-<pre><code>usermod -aG wheel,audio,video,storage,optical,input max
+<pre><code>usermod -aG wheel,audio,video,storage,optical,input,nobody max
 </code></pre>
 <ol start="4">
 <li>Расскоментировать строку <code>#%wheel ALL=(ALL) ALL</code> в <code>/etc/sudoers</code></li>
