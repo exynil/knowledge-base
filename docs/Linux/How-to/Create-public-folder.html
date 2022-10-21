@@ -135,60 +135,71 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="Общая-папка"><a class="header" href="#Общая-папка">Общая папка</a></h1>
+<p>Здесь рассказывается о том как расшарить папку для другого пользователя, при 
+этом ограничив его от других файлов в вашей системе. Данный способ был написан 
+на основе разных источников и в кооректности данного метода я пока не уверен.</p>
+<p>Представьте что у вас есть коллега по работе и он генерирует определенный файл, 
+необходимый в вашем проекте поправок очень много.</p>
+<p>Ваш коллега может быстро копировать файл к вам на компьютер через ssh и rsync или 
+любую другую программу.</p>
+<p>Нецелесобразно предоставлять вашему коллеге свою учетную запись для подключения по ssh.
+Для коллеги необходимо создать свою уч. запись и распределить права.</p>
+<h3 id="Подготавливаем-пользователя-и-общую-группу"><a class="header" href="#Подготавливаем-пользователя-и-общую-группу">Подготавливаем пользователя и общую группу</a></h3>
 <ol>
-<li>Создаем общую папку</li>
-</ol>
-<pre><code># mkdir /usr/local/share/music
-</code></pre>
-<ol start="2">
-<li>Создаем группу</li>
-</ol>
-<pre><code># groupadd music
-</code></pre>
-<ol start="3">
 <li>Создаем пользователя</li>
 </ol>
-<pre><code># useradd -m alex
+<pre><code># useradd -m bob
 </code></pre>
-<ol start="4">
-<li>Устанавливаем пароль новому пользователю</li>
+<ol start="2">
+<li>Создаем пароль для нового пользователя</li>
 </ol>
-<pre><code># passwd alex
+<pre><code>passwd bob
 </code></pre>
-<ol start="5">
-<li>Добавляем пользователя в группу</li>
+<ol start="3">
+<li>Создаем рабочую группу с название workgroup</li>
 </ol>
-<pre><code># gpasswd -a alex music
+<pre><code># groupadd workgroup
 </code></pre>
-<ol start="6">
-<li>Изменяем группу каталога</li>
+<ol start="3">
+<li>Добавляем себя и Боба в группу workgroup</li>
 </ol>
-<pre><code># chown :music /usr/local/share/music
+<pre><code># usermod -aG workgroup max
+# usermod -aG workgroup bob
 </code></pre>
-<ol start="7">
-<li>Изменяем права на каталог</li>
-</ol>
-<pre><code># chmod 775 /usr/local/share/music
-</code></pre>
-<ol start="8">
-<li>Проверяем результат</li>
-</ol>
-<pre><code>$ ls -ld /usr/local/share/music
-</code></pre>
-<pre><code>drwxrwxr-r 2 root music 4096 Mar 18 20:36 /usr/local/share/music
-</code></pre>
-<ol start="9">
-<li>Перезагружаемся</li>
-</ol>
 <blockquote>
-<p>В действительности здесь наблюдаются две проблемы. Во-первых, маска umask. в этой системе имеет значение 0022, что не позволяет членам группы записывать. в файлы, принадлежащие другим членам группы. Это не проблема, если общий каталог хранит только файлы, но так как в данном каталоге предполагается хранить музыкальные произведения, а музыкальные произведения обычно принято организовывать в иерархии по исполнителям и альбомам, членам группы может понадобиться создавать файлы в каталогах, принадлежащих другим членам. Нам нужно изменить маску umask для пользователей max и alex на 0002.</p>
+<p>Обратите внимание что в определенных ОС для того чтобы измения с группами 
+вступили в силу необходима перезагрузка</p>
 </blockquote>
-<blockquote>
-<p>Во-вторых, каждый файл и каталог, созданный одним членом группы, будет принадлежать основной группе пользователя, а не группе music. Исправить этот недостаток можно установкой бита setgid на каталог:</p>
-</blockquote>
-<pre><code>sudo chmod g+s /usr/local/share/music
+<h3 id="Цель"><a class="header" href="#Цель">Цель</a></h3>
+<p>В нашем случае структура папок будет следующая</p>
+<pre><code>/
+└── media
+    └── hdd
+        ├── my-secret-folder
+        └── work
+            └── project
+
 </code></pre>
-<h3 id="хештеги-общий_доступ"><a class="header" href="#хештеги-общий_доступ">хештеги: #общий_доступ</a></h3>
+<p>папка <code>hdd</code> - наш жесткий диск где располагаются все наши файлы</p>
+<p>папка <code>project</code> - та самая папка которую мы хотим расшарить</p>
+<p>все остальные папки должны быть недоступны для пользователя Боб</p>
+<h3 id="Подготовка-прав"><a class="header" href="#Подготовка-прав">Подготовка прав</a></h3>
+<ol>
+<li>Убираем права на чтение/запись/выполнение у остальных</li>
+</ol>
+<pre><code>chmod o-rwx /media/hdd/my-secret-folder
+</code></pre>
+<ol start="2">
+<li>Изменяем группу у папки</li>
+</ol>
+<pre><code>chown -R :workgroup /media/hdd/work/project
+</code></pre>
+<p>Мы изменили группу у папки <code>/media/hdd/work/project</code> и теперь все кто находятся 
+в нашей рабочей группе, будут иметь полный доступ к этой папке.</p>
+<h3 id="Итого"><a class="header" href="#Итого">Итого</a></h3>
+<p>Боб будет иметь доступ только к <code>/media/hdd/work/project</code>
+Боб сможет просматривать все файлы в папке <code>/media/hdd/work</code>
+Боб не может получить доступ к папке <code>/media/hdd/my-secret-folder</code></p>
 
                     </main>
 
@@ -218,7 +229,9 @@
 
         <!-- Livereload script (if served using the cli tool) -->
         <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
             socket.onmessage = function (event) {
                 if (event.data === "reload") {
                     socket.close();

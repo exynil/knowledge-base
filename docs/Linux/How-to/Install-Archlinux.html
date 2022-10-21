@@ -135,6 +135,9 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="Установка--archlinux"><a class="header" href="#Установка--archlinux">Установка  ArchLinux</a></h1>
+<p>Эта статья не претендует на самый правильный вариант установки ArchLinux.
+Здесь выписаны поверхностные моменты установки.
+Рекомендуется следовать инструкции на Arch-вики.</p>
 <h2 id="Установочный-носитель"><a class="header" href="#Установочный-носитель">Установочный носитель</a></h2>
 <ol>
 <li>
@@ -200,10 +203,11 @@
 </ol>
 <pre><code>fdisk /dev/sdx
 </code></pre>
-<table><thead><tr><th>Раздел</th><th>Размер</th><th>Тип раздела</th><th>Файловая система</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Раздел</th><th>Размер</th><th>Тип раздела</th><th>Файловая система</th></tr></thead><tbody>
 <tr><td>sdx1</td><td>550MB</td><td>EFI System</td><td>vfat</td></tr>
 <tr><td>sdx2</td><td>Больше 20GB</td><td>Linux filesystem</td><td>ext4</td></tr>
 </tbody></table>
+</div>
 <ol start="3">
 <li></li>
 </ol>
@@ -311,16 +315,11 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <pre><code>pacman -S grub efibootmgr dosfstools os-prober mtools
 </code></pre>
 <ol start="2">
-<li>Созадем папку <code>EFI</code></li>
-</ol>
-<pre><code>mkdir /boot/EFI
-</code></pre>
-<ol start="3">
 <li>Монтируем загрузочный раздел</li>
 </ol>
-<pre><code>mount /dev/sdx1 /boot/EFI
+<pre><code>mount /dev/sdx1 /boot
 </code></pre>
-<ol start="4">
+<ol>
 <li>Устанавливаем <code>grub</code></li>
 </ol>
 <pre><code>grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
@@ -506,7 +505,9 @@ EndSection
 
         <!-- Livereload script (if served using the cli tool) -->
         <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
             socket.onmessage = function (event) {
                 if (event.data === "reload") {
                     socket.close();

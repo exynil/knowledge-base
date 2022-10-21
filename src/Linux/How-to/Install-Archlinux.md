@@ -1,5 +1,9 @@
 # Установка  ArchLinux
 
+Эта статья не претендует на самый правильный вариант установки ArchLinux.
+Здесь выписаны поверхностные моменты установки.
+Рекомендуется следовать инструкции на Arch-вики.
+
 ## Установочный носитель
 
 1. Скачать образ [Archlinux](https://archlinux.org/download/)
@@ -193,17 +197,12 @@ echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 pacman -S grub efibootmgr dosfstools os-prober mtools
 ~~~~
 
-2. Созадем папку `EFI`
+2. Монтируем загрузочный раздел
 ~~~~
-mkdir /boot/EFI
-~~~~
-
-3. Монтируем загрузочный раздел
-~~~~
-mount /dev/sdx1 /boot/EFI
+mount /dev/sdx1 /boot
 ~~~~
 
-4. Устанавливаем `grub`
+1. Устанавливаем `grub`
 ~~~~
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 ~~~~
