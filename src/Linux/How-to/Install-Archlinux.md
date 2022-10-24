@@ -1,7 +1,9 @@
 # Установка  ArchLinux
 
 Эта статья не претендует на самый правильный вариант установки ArchLinux.
+
 Здесь выписаны поверхностные моменты установки.
+
 Рекомендуется следовать инструкции на Arch-вики.
 
 ## Установочный носитель
@@ -42,7 +44,9 @@ iwctl
 [iwd]# station <устройство> connect <SSID>
 ~~~~
 
-5. Проверяем
+> для скрытой сети использовать `connect-hidden`
+
+5. Выходим из iwctl и проверяем интернет
 ~~~~
 ping 8.8.8.8
 ~~~~
@@ -73,7 +77,7 @@ fdisk /dev/sdx
 
 | Раздел | Размер      | Тип раздела      | Файловая система |
 |--------|-------------|------------------|------------------|
-| sdx1   | 550MB       | EFI System       | vfat             |
+| sdx1   | 512MB       | EFI System       | vfat             |
 | sdx2   | Больше 20GB | Linux filesystem | ext4             |
 
 3. 
@@ -88,17 +92,17 @@ cryptsetup -yv luksFormat /dev/sdx2
 
 2. Открываем раздел
 ~~~~
-cryptsetup open /dev/nvme0n1p2 cryptroot
+cryptsetup open /dev/sdx2 root
 ~~~~
 
 3. Форматируем корневой раздел
 ~~~~
-mkfs.ext4 /dev/mapper/cryptroot
+mkfs.ext4 /dev/mapper/root
 ~~~~
 
 4. Монтируем раздел
 ~~~~
-mount /dev/mapper/cryptroot /mnt
+mount /dev/mapper/root /mnt
 ~~~~
 
 ### Незашифрованный корневой раздел
@@ -126,9 +130,9 @@ mkfs.fat -F32 /dev/sdx1
 mkdir /mnt/boot
 ~~~~
 
-3. Форматируем загрузочный раздел
+3. Монтируем загрузочный раздел
 ~~~~
-mkfs.fat -F32 /dev/sdx1
+mount /dev/sdx1 /mnt/boot
 ~~~~
 
 
@@ -202,16 +206,16 @@ pacman -S grub efibootmgr dosfstools os-prober mtools
 mount /dev/sdx1 /boot
 ~~~~
 
-1. Устанавливаем `grub`
+3. Устанавливаем `grub`
 ~~~~
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 ~~~~
 
-5. Некоторые косметические изменения в `/etc/default/grub`
-В `GRUB_TIMEOUT` устанавливаем `0`
-В `GRUB_CMDLINE_LINUX_DEFAULT` удаляем параметр `quiet`
+4. Некоторые косметические изменения в `/etc/default/grub`
+В `GRUB_TIMEOUT` устанавливаем `0` (убираем задержку у загрузчика)
+В `GRUB_CMDLINE_LINUX_DEFAULT` удаляем параметр `quiet` (убираем тихую загрузку)
 
-6. Генерируем конфиг `grub`
+5. Генерируем конфиг `grub`
 ~~~~
 grub-mkconfig -o /boot/grub/grub.cfg
 ~~~~
@@ -222,14 +226,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 2. В `GRUB_CMDLINE_LINUX` добавить
 ~~~~
-cryptdevice=UUID=<UUID_раздела_/dev/sdx2>:cryptroot root=/dev/mapper/cryptroot
+GRUB_CMDLINE_LINUX="cryptdevice=UUID=8fa9f139-7ba5-b04e-9411-274a69486b67:root root=/dev/mapper/root"
 ~~~~
 
-~~~~
-GRUB_CMDLINE_LINUX="cryptdevice=UUID=8fa9f139-7ba5-b04e-9411-274a69486b67:cryptroot root=/dev/mapper/cryptroot"
-~~~~
-
-3. Генерируем конфиг `grub`
+1. Генерируем конфиг `grub`
 ~~~~
 grub-mkconfig -o /boot/grub/grub.cfg
 ~~~~
@@ -261,6 +261,11 @@ systemctl enable NetworkManager
 FONT=ter-u16n
 ~~~~
 
+> Если шрифты не изменяются добавьте загрузку видеокарты на старте ситсемы в `mkinitcpio.conf`
+~~~~
+MODULES=(i915 nvidia)
+~~~~
+
 ## Создание пользователя
 
 1. Добавление пользователя `max`
@@ -280,6 +285,49 @@ usermod -aG wheel,audio,video,storage,optical,input,nobody max
 
 4. Расскоментировать строку `#%wheel ALL=(ALL) ALL` в `/etc/sudoers`
 
+## Шифруем второй жесткий диск и делаем автомонтирование через файл-ключ
+Выполните данный этап если вам необходимо зашифровать второй жесткий диск
+
+Предположим что /dev/sdx1 это ваш второй жесткий диск
+
+1. Сделайте бэкап всех данных жесткого диска
+2. Создаем зашифрованный раздел
+~~~~
+cryptsetup -yv luksFormat /dev/sdx1
+~~~~
+
+2. Открываем раздел
+~~~~
+cryptsetup open /dev/sdx1 hdd
+~~~~
+
+3. Монтируем его /dev/mapper/hdd /media/hdd
+
+4. Создаем файл-ключ
+~~~~
+dd bs=512 count=4 if=/dev/random of=/etc/secret_key iflag=fullblock
+~~~~
+
+5. Добавляем ключ
+~~~~
+cryptsetup luksAddKey /dev/mapper/hdd /etc/secret_key
+~~~~
+
+6. Пробуем открыть диск с помощью ключа
+~~~~
+cryptsetup luksOpen /dev/sda1 hdd --key-file /etc/secret_key
+~~~~
+
+7. Добавляем запись в /etc/crypttab
+~~~~
+hdd /dev/sda1 /etc/secret_key luks
+~~~~
+
+8. Добавляем запись в /etc/fstab
+~~~~
+/dev/mapper/hdd /media/hdd ext4 defaults 1 2
+~~~~
+
 ## Графический сервер
 
 ### xorg-server
@@ -294,14 +342,14 @@ pacman -S xorg-server xorg-xinit
 pacman -S xorg-xinit
 ~~~~
 
-3. Установка драйверов для видеокарты
+3. Установка драйверов и утилит для видеокарты
 ~~~~
-pacman -S xf86-video-intel nvidia nvidia-utils nvidia-settings
+pacman -S xf86-video-intel nvidia nvidia-utils nvidia-settings lib32-nvidia-utils mesa lib32-mesa
 ~~~~
 
-4. Установка драйверов для звуковой карты
+4. Установка драйверов и утилит для звуковой карты
 ~~~~
-pacman -S pulseaudio pulseaudio-alsa alsa-lib alsa-firmware playerctl pamixer
+pacman -S pipewire-pulse playerctl pamixer pavucontrol
 ~~~~
 
 5. Настройка `/etc/X11/xorg.conf`

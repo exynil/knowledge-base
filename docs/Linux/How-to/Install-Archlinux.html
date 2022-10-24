@@ -135,9 +135,9 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="Установка--archlinux"><a class="header" href="#Установка--archlinux">Установка  ArchLinux</a></h1>
-<p>Эта статья не претендует на самый правильный вариант установки ArchLinux.
-Здесь выписаны поверхностные моменты установки.
-Рекомендуется следовать инструкции на Arch-вики.</p>
+<p>Эта статья не претендует на самый правильный вариант установки ArchLinux.</p>
+<p>Здесь выписаны поверхностные моменты установки.</p>
+<p>Рекомендуется следовать инструкции на Arch-вики.</p>
 <h2 id="Установочный-носитель"><a class="header" href="#Установочный-носитель">Установочный носитель</a></h2>
 <ol>
 <li>
@@ -176,8 +176,11 @@
 </ol>
 <pre><code>[iwd]# station &lt;устройство&gt; connect &lt;SSID&gt;
 </code></pre>
+<blockquote>
+<p>для скрытой сети использовать <code>connect-hidden</code></p>
+</blockquote>
 <ol start="5">
-<li>Проверяем</li>
+<li>Выходим из iwctl и проверяем интернет</li>
 </ol>
 <pre><code>ping 8.8.8.8
 </code></pre>
@@ -204,7 +207,7 @@
 <pre><code>fdisk /dev/sdx
 </code></pre>
 <div class="table-wrapper"><table><thead><tr><th>Раздел</th><th>Размер</th><th>Тип раздела</th><th>Файловая система</th></tr></thead><tbody>
-<tr><td>sdx1</td><td>550MB</td><td>EFI System</td><td>vfat</td></tr>
+<tr><td>sdx1</td><td>512MB</td><td>EFI System</td><td>vfat</td></tr>
 <tr><td>sdx2</td><td>Больше 20GB</td><td>Linux filesystem</td><td>ext4</td></tr>
 </tbody></table>
 </div>
@@ -221,17 +224,17 @@
 <ol start="2">
 <li>Открываем раздел</li>
 </ol>
-<pre><code>cryptsetup open /dev/nvme0n1p2 cryptroot
+<pre><code>cryptsetup open /dev/sdx2 root
 </code></pre>
 <ol start="3">
 <li>Форматируем корневой раздел</li>
 </ol>
-<pre><code>mkfs.ext4 /dev/mapper/cryptroot
+<pre><code>mkfs.ext4 /dev/mapper/root
 </code></pre>
 <ol start="4">
 <li>Монтируем раздел</li>
 </ol>
-<pre><code>mount /dev/mapper/cryptroot /mnt
+<pre><code>mount /dev/mapper/root /mnt
 </code></pre>
 <h3 id="Незашифрованный-корневой-раздел"><a class="header" href="#Незашифрованный-корневой-раздел">Незашифрованный корневой раздел</a></h3>
 <p>Выполните данный этап если вам необходимо создать обычный корневой раздел</p>
@@ -257,9 +260,9 @@
 <pre><code>mkdir /mnt/boot
 </code></pre>
 <ol start="3">
-<li>Форматируем загрузочный раздел</li>
+<li>Монтируем загрузочный раздел</li>
 </ol>
-<pre><code>mkfs.fat -F32 /dev/sdx1
+<pre><code>mount /dev/sdx1 /mnt/boot
 </code></pre>
 <h3 id="Установка-основных-пакетов"><a class="header" href="#Установка-основных-пакетов">Установка основных пакетов</a></h3>
 <ol>
@@ -319,16 +322,16 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 </ol>
 <pre><code>mount /dev/sdx1 /boot
 </code></pre>
-<ol>
+<ol start="3">
 <li>Устанавливаем <code>grub</code></li>
 </ol>
 <pre><code>grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 </code></pre>
-<ol start="5">
+<ol start="4">
 <li>
 <p>Некоторые косметические изменения в <code>/etc/default/grub</code>
-В <code>GRUB_TIMEOUT</code> устанавливаем <code>0</code>
-В <code>GRUB_CMDLINE_LINUX_DEFAULT</code> удаляем параметр <code>quiet</code></p>
+В <code>GRUB_TIMEOUT</code> устанавливаем <code>0</code> (убираем задержку у загрузчика)
+В <code>GRUB_CMDLINE_LINUX_DEFAULT</code> удаляем параметр <code>quiet</code> (убираем тихую загрузку)</p>
 </li>
 <li>
 <p>Генерируем конфиг <code>grub</code></p>
@@ -345,11 +348,9 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <p>В <code>GRUB_CMDLINE_LINUX</code> добавить</p>
 </li>
 </ol>
-<pre><code>cryptdevice=UUID=&lt;UUID_раздела_/dev/sdx2&gt;:cryptroot root=/dev/mapper/cryptroot
+<pre><code>GRUB_CMDLINE_LINUX=&quot;cryptdevice=UUID=8fa9f139-7ba5-b04e-9411-274a69486b67:root root=/dev/mapper/root&quot;
 </code></pre>
-<pre><code>GRUB_CMDLINE_LINUX=&quot;cryptdevice=UUID=8fa9f139-7ba5-b04e-9411-274a69486b67:cryptroot root=/dev/mapper/cryptroot&quot;
-</code></pre>
-<ol start="3">
+<ol>
 <li>Генерируем конфиг <code>grub</code></li>
 </ol>
 <pre><code>grub-mkconfig -o /boot/grub/grub.cfg
@@ -379,6 +380,11 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 </ol>
 <pre><code>FONT=ter-u16n
 </code></pre>
+<blockquote>
+<p>Если шрифты не изменяются добавьте загрузку видеокарты на старте ситсемы в <code>mkinitcpio.conf</code></p>
+</blockquote>
+<pre><code>MODULES=(i915 nvidia)
+</code></pre>
 <h2 id="Создание-пользователя"><a class="header" href="#Создание-пользователя">Создание пользователя</a></h2>
 <ol>
 <li>Добавление пользователя <code>max</code></li>
@@ -398,6 +404,50 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <ol start="4">
 <li>Расскоментировать строку <code>#%wheel ALL=(ALL) ALL</code> в <code>/etc/sudoers</code></li>
 </ol>
+<h2 id="Шифруем-второй-жесткий-диск-и-делаем-автомонтирование-через-файл-ключ"><a class="header" href="#Шифруем-второй-жесткий-диск-и-делаем-автомонтирование-через-файл-ключ">Шифруем второй жесткий диск и делаем автомонтирование через файл-ключ</a></h2>
+<p>Выполните данный этап если вам необходимо зашифровать второй жесткий диск</p>
+<p>Предположим что /dev/sdx1 это ваш второй жесткий диск</p>
+<ol>
+<li>Сделайте бэкап всех данных жесткого диска</li>
+<li>Создаем зашифрованный раздел</li>
+</ol>
+<pre><code>cryptsetup -yv luksFormat /dev/sdx1
+</code></pre>
+<ol start="2">
+<li>Открываем раздел</li>
+</ol>
+<pre><code>cryptsetup open /dev/sdx1 hdd
+</code></pre>
+<ol start="3">
+<li>
+<p>Монтируем его /dev/mapper/hdd /media/hdd</p>
+</li>
+<li>
+<p>Создаем файл-ключ</p>
+</li>
+</ol>
+<pre><code>dd bs=512 count=4 if=/dev/random of=/etc/secret_key iflag=fullblock
+</code></pre>
+<ol start="5">
+<li>Добавляем ключ</li>
+</ol>
+<pre><code>cryptsetup luksAddKey /dev/mapper/hdd /etc/secret_key
+</code></pre>
+<ol start="6">
+<li>Пробуем открыть диск с помощью ключа</li>
+</ol>
+<pre><code>cryptsetup luksOpen /dev/sda1 hdd --key-file /etc/secret_key
+</code></pre>
+<ol start="7">
+<li>Добавляем запись в /etc/crypttab</li>
+</ol>
+<pre><code>hdd /dev/sda1 /etc/secret_key luks
+</code></pre>
+<ol start="8">
+<li>Добавляем запись в /etc/fstab</li>
+</ol>
+<pre><code>/dev/mapper/hdd /media/hdd ext4 defaults 1 2
+</code></pre>
 <h2 id="Графический-сервер"><a class="header" href="#Графический-сервер">Графический сервер</a></h2>
 <h3 id="xorg-server"><a class="header" href="#xorg-server">xorg-server</a></h3>
 <ol>
@@ -411,14 +461,14 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <pre><code>pacman -S xorg-xinit
 </code></pre>
 <ol start="3">
-<li>Установка драйверов для видеокарты</li>
+<li>Установка драйверов и утилит для видеокарты</li>
 </ol>
-<pre><code>pacman -S xf86-video-intel nvidia nvidia-utils nvidia-settings
+<pre><code>pacman -S xf86-video-intel nvidia nvidia-utils nvidia-settings lib32-nvidia-utils mesa lib32-mesa
 </code></pre>
 <ol start="4">
-<li>Установка драйверов для звуковой карты</li>
+<li>Установка драйверов и утилит для звуковой карты</li>
 </ol>
-<pre><code>pacman -S pulseaudio pulseaudio-alsa alsa-lib alsa-firmware playerctl pamixer
+<pre><code>pacman -S pipewire-pulse playerctl pamixer pavucontrol
 </code></pre>
 <ol start="5">
 <li>Настройка <code>/etc/X11/xorg.conf</code></li>
