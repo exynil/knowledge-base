@@ -49,6 +49,11 @@ $ git pull
 $ git status -u
 ~~~~
 
+Сокращенный git diff
+~~~~
+$ git diff --unified=0
+~~~~
+
 ## Откладывание кода
 
 Откладывание кода
