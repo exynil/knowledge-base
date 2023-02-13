@@ -111,5 +111,16 @@ git checkout <branchname>
 $ git clone -b <branchname> <remote-repo-url>
 ~~~~
 
+## Работа с тэгами
+
+### Добавление тега к уже имеющемумя коммиту
+
+~~~~
+git tag -a v0.0.52 c1d6553fbe4d1016a80cd266d5814027c074d0e3
+~~~~
+
+~~~~
+git push origin --tags
+~~~~
 
 ### хештеги: #git #система_контроля_версий

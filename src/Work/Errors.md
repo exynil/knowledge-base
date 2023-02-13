@@ -30,14 +30,3 @@ sudo chown -R 10001 *
 ~~~~
 
 Решение: Заменить `staticfiles` на `static`
-
-## Отсутствуют таблицы в админке
-
-Решение: Зарегистировать модели в админке
-~~~~
-from django.contrib import admin
-from .models import Example
-
-
-admin.site.register(Example)
-~~~~

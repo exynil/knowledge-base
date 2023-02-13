@@ -1,4 +1,4 @@
-# Синхронизация паролей
+# Синхронизация паролей Pass
 
 ## Ключ GPG
 
@@ -28,34 +28,15 @@ $ gpg --export -a exynil@gmail.com > public.pgp
 $ gpg --export-secret-key -a exynil@gmail.com > secret.pgp
 ~~~~
 
-Создаем сертификат отзыва
-~~~~
-gpg --gen-revoke -a exynil@gmail.com > revocation_cert.pgp
-~~~~
-
-### Удаление главного ключа
-
-3. Экспортируем `sub` ключ
+Экспорт саб-ключа
 ~~~~
 $ gpg --export-secret-subkey -a "exynil@gmail.com" > sub_key.pgp
 ~~~~
 
-4. Удлаляем главный ключ
+Создаем сертификат отзыва
 ~~~~
-$ gpg --delete-secret-key "exynil@gmail.com"
+gpg --gen-revoke -a exynil@gmail.com > revocation_cert.pgp
 ~~~~
-
-5. Импортируем `sub` ключ
-~~~~
-$ gpg --import sub_keys.pgp
-~~~~
-
-6. Проверяем
-~~~~
-$ gpg -K
-~~~~
-
-> знак `#` рядом с `sec` означает что primary часть секретного ключа отсутствует в нашей связке ключей.
 
 ## Настройка pass
 
@@ -70,12 +51,6 @@ $ pass init 833C48F952F07A96
 > - Появится директория `~/.password-store` с файлом `.gpg-id`
 > - В файле `gpg-id` будет храниться идетификатор `sub` ключа
 
-## Настройка GIT
-
-```
-git config --global user.name "Maxim Kim"
-git config --global user.email "exynil@gmail.com"
-```
 
 ## Настройка репозитория
 
@@ -103,19 +78,19 @@ $ git commit -m "initial commit"
 $ git push origin master
 ~~~~
 
-## Настройка смартфона
+## Настройка смартфона на базе Android
 
-1. На смартфон устанавливаем две программы 
+На смартфон устанавливаем две программы
 
-[Password Store](https://f-droid.org/ru/packages/dev.msfjarvis.aps/) - для управления пароля в смартфоне
+[Password Store](https://f-droid.org/en/packages/dev.msfjarvis.aps/) - для управления пароля в смартфоне
 
 [OpenKeychain](https://f-droid.org/en/packages/org.sufficientlysecure.keychain/) - для управления ключами
 
 ### OpenKeychain
 
-1. Копируем экспортированный `sub` ключ на телефон
+1. Копируем на телефол экспортированный `public.pgp` и `sub_key.pgp` на телефон
 
-2. В приложении OpenKeychain импортируем `sub` ключ
+2. В приложении OpenKeychain импортируем ключи
 
 ###  Password Store
 
@@ -127,5 +102,9 @@ $ git push origin master
 > Приложение предложит сгенерировать пару `ssh` ключей
 
 2. Сгенерированный ключ добавляем в `github`
+
+
+> К сожелению OpenKeychain с определенной версии работает только с главным ключом.
+> В иделе вам лучше не использовать мастер ключ. Необходимо создавать доп. ключи и пользоваться ими.
 
 ### хештеги:  #pass #gpg #шифрование  #пароль #безопасность
