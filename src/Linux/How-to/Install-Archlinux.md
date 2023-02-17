@@ -310,7 +310,7 @@ dd bs=512 count=4 if=/dev/random of=/etc/secret_key iflag=fullblock
 
 5. Добавляем ключ
 ~~~~
-cryptsetup luksAddKey /dev/mapper/hdd /etc/secret_key
+cryptsetup luksAddKey /dev/sdx1 /etc/secret_key
 ~~~~
 
 6. Пробуем открыть диск с помощью ключа
@@ -326,6 +326,11 @@ hdd /dev/sda1 /etc/secret_key luks
 8. Добавляем запись в /etc/fstab
 ~~~~
 /dev/mapper/hdd /media/hdd ext4 defaults 1 2
+~~~~
+
+9. Форматируем раздел
+~~~~
+mkfs.ext4 /dev/mapper/hdd
 ~~~~
 
 ## Графический сервер

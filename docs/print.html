@@ -528,7 +528,7 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <ol start="5">
 <li>Добавляем ключ</li>
 </ol>
-<pre><code>cryptsetup luksAddKey /dev/mapper/hdd /etc/secret_key
+<pre><code>cryptsetup luksAddKey /dev/sdx1 /etc/secret_key
 </code></pre>
 <ol start="6">
 <li>Пробуем открыть диск с помощью ключа</li>
@@ -544,6 +544,11 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <li>Добавляем запись в /etc/fstab</li>
 </ol>
 <pre><code>/dev/mapper/hdd /media/hdd ext4 defaults 1 2
+</code></pre>
+<ol start="9">
+<li>Форматируем раздел</li>
+</ol>
+<pre><code>mkfs.ext4 /dev/mapper/hdd
 </code></pre>
 <h2 id="Графический-сервер"><a class="header" href="#Графический-сервер">Графический сервер</a></h2>
 <h3 id="xorg-server"><a class="header" href="#xorg-server">xorg-server</a></h3>
