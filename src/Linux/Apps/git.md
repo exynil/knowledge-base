@@ -123,4 +123,14 @@ git tag -a v0.0.52 c1d6553fbe4d1016a80cd266d5814027c074d0e3
 git push origin --tags
 ~~~~
 
+## Отмена последнего коммита
+~~~~
+git reset --soft HEAD~1
+~~~~
+
+## Отмена git add
+~~~~
+git reset
+~~~~
+
 ### хештеги: #git #система_контроля_версий

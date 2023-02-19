@@ -1,23 +1,13 @@
-# Postgresql
+# PostgreSQL
 
-## Установка
+Сброс счетчика автоинкрементирования
 ~~~~
-$ yay -S postgresql
-~~~~
-
-## Запуск
-~~~~
-$ systemctl start postgresql
+TRUNCATE work_types_worksection RESTART IDENTITY
 ~~~~
 
-##  Консоли
-
-Запуск
+Сброс счётчика на определенный номер
 ~~~~
-# -i -u postgres
+ALTER SEQUENCE product_id_seq RESTART WITH 88
 ~~~~
 
-
-
-
-### хештеги:  #bash
+### хештеги:  #postgresql

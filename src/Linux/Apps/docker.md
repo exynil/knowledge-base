@@ -54,4 +54,16 @@ $ docker volume rm $(docker volume ls -q)
 $ docker info
 ~~~~
 
+### Как скопировать файлы в контейнер докера?
+
+В контейнер
+~~~~
+docker cp foo.txt container_id:/foo.txt
+~~~~
+
+Из контейнера
+~~~~
+docker cp container_id:/foo.txt foo.txt
+~~~~
+
 ### хештеги:  #docker

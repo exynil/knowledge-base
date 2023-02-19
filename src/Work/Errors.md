@@ -3,7 +3,7 @@
 ## Превышен лимит одновременного подключения к бд
 ~~~~
 conn = Database.connect(connstr,
-django.db.utils.OperationalError: ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL 
+django.db.utils.OperationalError: ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL
 Server]Client unable to establish connection because an error was encountered during 
 handshakes before login. Common causes include client attempting to connect to an 
 unsupported version of SQL Server, server too busy to accept new connections or a 
