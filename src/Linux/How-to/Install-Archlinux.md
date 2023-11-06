@@ -12,24 +12,26 @@
 
 2. Определяем флешку
 ~~~~
-$ lsblk
-~~~~ 
+lsblk
+~~~~
 
-3. Записываем образ на флешку
+1. Записываем образ на флешку
 ~~~~
-$ sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdx
+sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdx
 ~~~~
+
+---
 
 ## Базовая установка
 
 ### Подключение к сети по wi-fi
 
-1. Запускаем iwctl
+1. Запускаем `iwctl`
 ~~~~
 iwctl
 ~~~~
 
-2. Получаем список устройств 
+2. Получаем список устройств
 ~~~~
 [iwd]# device list
 ~~~~
@@ -70,7 +72,7 @@ timedatectl status
 lsblk
 ~~~~
 
-2. Запускаем fdisk
+2. Запускаем `fdisk`
 ~~~~
 fdisk /dev/sdx
 ~~~~
@@ -79,8 +81,6 @@ fdisk /dev/sdx
 |--------|-------------|------------------|------------------|
 | sdx1   | 512MB       | EFI System       | vfat             |
 | sdx2   | Больше 20GB | Linux filesystem | ext4             |
-
-3. 
 
 ### Зашифраванный корневой раздел
 Выполните данный этап если вам необходимо создать зашифрованный корневой раздел
@@ -201,26 +201,25 @@ echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 pacman -S grub efibootmgr dosfstools os-prober mtools
 ~~~~
 
-2. Монтируем загрузочный раздел
-~~~~
-mount /dev/sdx1 /boot
-~~~~
-
-3. Устанавливаем `grub`
+2. Устанавливаем `grub`
 ~~~~
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 ~~~~
 
-4. Некоторые косметические изменения в `/etc/default/grub`
+1. Некоторые косметические изменения в `/etc/default/grub`
 В `GRUB_TIMEOUT` устанавливаем `0` (убираем задержку у загрузчика)
 В `GRUB_CMDLINE_LINUX_DEFAULT` удаляем параметр `quiet` (убираем тихую загрузку)
 
-5. Генерируем конфиг `grub`
+1. Генерируем конфиг `grub`
 ~~~~
 grub-mkconfig -o /boot/grub/grub.cfg
 ~~~~
 
+---
+
 ### Выполните этот этап если был выбран зашифрованный корневой раздел
+
+#### GRUB
 
 1. Открыть файл `/etc/default/grub`
 
@@ -229,10 +228,26 @@ grub-mkconfig -o /boot/grub/grub.cfg
 GRUB_CMDLINE_LINUX="cryptdevice=UUID=8fa9f139-7ba5-b04e-9411-274a69486b67:root root=/dev/mapper/root"
 ~~~~
 
-1. Генерируем конфиг `grub`
+3. Генерируем конфиг `grub`
 ~~~~
 grub-mkconfig -o /boot/grub/grub.cfg
 ~~~~
+
+#### MKINITCPIO
+
+1. Открыть файл `/etc/mkinitcpio.conf`
+
+2. В `HOOKS` добавить `encrypt`
+~~~~
+HOOKS=(base udev autodetect keyboard keymap modconf block encrypt filesystems fsck)
+~~~~
+
+3. Пересобираем образ `initramfs`
+~~~~
+mkinitcpio -p linux
+~~~~
+
+---
 
 ### Установка пароля администратора
 
@@ -261,7 +276,7 @@ systemctl enable NetworkManager
 FONT=ter-u16n
 ~~~~
 
-> Если шрифты не изменяются добавьте загрузку видеокарты на старте ситсемы в `mkinitcpio.conf`
+> Если шрифты не изменяются добавьте загрузку видеокарты на старте системы в `mkinitcpio.conf`
 ~~~~
 MODULES=(i915 nvidia)
 ~~~~
@@ -413,4 +428,4 @@ EndSection
 ~~~~
 
 
-### хештеги: #archlinux #os 
+#archlinux #os

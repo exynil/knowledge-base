@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="ru" class="sidebar-visible no-js light">
+<html lang="ru" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title></title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="База знаний.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -32,7 +32,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -62,22 +62,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -87,15 +94,37 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -239,22 +268,23 @@
 <p>Определяем флешку</p>
 </li>
 </ol>
-<pre><code>$ lsblk
+<pre><code>lsblk
 </code></pre>
-<ol start="3">
+<ol>
 <li>Записываем образ на флешку</li>
 </ol>
-<pre><code>$ sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdx
+<pre><code>sudo dd bs=4M if=archlinux-2021.02.01-x86_64.iso of=/dev/sdx
 </code></pre>
+<hr />
 <h2 id="Базовая-установка"><a class="header" href="#Базовая-установка">Базовая установка</a></h2>
 <h3 id="Подключение-к-сети-по-wi-fi"><a class="header" href="#Подключение-к-сети-по-wi-fi">Подключение к сети по wi-fi</a></h3>
 <ol>
-<li>Запускаем iwctl</li>
+<li>Запускаем <code>iwctl</code></li>
 </ol>
 <pre><code>iwctl
 </code></pre>
 <ol start="2">
-<li>Получаем список устройств </li>
+<li>Получаем список устройств</li>
 </ol>
 <pre><code>[iwd]# device list
 </code></pre>
@@ -294,7 +324,7 @@
 <pre><code>lsblk
 </code></pre>
 <ol start="2">
-<li>Запускаем fdisk</li>
+<li>Запускаем <code>fdisk</code></li>
 </ol>
 <pre><code>fdisk /dev/sdx
 </code></pre>
@@ -303,9 +333,6 @@
 <tr><td>sdx2</td><td>Больше 20GB</td><td>Linux filesystem</td><td>ext4</td></tr>
 </tbody></table>
 </div>
-<ol start="3">
-<li></li>
-</ol>
 <h3 id="Зашифраванный-корневой-раздел"><a class="header" href="#Зашифраванный-корневой-раздел">Зашифраванный корневой раздел</a></h3>
 <p>Выполните данный этап если вам необходимо создать зашифрованный корневой раздел</p>
 <ol>
@@ -410,16 +437,11 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <pre><code>pacman -S grub efibootmgr dosfstools os-prober mtools
 </code></pre>
 <ol start="2">
-<li>Монтируем загрузочный раздел</li>
-</ol>
-<pre><code>mount /dev/sdx1 /boot
-</code></pre>
-<ol start="3">
 <li>Устанавливаем <code>grub</code></li>
 </ol>
 <pre><code>grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 </code></pre>
-<ol start="4">
+<ol>
 <li>
 <p>Некоторые косметические изменения в <code>/etc/default/grub</code>
 В <code>GRUB_TIMEOUT</code> устанавливаем <code>0</code> (убираем задержку у загрузчика)
@@ -431,7 +453,9 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 </ol>
 <pre><code>grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre>
+<hr />
 <h3 id="Выполните-этот-этап-если-был-выбран-зашифрованный-корневой-раздел"><a class="header" href="#Выполните-этот-этап-если-был-выбран-зашифрованный-корневой-раздел">Выполните этот этап если был выбран зашифрованный корневой раздел</a></h3>
+<h4 id="grub"><a class="header" href="#grub">GRUB</a></h4>
 <ol>
 <li>
 <p>Открыть файл <code>/etc/default/grub</code></p>
@@ -442,11 +466,28 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 </ol>
 <pre><code>GRUB_CMDLINE_LINUX=&quot;cryptdevice=UUID=8fa9f139-7ba5-b04e-9411-274a69486b67:root root=/dev/mapper/root&quot;
 </code></pre>
-<ol>
+<ol start="3">
 <li>Генерируем конфиг <code>grub</code></li>
 </ol>
 <pre><code>grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre>
+<h4 id="mkinitcpio"><a class="header" href="#mkinitcpio">MKINITCPIO</a></h4>
+<ol>
+<li>
+<p>Открыть файл <code>/etc/mkinitcpio.conf</code></p>
+</li>
+<li>
+<p>В <code>HOOKS</code> добавить <code>encrypt</code></p>
+</li>
+</ol>
+<pre><code>HOOKS=(base udev autodetect keyboard keymap modconf block encrypt filesystems fsck)
+</code></pre>
+<ol start="3">
+<li>Пересобираем образ <code>initramfs</code></li>
+</ol>
+<pre><code>mkinitcpio -p linux
+</code></pre>
+<hr />
 <h3 id="Установка-пароля-администратора"><a class="header" href="#Установка-пароля-администратора">Установка пароля администратора</a></h3>
 <pre><code>passwd
 </code></pre>
@@ -473,7 +514,7 @@ echo &quot;127.0.1.1 arch.localdomain arch&quot; &gt;&gt; /etc/hosts
 <pre><code>FONT=ter-u16n
 </code></pre>
 <blockquote>
-<p>Если шрифты не изменяются добавьте загрузку видеокарты на старте ситсемы в <code>mkinitcpio.conf</code></p>
+<p>Если шрифты не изменяются добавьте загрузку видеокарты на старте системы в <code>mkinitcpio.conf</code></p>
 </blockquote>
 <pre><code>MODULES=(i915 nvidia)
 </code></pre>
@@ -622,7 +663,7 @@ Section &quot;InputClass&quot;
     Option &quot;SHMConfig&quot; &quot;on&quot;
 EndSection
 </code></pre>
-<h3 id="хештеги-archlinux-os"><a class="header" href="#хештеги-archlinux-os">хештеги: #archlinux #os</a></h3>
+<p>#archlinux #os</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dotfiles"><a class="header" href="#dotfiles">dotfiles</a></h1>
 <h2 id="Подготовка"><a class="header" href="#Подготовка">Подготовка</a></h2>
 <ol>
