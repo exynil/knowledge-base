@@ -39,4 +39,13 @@ ffplay -i input.mp4 -vf cropdetect
 ffmpeg -i input.mp4 -vf "crop=1904:784:6:148" -c:v libx264 -preset slow -crf 22 -c:a copy output.mp4
 ~~~~
 
+## Сжатие видео
+~~~~
+ffmpeg -i input.mp4  -vcodec libx265 -crf 28 output.mp4
+~~~~
+
+~~~~
+ffmpeg -i input.mp4 -vcodec h264 -acodec mp2 output.mp4
+~~~~
+
 #ffmpeg #видео

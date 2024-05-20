@@ -42,8 +42,6 @@ sysctl -p
 ufw allow 51820/udp
 ~~~~
 
-Find the name of your server’s main network interface. Save it for later use.
-
 Найдите имя основного сетевого интерфейся вашего сервера. Сохраните его для дальнейшего использования
 
 ~~~~
@@ -112,13 +110,13 @@ vim /etc/wireguard/wg-client.conf
 Измените Endpoint.
 
 ~~~~
-# Client configuration    
+# Client configuration
 [Interface]
 Address = 172.26.5.67/16 # private IP address of the VPN client.
 DNS = 1.1.1.1
 PrivateKey = mCyPWpLw5OjepZTjnrTdjYuaRPpIFspbxU6orz5Np3g= # The client_private.key value.
 
-# Server configuration    
+# Server configuration
 [Peer]
 PublicKey = Q96urAY8bv6orRwaRWvMpg2GqraYSKr6fZgucmwZFgk= # The server_public.key value.
 AllowedIPs = 0.0.0.0/0
