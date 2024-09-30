@@ -143,4 +143,26 @@ git commit --amend
 git rm --cached example.txt
 ~~~~
 
+## Сброс истории коммитов
+
+1. Клонируем
+~~~~
+git clone https://github.com/USERNAME/REPO_NAME.git
+cd REPO_NAME
+~~~~
+2. Вносим изменения
+3. Сбрасываем историю
+~~~~
+git reset $(git commit-tree HEAD^{tree} -m "Initial commit")
+~~~~
+4. Добавление изменений и коммит
+~~~~
+git add .
+git commit --amend --no-edit
+~~~~
+5. Принудительная отправка
+~~~~
+git push --force
+~~~~
+
 #git #система_контроля_версий
