@@ -165,4 +165,16 @@ git commit --amend --no-edit
 git push --force
 ~~~~
 
+## Изменение коммита
+
+git rebase -i abc1234^
+
+edit abc1234 Your old commit message
+
+git add путь/к/файлу
+
+git commit --amend --no-edit
+
+git rebase --continue
+
 #git #система_контроля_версий
