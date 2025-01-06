@@ -3,11 +3,11 @@
 У нас есть два репозитория `test-server` и `test-client`
 
 ~~~~
-git@github.com:Test-Platform/test-server.git
+git@github.com:organization/test-server.git
 ~~~~
 
 ~~~~
-git@github.com:Test-Platform/test-client.git
+git@github.com:organization/test-client.git
 ~~~~
 
 Мы хотим создать для них отдельные ssh ключи и добавить их в Deploy Keys на гитхаб.
@@ -40,12 +40,12 @@ Host github.com-test-client-spa
 cat ~/.ssh/id_rsa_test_server.pub
 ~~~~
 
-https://github.com/Test-Platform/test-server/settings/keys
+https://github.com/organization/test-server/settings/keys
 
 4. Клонирование репоизториев
 
 ~~~~bash
-git clone git@github.com-test-server:Test-Platform/test-server.git
+git clone git@github.com-test-server:organization/test-server.git
 ~~~~
 
 #ssh
