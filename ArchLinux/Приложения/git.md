@@ -1,5 +1,6 @@
 ## Первоначальная настройка
-~~~~
+
+~~~~bash
 git config --global user.name "Maxim Kim"
 git config --global user.email exynil@gmail.com
 ~~~~
@@ -7,68 +8,67 @@ git config --global user.email exynil@gmail.com
 ## Основные команды
 
 Список локальных веток
-~~~~
+~~~~bash
 git branch
 ~~~~
 
 Список удаленных веток
-~~~~
+~~~~bash
 git branch -r
 ~~~~
 
 Список всех веток
-~~~~
+~~~~bash
 git branch -a
 ~~~~
 
 Добавить все изменения
-~~~~
+~~~~bash
 git add .
 ~~~~
 
 Добавить коммит
-~~~~
+~~~~bash
 git commit -m "added index.html"
 ~~~~
 
 Отправка на удаленный репозиторий
-~~~~
+~~~~bash
 git push origin master
 ~~~~
 
 Скачать изменения с удаленного репозитория
-~~~~
+~~~~bash
 git pull
 ~~~~
 
 Полный список неотслеживаемых файлов
-~~~~
+~~~~bash
 git status -u
 ~~~~
 
-Сокращенный git diff
-~~~~
+Сокращенный `git diff`
+~~~~bash
 git diff --unified=0
 ~~~~
 
-## Откладывание кода
+## Stash
 
 Откладывание кода
-~~~~
+~~~~bash
 git stash
 ~~~~
 
 Применение изменений к рабочей копии без удаления из архива
-~~~~
+~~~~bash
 git stash apply
 ~~~~
 
 Откладывание кода для не отслеживаемых файлов
-~~~~
+~~~~bash
 git stash -u
 ~~~~
 
-~~~~
 ## Изменение ссылки https на ssh
 
 1. Просмотр текущей ссылки
@@ -120,7 +120,6 @@ git reset --soft HEAD~1
 git reset
 ~~~~
 
----
 ## Изменение сообщения последнего коммита
 ~~~~
 git commit --amend
@@ -141,10 +140,12 @@ git clone https://github.com/USERNAME/REPO_NAME.git
 cd REPO_NAME
 ~~~~
 2. Вносим изменения
+
 3. Сбрасываем историю
 ~~~~
 git reset $(git commit-tree HEAD^{tree} -m "Initial commit")
 ~~~~
+
 4. Добавление изменений и коммит
 ~~~~
 git add .
@@ -167,4 +168,11 @@ git commit --amend --no-edit
 
 git rebase --continue
 
-#git #система_контроля_версий
+
+## Чтобы посмотреть что было сделано за последние 13 коммитов
+
+git reset --soft HEAD~13
+
+Это "отменит" 13 последних коммитов, оставив все изменения в рабочем дереве, как будто ты их только что внёс, но ещё не закоммитил.
+
+#git

@@ -1,6 +1,6 @@
 ## Конвертация видео в gif
 ~~~~
-ffmpeg -i test.mp4. test.gif
+ffmpeg -i test.mp4 test.gif
 ~~~~
 
 ## Обрезка видео
